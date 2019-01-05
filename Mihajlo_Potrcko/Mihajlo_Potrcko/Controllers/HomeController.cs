@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Connection;
 
 namespace MihajloPotrcko.Controllers
 {
@@ -10,6 +11,7 @@ namespace MihajloPotrcko.Controllers
     {
         public ActionResult Index()
         {
+          var tmp =   Konekcija.PKonekcija;
             return View();
         }
 

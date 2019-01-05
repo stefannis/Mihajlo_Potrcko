@@ -1,11 +1,13 @@
-﻿using MySql.Data.MySqlClient;
+﻿using System;
+using Mihajlo_Potrcko.Lib.Structs;
+using MySql.Data.MySqlClient;
 
 namespace Mihajlo_Potrcko.Connection
 {
     public static class Konekcija
     {
         private static MySqlConnection _konekcija;
-        public static int ErrorLevel = 0;
+            public static int ErrorLevel = 0;
 
         public static MySqlConnection PKonekcija
         {
@@ -32,20 +34,29 @@ namespace Mihajlo_Potrcko.Connection
         // GET: Konekcija
         static Konekcija()
         {
-            _konekcija =
-                new MySqlConnection(
-                    "Database=database_name;Data Source=server_domain_or_ip;User Id=mysql_user;Password=mysql_password");
-            //TODO popuniti podatake za bazu podataka
+            try
+            {
+                _konekcija =
+                    new MySqlConnection(
+                        "Database=mihajlo_Potrcko;Data Source=localhost;User Id=root;Password=");
 
-//            MySqlCommand command = connection.CreateCommand();
-//            command.CommandText = "select * from mytable";
-//            MySqlDataReader reader = command.ExecuteReader();
-//            while (reader.Read())
-//            {
-//                //reader.GetString(0)
-//                //reader["column_name"].ToString()
-//            }
-//            reader.Close();
+                //TODO popuniti podatake za bazu podataka
+                _konekcija.Open();
+                MySqlCommand command = _konekcija.CreateCommand();
+                command.CommandText = "select * from slika";
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    reader.GetString(0);
+                  var a =   reader["link"].ToString();
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                var temp = ex;
+            }
         }
 
         public static bool Reconnect(string databaseName, string address, string username, string password)
