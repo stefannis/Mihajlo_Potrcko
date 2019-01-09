@@ -1,15 +1,16 @@
-﻿using System;
-using Mihajlo_Potrcko.Lib.Structs;
-using MySql.Data.MySqlClient;
+﻿
+
+using System;
+using System.Data.SqlClient;
 
 namespace Mihajlo_Potrcko.Connection
 {
     public static class Konekcija
     {
-        private static MySqlConnection _konekcija;
+        private static SqlConnection _konekcija;
             public static int ErrorLevel = 0;
 
-        public static MySqlConnection PKonekcija
+        public static SqlConnection PKonekcija
         {
             get
             {
@@ -19,7 +20,7 @@ namespace Mihajlo_Potrcko.Connection
                 }
 
                 ErrorLevel = 1;
-                return new MySqlConnection();
+                return new SqlConnection();
             }
             set
             {
@@ -37,14 +38,14 @@ namespace Mihajlo_Potrcko.Connection
             try
             {
                 _konekcija =
-                    new MySqlConnection(
+                    new SqlConnection(
                         "Database=mihajlo_Potrcko;Data Source=localhost;User Id=root;Password=");
 
                 //TODO popuniti podatake za bazu podataka
                 _konekcija.Open();
-                MySqlCommand command = _konekcija.CreateCommand();
+                SqlCommand command = _konekcija.CreateCommand();
                 command.CommandText = "select * from slika";
-                MySqlDataReader reader = command.ExecuteReader();
+                SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
                 {
                     reader.GetString(0);
