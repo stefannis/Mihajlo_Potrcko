@@ -1,0 +1,32 @@
+namespace Mihajlo_Potrcko.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class Racuni_banke
+    {
+        [Key]
+        [StringLength(20)]
+        public string Broj_racuna { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Naziv_banke { get; set; }
+
+        [Required]
+        [StringLength(40)]
+        public string Vlasnik_racuna { get; set; }
+
+        [Column(TypeName = "date")]
+        public DateTime Datum_isteka { get; set; }
+
+        [Required]
+        [StringLength(13)]
+        public string FK_JMBG { get; set; }
+
+        public virtual Korisnik Korisnik { get; set; }
+    }
+}

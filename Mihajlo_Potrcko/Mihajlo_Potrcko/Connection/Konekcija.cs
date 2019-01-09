@@ -38,7 +38,7 @@ namespace Mihajlo_Potrcko.Connection
             {
                 _konekcija =
                     new MySqlConnection(
-                        "Database=mihajlo_Potrcko;Data Source=localhost;User Id=root;Password=");
+                        "Database=mihajlo_Potrcko;Data Source=localhost;User Id=root;Password=Ovoje1sifra");
 
                 //TODO popuniti podatake za bazu podataka
                 _konekcija.Open();
