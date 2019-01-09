@@ -6,36 +6,35 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Partner")]
-    public partial class Partner
+    [Table("Artikal")]
+    public partial class Artikal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Partner()
+        public Artikal()
         {
-            Poslovnica = new HashSet<Poslovnica>();
+            Artikal_U_Poslovnici = new HashSet<Artikal_U_Poslovnici>();
+            Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PartnerID { get; set; }
+        public int ArtikalID { get; set; }
 
         [Required]
-        [StringLength(30)]
-        public string Naziv { get; set; }
-
-        public decimal Procenat_zarade { get; set; }
-
-        [Column(TypeName = "date")]
-        public DateTime Datum_pocetka_poslovanja { get; set; }
+        [StringLength(100)]
+        public string Naziv_artikla { get; set; }
 
         [Required]
         [StringLength(20)]
-        public string Kategorija { get; set; }
+        public string Cena_artikla { get; set; }
 
         public int FK_SlikaID { get; set; }
 
         public virtual Slika Slika { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Poslovnica> Poslovnica { get; set; }
+        public virtual ICollection<Artikal_U_Poslovnici> Artikal_U_Poslovnici { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Niz_Artikala_Racun> Niz_Artikala_Racun { get; set; }
     }
 }
