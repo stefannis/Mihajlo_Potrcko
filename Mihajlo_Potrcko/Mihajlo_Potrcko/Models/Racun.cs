@@ -13,7 +13,7 @@ namespace Mihajlo_Potrcko.Models
         public Racun()
         {
             Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();
-            Reklamacijas = new HashSet<Reklamacija>();
+            Reklamacija = new HashSet<Reklamacija>();
         }
 
         public int RacunID { get; set; }
@@ -39,6 +39,6 @@ namespace Mihajlo_Potrcko.Models
         public virtual Vozac Vozac { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reklamacija> Reklamacijas { get; set; }
+        public virtual ICollection<Reklamacija> Reklamacija { get; set; }
     }
 }

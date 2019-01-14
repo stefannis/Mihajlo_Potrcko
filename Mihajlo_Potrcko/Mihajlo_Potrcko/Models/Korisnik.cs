@@ -12,11 +12,11 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Korisnik()
         {
-            Kupacs = new HashSet<Kupac>();
-            Nalogs = new HashSet<Nalog>();
+            Kupac = new HashSet<Kupac>();
+            Nalog = new HashSet<Nalog>();
             Racuni_banke = new HashSet<Racuni_banke>();
-            Vozacs = new HashSet<Vozac>();
-            Zaposlenis = new HashSet<Zaposleni>();
+            Vozac = new HashSet<Vozac>();
+            Zaposleni = new HashSet<Zaposleni>();
         }
 
         [Key]
@@ -46,18 +46,18 @@ namespace Mihajlo_Potrcko.Models
         public virtual Nasa_banka Nasa_banka { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kupac> Kupacs { get; set; }
+        public virtual ICollection<Kupac> Kupac { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nalog> Nalogs { get; set; }
+        public virtual ICollection<Nalog> Nalog { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Racuni_banke> Racuni_banke { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vozac> Vozacs { get; set; }
+        public virtual ICollection<Vozac> Vozac { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zaposleni> Zaposlenis { get; set; }
+        public virtual ICollection<Zaposleni> Zaposleni { get; set; }
     }
 }
