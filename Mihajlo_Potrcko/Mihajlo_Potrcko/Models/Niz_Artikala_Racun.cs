@@ -9,7 +9,6 @@ namespace Mihajlo_Potrcko.Models
     public partial class Niz_Artikala_Racun
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Niz_artikla_racunID { get; set; }
 
         public int Kolicina { get; set; }

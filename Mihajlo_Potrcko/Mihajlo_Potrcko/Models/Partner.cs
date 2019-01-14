@@ -12,10 +12,9 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Partner()
         {
-            Poslovnica = new HashSet<Poslovnica>();
+            Poslovnicas = new HashSet<Poslovnica>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PartnerID { get; set; }
 
         [Required]
@@ -36,6 +35,6 @@ namespace Mihajlo_Potrcko.Models
         public virtual Slika Slika { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Poslovnica> Poslovnica { get; set; }
+        public virtual ICollection<Poslovnica> Poslovnicas { get; set; }
     }
 }

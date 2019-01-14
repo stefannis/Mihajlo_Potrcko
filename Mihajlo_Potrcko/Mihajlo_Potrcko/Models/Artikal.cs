@@ -16,7 +16,6 @@ namespace Mihajlo_Potrcko.Models
             Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ArtikalID { get; set; }
 
         [Required]

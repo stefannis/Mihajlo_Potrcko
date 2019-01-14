@@ -9,7 +9,6 @@ namespace Mihajlo_Potrcko.Models
     [Table("Reklama")]
     public partial class Reklama
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ReklamaID { get; set; }
 
         [StringLength(20)]

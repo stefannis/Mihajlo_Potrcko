@@ -12,10 +12,9 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Kupac()
         {
-            Racun = new HashSet<Racun>();
+            Racuns = new HashSet<Racun>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int KupacID { get; set; }
 
         [Required]
@@ -29,6 +28,6 @@ namespace Mihajlo_Potrcko.Models
         public virtual Nalog Nalog { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racun { get; set; }
+        public virtual ICollection<Racun> Racuns { get; set; }
     }
 }

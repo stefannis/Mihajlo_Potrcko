@@ -9,7 +9,6 @@ namespace Mihajlo_Potrcko.Models
     [Table("Reklamacija")]
     public partial class Reklamacija
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ReklamacijaID { get; set; }
 
         public int FK_RacunID { get; set; }

@@ -15,7 +15,6 @@ namespace Mihajlo_Potrcko.Models
             Artikal_U_Poslovnici = new HashSet<Artikal_U_Poslovnici>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int PoslovnicaID { get; set; }
 
         [Required]

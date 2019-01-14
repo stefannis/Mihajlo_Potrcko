@@ -13,10 +13,9 @@ namespace Mihajlo_Potrcko.Models
         public Racun()
         {
             Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();
-            Reklamacija = new HashSet<Reklamacija>();
+            Reklamacijas = new HashSet<Reklamacija>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int RacunID { get; set; }
 
         [Column(TypeName = "date")]
@@ -40,6 +39,6 @@ namespace Mihajlo_Potrcko.Models
         public virtual Vozac Vozac { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reklamacija> Reklamacija { get; set; }
+        public virtual ICollection<Reklamacija> Reklamacijas { get; set; }
     }
 }

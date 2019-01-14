@@ -15,7 +15,6 @@ namespace Mihajlo_Potrcko.Models
             Zaposleni1 = new HashSet<Zaposleni>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ZaposleniID { get; set; }
 
         public int? FK_VozacID { get; set; }

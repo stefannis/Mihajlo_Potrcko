@@ -12,13 +12,12 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Slika()
         {
-            Artikal = new HashSet<Artikal>();
-            Nalog = new HashSet<Nalog>();
-            Partner = new HashSet<Partner>();
-            Reklama = new HashSet<Reklama>();
+            Artikals = new HashSet<Artikal>();
+            Nalogs = new HashSet<Nalog>();
+            Partners = new HashSet<Partner>();
+            Reklamas = new HashSet<Reklama>();
         }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SlikaID { get; set; }
 
         [Required]
@@ -26,15 +25,15 @@ namespace Mihajlo_Potrcko.Models
         public string Link { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Artikal> Artikal { get; set; }
+        public virtual ICollection<Artikal> Artikals { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nalog> Nalog { get; set; }
+        public virtual ICollection<Nalog> Nalogs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Partner> Partner { get; set; }
+        public virtual ICollection<Partner> Partners { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reklama> Reklama { get; set; }
+        public virtual ICollection<Reklama> Reklamas { get; set; }
     }
 }

@@ -167,7 +167,6 @@
     <Compile Include="Models\Reklama.cs" />
     <Compile Include="Models\Reklamacija.cs" />
     <Compile Include="Models\Slika.cs" />
-    <Compile Include="Models\sysdiagrams.cs" />
     <Compile Include="Models\Vozac.cs" />
     <Compile Include="Models\Zaposleni.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
