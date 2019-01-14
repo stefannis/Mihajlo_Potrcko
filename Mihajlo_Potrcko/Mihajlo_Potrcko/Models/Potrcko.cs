@@ -25,7 +25,6 @@ namespace Mihajlo_Potrcko.Models
         public virtual DbSet<Reklama> Reklama { get; set; }
         public virtual DbSet<Reklamacija> Reklamacija { get; set; }
         public virtual DbSet<Slika> Slika { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Vozac> Vozac { get; set; }
         public virtual DbSet<Zaposleni> Zaposleni { get; set; }
         public virtual DbSet<Artikal_U_Poslovnici> Artikal_U_Poslovnici { get; set; }
