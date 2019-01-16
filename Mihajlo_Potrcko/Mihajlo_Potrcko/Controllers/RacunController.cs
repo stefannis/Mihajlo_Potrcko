@@ -11,112 +11,116 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class ReklamasController : Controller
+    public class RacunController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
-        // GET: Reklamas
+        // GET: Racuns
         public ActionResult Index()
         {
-            var reklama = db.Reklama.Include(r => r.Slika);
-            return View(reklama.ToList());
+            var racun = db.Racun.Include(r => r.Kupac).Include(r => r.Vozac);
+            return View(racun.ToList());
         }
 
-        // GET: Reklamas/Details/5
+        // GET: Racuns/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reklama reklama = db.Reklama.Find(id);
-            if (reklama == null)
+            Racun racun = db.Racun.Find(id);
+            if (racun == null)
             {
                 return HttpNotFound();
             }
-            return View(reklama);
+            return View(racun);
         }
 
-        // GET: Reklamas/Create
+        // GET: Racuns/Create
         public ActionResult Create()
         {
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG");
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "FK_JMBG");
             return View();
         }
 
-        // POST: Reklamas/Create
+        // POST: Racuns/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,FK_SlikaID")] Reklama reklama)
+        public ActionResult Create([Bind(Include = "RacunID,Datum_izdavanja,Iznos,FK_KupacID,FK_VozacID,Adresa")] Racun racun)
         {
             if (ModelState.IsValid)
             {
-                db.Reklama.Add(reklama);
+                db.Racun.Add(racun);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
-            return View(reklama);
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG", racun.FK_KupacID);
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "FK_JMBG", racun.FK_VozacID);
+            return View(racun);
         }
 
-        // GET: Reklamas/Edit/5
+        // GET: Racuns/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reklama reklama = db.Reklama.Find(id);
-            if (reklama == null)
+            Racun racun = db.Racun.Find(id);
+            if (racun == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
-            return View(reklama);
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG", racun.FK_KupacID);
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "FK_JMBG", racun.FK_VozacID);
+            return View(racun);
         }
 
-        // POST: Reklamas/Edit/5
+        // POST: Racuns/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,FK_SlikaID")] Reklama reklama)
+        public ActionResult Edit([Bind(Include = "RacunID,Datum_izdavanja,Iznos,FK_KupacID,FK_VozacID,Adresa")] Racun racun)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(reklama).State = EntityState.Modified;
+                db.Entry(racun).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
-            return View(reklama);
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG", racun.FK_KupacID);
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "FK_JMBG", racun.FK_VozacID);
+            return View(racun);
         }
 
-        // GET: Reklamas/Delete/5
+        // GET: Racuns/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reklama reklama = db.Reklama.Find(id);
-            if (reklama == null)
+            Racun racun = db.Racun.Find(id);
+            if (racun == null)
             {
                 return HttpNotFound();
             }
-            return View(reklama);
+            return View(racun);
         }
 
-        // POST: Reklamas/Delete/5
+        // POST: Racuns/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Reklama reklama = db.Reklama.Find(id);
-            db.Reklama.Remove(reklama);
+            Racun racun = db.Racun.Find(id);
+            db.Racun.Remove(racun);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

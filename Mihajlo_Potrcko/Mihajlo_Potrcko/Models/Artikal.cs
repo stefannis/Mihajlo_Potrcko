@@ -13,7 +13,9 @@ namespace Mihajlo_Potrcko.Models
         public Artikal()
         {
             Artikal_U_Poslovnici = new HashSet<Artikal_U_Poslovnici>();
+            Artikal_U_Poslovnici1 = new HashSet<Artikal_U_Poslovnici>();
             Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();
+            Niz_Artikala_Racun1 = new HashSet<Niz_Artikala_Racun>();
         }
 
         public int ArtikalID { get; set; }
@@ -30,10 +32,18 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Slika Slika { get; set; }
 
+        public virtual Slika Slika1 { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Artikal_U_Poslovnici> Artikal_U_Poslovnici { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Artikal_U_Poslovnici> Artikal_U_Poslovnici1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Niz_Artikala_Racun> Niz_Artikala_Racun { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Niz_Artikala_Racun> Niz_Artikala_Racun1 { get; set; }
     }
 }

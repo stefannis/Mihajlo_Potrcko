@@ -19,6 +19,10 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Artikal Artikal { get; set; }
 
+        public virtual Artikal Artikal1 { get; set; }
+
         public virtual Racun Racun { get; set; }
+
+        public virtual Racun Racun1 { get; set; }
     }
 }

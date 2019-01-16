@@ -13,12 +13,12 @@ namespace Mihajlo_Potrcko.Controllers
 {
     public class Niz_Artikala_RacunController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
         // GET: Niz_Artikala_Racun
         public ActionResult Index()
         {
-            var niz_Artikala_Racun = db.Niz_Artikala_Racun.Include(n => n.Artikal).Include(n => n.Racun);
+            var niz_Artikala_Racun = db.NizArtikalaRacun.Include(n => n.Artikal).Include(n => n.Racun);
             return View(niz_Artikala_Racun.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Niz_Artikala_Racun niz_Artikala_Racun = db.Niz_Artikala_Racun.Find(id);
+            Niz_Artikala_Racun niz_Artikala_Racun = db.NizArtikalaRacun.Find(id);
             if (niz_Artikala_Racun == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Niz_Artikala_Racun.Add(niz_Artikala_Racun);
+                db.NizArtikalaRacun.Add(niz_Artikala_Racun);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Niz_Artikala_Racun niz_Artikala_Racun = db.Niz_Artikala_Racun.Find(id);
+            Niz_Artikala_Racun niz_Artikala_Racun = db.NizArtikalaRacun.Find(id);
             if (niz_Artikala_Racun == null)
             {
                 return HttpNotFound();
@@ -106,7 +106,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Niz_Artikala_Racun niz_Artikala_Racun = db.Niz_Artikala_Racun.Find(id);
+            Niz_Artikala_Racun niz_Artikala_Racun = db.NizArtikalaRacun.Find(id);
             if (niz_Artikala_Racun == null)
             {
                 return HttpNotFound();
@@ -119,8 +119,8 @@ namespace Mihajlo_Potrcko.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Niz_Artikala_Racun niz_Artikala_Racun = db.Niz_Artikala_Racun.Find(id);
-            db.Niz_Artikala_Racun.Remove(niz_Artikala_Racun);
+            Niz_Artikala_Racun niz_Artikala_Racun = db.NizArtikalaRacun.Find(id);
+            db.NizArtikalaRacun.Remove(niz_Artikala_Racun);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

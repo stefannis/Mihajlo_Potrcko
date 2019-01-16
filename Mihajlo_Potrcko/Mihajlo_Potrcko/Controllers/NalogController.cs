@@ -11,112 +11,116 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class PoslovnicasController : Controller
+    public class NalogController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
-        // GET: Poslovnicas
+        // GET: Nalogs
         public ActionResult Index()
         {
-            var poslovnica = db.Poslovnica.Include(p => p.Partner);
-            return View(poslovnica.ToList());
+            var nalog = db.Nalog.Include(n => n.Korisnik).Include(n => n.Slika);
+            return View(nalog.ToList());
         }
 
-        // GET: Poslovnicas/Details/5
+        // GET: Nalogs/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poslovnica poslovnica = db.Poslovnica.Find(id);
-            if (poslovnica == null)
+            Nalog nalog = db.Nalog.Find(id);
+            if (nalog == null)
             {
                 return HttpNotFound();
             }
-            return View(poslovnica);
+            return View(nalog);
         }
 
-        // GET: Poslovnicas/Create
+        // GET: Nalogs/Create
         public ActionResult Create()
         {
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv");
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
             return View();
         }
 
-        // POST: Poslovnicas/Create
+        // POST: Nalogs/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PoslovnicaID,Adresa,Broj_telefona,FK_PartnerID")] Poslovnica poslovnica)
+        public ActionResult Create([Bind(Include = "NalogID,Username,Password,FK_JMBG,FK_SlikaID")] Nalog nalog)
         {
             if (ModelState.IsValid)
             {
-                db.Poslovnica.Add(poslovnica);
+                db.Nalog.Add(nalog);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
-            return View(poslovnica);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
+            return View(nalog);
         }
 
-        // GET: Poslovnicas/Edit/5
+        // GET: Nalogs/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poslovnica poslovnica = db.Poslovnica.Find(id);
-            if (poslovnica == null)
+            Nalog nalog = db.Nalog.Find(id);
+            if (nalog == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
-            return View(poslovnica);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
+            return View(nalog);
         }
 
-        // POST: Poslovnicas/Edit/5
+        // POST: Nalogs/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PoslovnicaID,Adresa,Broj_telefona,FK_PartnerID")] Poslovnica poslovnica)
+        public ActionResult Edit([Bind(Include = "NalogID,Username,Password,FK_JMBG,FK_SlikaID")] Nalog nalog)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(poslovnica).State = EntityState.Modified;
+                db.Entry(nalog).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
-            return View(poslovnica);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
+            return View(nalog);
         }
 
-        // GET: Poslovnicas/Delete/5
+        // GET: Nalogs/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Poslovnica poslovnica = db.Poslovnica.Find(id);
-            if (poslovnica == null)
+            Nalog nalog = db.Nalog.Find(id);
+            if (nalog == null)
             {
                 return HttpNotFound();
             }
-            return View(poslovnica);
+            return View(nalog);
         }
 
-        // POST: Poslovnicas/Delete/5
+        // POST: Nalogs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Poslovnica poslovnica = db.Poslovnica.Find(id);
-            db.Poslovnica.Remove(poslovnica);
+            Nalog nalog = db.Nalog.Find(id);
+            db.Nalog.Remove(nalog);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

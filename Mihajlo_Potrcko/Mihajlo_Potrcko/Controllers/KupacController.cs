@@ -1,43 +1,40 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class VozacsController : Controller
+    public class KupacController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
-        // GET: Vozacs
+        // GET: Kupac
         public ActionResult Index()
         {
-            var vozac = db.Vozac.Include(v => v.Korisnik).Include(v => v.Nalog);
-            return View(vozac.ToList());
+            var kupac = db.Kupac.Include(k => k.Korisnik).Include(k => k.Nalog);
+            return View(kupac.ToList());
         }
 
-        // GET: Vozacs/Details/5
+        // GET: Kupac/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vozac vozac = db.Vozac.Find(id);
-            if (vozac == null)
+            Kupac kupac = db.Kupac.Find(id);
+            if (kupac == null)
             {
                 return HttpNotFound();
             }
-            return View(vozac);
+            return View(kupac);
         }
 
-        // GET: Vozacs/Create
+        // GET: Kupac/Create
         public ActionResult Create()
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
@@ -45,82 +42,82 @@ namespace Mihajlo_Potrcko.Controllers
             return View();
         }
 
-        // POST: Vozacs/Create
+        // POST: Kupac/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VozacID,FK_JMBG,FK_NalogID")] Vozac vozac)
+        public ActionResult Create([Bind(Include = "KupacID,FK_JMBG,FK_NalogID")] Kupac kupac)
         {
             if (ModelState.IsValid)
             {
-                db.Vozac.Add(vozac);
+                db.Kupac.Add(kupac);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", vozac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.FK_NalogID);
-            return View(vozac);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
+            return View(kupac);
         }
 
-        // GET: Vozacs/Edit/5
+        // GET: Kupac/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vozac vozac = db.Vozac.Find(id);
-            if (vozac == null)
+            Kupac kupac = db.Kupac.Find(id);
+            if (kupac == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", vozac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.FK_NalogID);
-            return View(vozac);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
+            return View(kupac);
         }
 
-        // POST: Vozacs/Edit/5
+        // POST: Kupac/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VozacID,FK_JMBG,FK_NalogID")] Vozac vozac)
+        public ActionResult Edit([Bind(Include = "KupacID,FK_JMBG,FK_NalogID")] Kupac kupac)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(vozac).State = EntityState.Modified;
+                db.Entry(kupac).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", vozac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.FK_NalogID);
-            return View(vozac);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
+            return View(kupac);
         }
 
-        // GET: Vozacs/Delete/5
+        // GET: Kupac/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Vozac vozac = db.Vozac.Find(id);
-            if (vozac == null)
+            Kupac kupac = db.Kupac.Find(id);
+            if (kupac == null)
             {
                 return HttpNotFound();
             }
-            return View(vozac);
+            return View(kupac);
         }
 
-        // POST: Vozacs/Delete/5
+        // POST: Kupac/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Vozac vozac = db.Vozac.Find(id);
-            db.Vozac.Remove(vozac);
+            Kupac kupac = db.Kupac.Find(id);
+            db.Kupac.Remove(kupac ?? throw new InvalidOperationException());
             db.SaveChanges();
             return RedirectToAction("Index");
         }

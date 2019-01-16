@@ -7,120 +7,115 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Models;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class KupacsController : Controller
+    public class ArtikalController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
-        // GET: Kupacs
+        // GET: Artikals
         public ActionResult Index()
         {
-            var kupac = db.Kupac.Include(k => k.Korisnik).Include(k => k.Nalog);
-            return View(kupac.ToList());
+            var artikal = db.Artikal.Include(a => a.Slika);
+            return View(artikal.ToList());
         }
 
-        // GET: Kupacs/Details/5
+        // GET: Artikals/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kupac kupac = db.Kupac.Find(id);
-            if (kupac == null)
+            Artikal artikal = db.Artikal.Find(id);
+            if (artikal == null)
             {
                 return HttpNotFound();
             }
-            return View(kupac);
+            return View(artikal);
         }
 
-        // GET: Kupacs/Create
+        // GET: Artikals/Create
         public ActionResult Create()
         {
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username");
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
             return View();
         }
 
-        // POST: Kupacs/Create
+        // POST: Artikals/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KupacID,FK_JMBG,FK_NalogID")] Kupac kupac)
+        public ActionResult Create([Bind(Include = "ArtikalID,Naziv_artikla,Cena_artikla,FK_SlikaID")] Artikal artikal)
         {
             if (ModelState.IsValid)
             {
-                db.Kupac.Add(kupac);
+                db.Artikal.Add(artikal);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
-            return View(kupac);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", artikal.FK_SlikaID);
+            return View(artikal);
         }
 
-        // GET: Kupacs/Edit/5
+        // GET: Artikals/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kupac kupac = db.Kupac.Find(id);
-            if (kupac == null)
+            Artikal artikal = db.Artikal.Find(id);
+            if (artikal == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
-            return View(kupac);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", artikal.FK_SlikaID);
+            return View(artikal);
         }
 
-        // POST: Kupacs/Edit/5
+        // POST: Artikals/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KupacID,FK_JMBG,FK_NalogID")] Kupac kupac)
+        public ActionResult Edit([Bind(Include = "ArtikalID,Naziv_artikla,Cena_artikla,FK_SlikaID")] Artikal artikal)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(kupac).State = EntityState.Modified;
+                db.Entry(artikal).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
-            return View(kupac);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", artikal.FK_SlikaID);
+            return View(artikal);
         }
 
-        // GET: Kupacs/Delete/5
+        // GET: Artikals/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kupac kupac = db.Kupac.Find(id);
-            if (kupac == null)
+            Artikal artikal = db.Artikal.Find(id);
+            if (artikal == null)
             {
                 return HttpNotFound();
             }
-            return View(kupac);
+            return View(artikal);
         }
 
-        // POST: Kupacs/Delete/5
+        // POST: Artikals/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kupac kupac = db.Kupac.Find(id);
-            db.Kupac.Remove(kupac);
+            Artikal artikal = db.Artikal.Find(id);
+            db.Artikal.Remove(artikal);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

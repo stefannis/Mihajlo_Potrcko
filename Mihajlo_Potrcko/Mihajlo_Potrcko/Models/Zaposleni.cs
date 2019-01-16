@@ -12,12 +12,13 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Zaposleni()
         {
+            Vozacs = new HashSet<Vozac>();
+            Vozacs1 = new HashSet<Vozac>();
             Zaposleni1 = new HashSet<Zaposleni>();
+            Zaposleni11 = new HashSet<Zaposleni>();
         }
 
         public int ZaposleniID { get; set; }
-
-        public int? FK_VozacID { get; set; }
 
         [Required]
         [StringLength(13)]
@@ -27,11 +28,22 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Korisnik Korisnik { get; set; }
 
-        public virtual Vozac Vozac { get; set; }
+        public virtual Korisnik Korisnik1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vozac> Vozacs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vozac> Vozacs1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zaposleni> Zaposleni1 { get; set; }
 
         public virtual Zaposleni Zaposleni2 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zaposleni> Zaposleni11 { get; set; }
+
+        public virtual Zaposleni Zaposleni3 { get; set; }
     }
 }

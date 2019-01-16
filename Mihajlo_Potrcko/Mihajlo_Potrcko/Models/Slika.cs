@@ -12,10 +12,14 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Slika()
         {
-            Artikal = new HashSet<Artikal>();
-            Nalog = new HashSet<Nalog>();
-            Partner = new HashSet<Partner>();
-            Reklama = new HashSet<Reklama>();
+            Artikals = new HashSet<Artikal>();
+            Artikals1 = new HashSet<Artikal>();
+            Nalogs = new HashSet<Nalog>();
+            Nalogs1 = new HashSet<Nalog>();
+            Partners = new HashSet<Partner>();
+            Partners1 = new HashSet<Partner>();
+            Reklamas = new HashSet<Reklama>();
+            Reklamas1 = new HashSet<Reklama>();
         }
 
         public int SlikaID { get; set; }
@@ -25,15 +29,27 @@ namespace Mihajlo_Potrcko.Models
         public string Link { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Artikal> Artikal { get; set; }
+        public virtual ICollection<Artikal> Artikals { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nalog> Nalog { get; set; }
+        public virtual ICollection<Artikal> Artikals1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Partner> Partner { get; set; }
+        public virtual ICollection<Nalog> Nalogs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reklama> Reklama { get; set; }
+        public virtual ICollection<Nalog> Nalogs1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Partner> Partners { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Partner> Partners1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reklama> Reklamas { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reklama> Reklamas1 { get; set; }
     }
 }

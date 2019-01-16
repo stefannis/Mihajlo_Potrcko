@@ -17,5 +17,7 @@ namespace Mihajlo_Potrcko.Models
         public string Opis { get; set; }
 
         public virtual Racun Racun { get; set; }
+
+        public virtual Racun Racun1 { get; set; }
     }
 }

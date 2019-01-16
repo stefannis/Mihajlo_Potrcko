@@ -11,116 +11,112 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class NalogsController : Controller
+    public class ReklamaController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
-        // GET: Nalogs
+        // GET: Reklamas
         public ActionResult Index()
         {
-            var nalog = db.Nalog.Include(n => n.Korisnik).Include(n => n.Slika);
-            return View(nalog.ToList());
+            var reklama = db.Reklama.Include(r => r.Slika);
+            return View(reklama.ToList());
         }
 
-        // GET: Nalogs/Details/5
+        // GET: Reklamas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nalog nalog = db.Nalog.Find(id);
-            if (nalog == null)
+            Reklama reklama = db.Reklama.Find(id);
+            if (reklama == null)
             {
                 return HttpNotFound();
             }
-            return View(nalog);
+            return View(reklama);
         }
 
-        // GET: Nalogs/Create
+        // GET: Reklamas/Create
         public ActionResult Create()
         {
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
             return View();
         }
 
-        // POST: Nalogs/Create
+        // POST: Reklamas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NalogID,Username,Password,FK_JMBG,FK_SlikaID")] Nalog nalog)
+        public ActionResult Create([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,FK_SlikaID")] Reklama reklama)
         {
             if (ModelState.IsValid)
             {
-                db.Nalog.Add(nalog);
+                db.Reklama.Add(reklama);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
-            return View(nalog);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
+            return View(reklama);
         }
 
-        // GET: Nalogs/Edit/5
+        // GET: Reklamas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nalog nalog = db.Nalog.Find(id);
-            if (nalog == null)
+            Reklama reklama = db.Reklama.Find(id);
+            if (reklama == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
-            return View(nalog);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
+            return View(reklama);
         }
 
-        // POST: Nalogs/Edit/5
+        // POST: Reklamas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NalogID,Username,Password,FK_JMBG,FK_SlikaID")] Nalog nalog)
+        public ActionResult Edit([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,FK_SlikaID")] Reklama reklama)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nalog).State = EntityState.Modified;
+                db.Entry(reklama).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
-            return View(nalog);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
+            return View(reklama);
         }
 
-        // GET: Nalogs/Delete/5
+        // GET: Reklamas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nalog nalog = db.Nalog.Find(id);
-            if (nalog == null)
+            Reklama reklama = db.Reklama.Find(id);
+            if (reklama == null)
             {
                 return HttpNotFound();
             }
-            return View(nalog);
+            return View(reklama);
         }
 
-        // POST: Nalogs/Delete/5
+        // POST: Reklamas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Nalog nalog = db.Nalog.Find(id);
-            db.Nalog.Remove(nalog);
+            Reklama reklama = db.Reklama.Find(id);
+            db.Reklama.Remove(reklama);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
