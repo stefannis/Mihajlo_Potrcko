@@ -13,12 +13,12 @@ namespace Mihajlo_Potrcko.Controllers
 {
     public class Artikal_U_PoslovniciController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
         // GET: Artikal_U_Poslovnici
         public ActionResult Index()
         {
-            var artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Include(a => a.Artikal).Include(a => a.Poslovnica);
+            var artikal_U_Poslovnici = db.ArtikalUPoslovnici.Include(a => a.Artikal).Include(a => a.Poslovnica);
             return View(artikal_U_Poslovnici.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
+            Artikal_U_Poslovnici artikal_U_Poslovnici = db.ArtikalUPoslovnici.Find(id);
             if (artikal_U_Poslovnici == null)
             {
                 return HttpNotFound();
@@ -54,7 +54,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Artikal_U_Poslovnici.Add(artikal_U_Poslovnici);
+                db.ArtikalUPoslovnici.Add(artikal_U_Poslovnici);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -71,7 +71,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
+            Artikal_U_Poslovnici artikal_U_Poslovnici = db.ArtikalUPoslovnici.Find(id);
             if (artikal_U_Poslovnici == null)
             {
                 return HttpNotFound();
@@ -106,7 +106,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
+            Artikal_U_Poslovnici artikal_U_Poslovnici = db.ArtikalUPoslovnici.Find(id);
             if (artikal_U_Poslovnici == null)
             {
                 return HttpNotFound();
@@ -119,8 +119,8 @@ namespace Mihajlo_Potrcko.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(bool id)
         {
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
-            db.Artikal_U_Poslovnici.Remove(artikal_U_Poslovnici);
+            Artikal_U_Poslovnici artikal_U_Poslovnici = db.ArtikalUPoslovnici.Find(id);
+            db.ArtikalUPoslovnici.Remove(artikal_U_Poslovnici);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

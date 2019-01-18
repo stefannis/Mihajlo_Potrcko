@@ -12,11 +12,14 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Korisnik()
         {
-            Kupac = new HashSet<Kupac>();
-            Nalog = new HashSet<Nalog>();
+            Kupacs = new HashSet<Kupac>();
+            Kupacs1 = new HashSet<Kupac>();
+            Nalogs = new HashSet<Nalog>();
+            Nalogs1 = new HashSet<Nalog>();
             Racuni_banke = new HashSet<Racuni_banke>();
-            Vozac = new HashSet<Vozac>();
-            Zaposleni = new HashSet<Zaposleni>();
+            Racuni_banke1 = new HashSet<Racuni_banke>();
+            Zaposlenis = new HashSet<Zaposleni>();
+            Zaposlenis1 = new HashSet<Zaposleni>();
         }
 
         [Key]
@@ -45,19 +48,30 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Nasa_banka Nasa_banka { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Kupac> Kupac { get; set; }
+        public virtual Nasa_banka Nasa_banka1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Nalog> Nalog { get; set; }
+        public virtual ICollection<Kupac> Kupacs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kupac> Kupacs1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nalog> Nalogs { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Nalog> Nalogs1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Racuni_banke> Racuni_banke { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vozac> Vozac { get; set; }
+        public virtual ICollection<Racuni_banke> Racuni_banke1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zaposleni> Zaposleni { get; set; }
+        public virtual ICollection<Zaposleni> Zaposlenis { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zaposleni> Zaposlenis1 { get; set; }
     }
 }

@@ -11,7 +11,8 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Nasa_banka()
         {
-            Korisnik = new HashSet<Korisnik>();
+            Korisniks = new HashSet<Korisnik>();
+            Korisniks1 = new HashSet<Korisnik>();
         }
 
         [Key]
@@ -24,6 +25,9 @@ namespace Mihajlo_Potrcko.Models
         public DateTime Poslednja_uplata { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Korisnik> Korisnik { get; set; }
+        public virtual ICollection<Korisnik> Korisniks { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Korisnik> Korisniks1 { get; set; }
     }
 }

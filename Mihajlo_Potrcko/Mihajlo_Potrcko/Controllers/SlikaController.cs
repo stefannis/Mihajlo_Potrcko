@@ -7,116 +7,110 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Models;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class ReklamacijasController : Controller
+    public class SlikaController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
-        // GET: Reklamacijas
+        // GET: Slikas
         public ActionResult Index()
         {
-            var reklamacija = db.Reklamacija.Include(r => r.Racun);
-            return View(reklamacija.ToList());
+            return View(db.Slika.ToList());
         }
 
-        // GET: Reklamacijas/Details/5
+        // GET: Slikas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reklamacija reklamacija = db.Reklamacija.Find(id);
-            if (reklamacija == null)
+            Slika slika = db.Slika.Find(id);
+            if (slika == null)
             {
                 return HttpNotFound();
             }
-            return View(reklamacija);
+            return View(slika);
         }
 
-        // GET: Reklamacijas/Create
+        // GET: Slikas/Create
         public ActionResult Create()
         {
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa");
             return View();
         }
 
-        // POST: Reklamacijas/Create
+        // POST: Slikas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReklamacijaID,FK_RacunID,Opis")] Reklamacija reklamacija)
+        public ActionResult Create([Bind(Include = "SlikaID,Link")] Slika slika)
         {
             if (ModelState.IsValid)
             {
-                db.Reklamacija.Add(reklamacija);
+                db.Slika.Add(slika);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.FK_RacunID);
-            return View(reklamacija);
+            return View(slika);
         }
 
-        // GET: Reklamacijas/Edit/5
+        // GET: Slikas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reklamacija reklamacija = db.Reklamacija.Find(id);
-            if (reklamacija == null)
+            Slika slika = db.Slika.Find(id);
+            if (slika == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.FK_RacunID);
-            return View(reklamacija);
+            return View(slika);
         }
 
-        // POST: Reklamacijas/Edit/5
+        // POST: Slikas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReklamacijaID,FK_RacunID,Opis")] Reklamacija reklamacija)
+        public ActionResult Edit([Bind(Include = "SlikaID,Link")] Slika slika)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(reklamacija).State = EntityState.Modified;
+                db.Entry(slika).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.FK_RacunID);
-            return View(reklamacija);
+            return View(slika);
         }
 
-        // GET: Reklamacijas/Delete/5
+        // GET: Slikas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Reklamacija reklamacija = db.Reklamacija.Find(id);
-            if (reklamacija == null)
+            Slika slika = db.Slika.Find(id);
+            if (slika == null)
             {
                 return HttpNotFound();
             }
-            return View(reklamacija);
+            return View(slika);
         }
 
-        // POST: Reklamacijas/Delete/5
+        // POST: Slikas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Reklamacija reklamacija = db.Reklamacija.Find(id);
-            db.Reklamacija.Remove(reklamacija);
+            Slika slika = db.Slika.Find(id);
+            db.Slika.Remove(slika);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -13,12 +13,12 @@ namespace Mihajlo_Potrcko.Controllers
 {
     public class Racuni_bankeController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
         // GET: Racuni_banke
         public ActionResult Index()
         {
-            var racuni_banke = db.Racuni_banke.Include(r => r.Korisnik);
+            var racuni_banke = db.RacuniBanke.Include(r => r.Korisnik);
             return View(racuni_banke.ToList());
         }
 
@@ -29,7 +29,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Racuni_banke racuni_banke = db.Racuni_banke.Find(id);
+            Racuni_banke racuni_banke = db.RacuniBanke.Find(id);
             if (racuni_banke == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Racuni_banke.Add(racuni_banke);
+                db.RacuniBanke.Add(racuni_banke);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -69,7 +69,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Racuni_banke racuni_banke = db.Racuni_banke.Find(id);
+            Racuni_banke racuni_banke = db.RacuniBanke.Find(id);
             if (racuni_banke == null)
             {
                 return HttpNotFound();
@@ -102,7 +102,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Racuni_banke racuni_banke = db.Racuni_banke.Find(id);
+            Racuni_banke racuni_banke = db.RacuniBanke.Find(id);
             if (racuni_banke == null)
             {
                 return HttpNotFound();
@@ -115,8 +115,8 @@ namespace Mihajlo_Potrcko.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Racuni_banke racuni_banke = db.Racuni_banke.Find(id);
-            db.Racuni_banke.Remove(racuni_banke);
+            Racuni_banke racuni_banke = db.RacuniBanke.Find(id);
+            db.RacuniBanke.Remove(racuni_banke);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

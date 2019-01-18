@@ -11,9 +11,9 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class PartnersController : Controller
+    public class PartnerController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
         // GET: Partners
         public ActionResult Index()

@@ -20,5 +20,7 @@ namespace Mihajlo_Potrcko.Models
         public int FK_SlikaID { get; set; }
 
         public virtual Slika Slika { get; set; }
+
+        public virtual Slika Slika1 { get; set; }
     }
 }

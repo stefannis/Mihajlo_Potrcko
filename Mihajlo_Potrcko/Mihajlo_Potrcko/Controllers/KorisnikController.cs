@@ -11,9 +11,9 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class KorisniksController : Controller
+    public class KorisnikController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
         // GET: Korisniks
         public ActionResult Index()
@@ -40,7 +40,7 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Korisniks/Create
         public ActionResult Create()
         {
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB");
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.NasaBanka, "Broj_racunaNB", "Broj_racunaNB");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.NasaBanka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
             return View(korisnik);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.NasaBanka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
             return View(korisnik);
         }
 
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.NasaBanka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
             return View(korisnik);
         }
 

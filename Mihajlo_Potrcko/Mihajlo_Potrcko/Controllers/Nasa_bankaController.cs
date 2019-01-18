@@ -13,12 +13,12 @@ namespace Mihajlo_Potrcko.Controllers
 {
     public class Nasa_bankaController : Controller
     {
-        private Potrcko db = new Potrcko();
+        private PotrckoDB db = new PotrckoDB();
 
         // GET: Nasa_banka
         public ActionResult Index()
         {
-            return View(db.Nasa_banka.ToList());
+            return View(db.NasaBanka.ToList());
         }
 
         // GET: Nasa_banka/Details/5
@@ -28,7 +28,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nasa_banka nasa_banka = db.Nasa_banka.Find(id);
+            Nasa_banka nasa_banka = db.NasaBanka.Find(id);
             if (nasa_banka == null)
             {
                 return HttpNotFound();
@@ -51,7 +51,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Nasa_banka.Add(nasa_banka);
+                db.NasaBanka.Add(nasa_banka);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -66,7 +66,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nasa_banka nasa_banka = db.Nasa_banka.Find(id);
+            Nasa_banka nasa_banka = db.NasaBanka.Find(id);
             if (nasa_banka == null)
             {
                 return HttpNotFound();
@@ -97,7 +97,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Nasa_banka nasa_banka = db.Nasa_banka.Find(id);
+            Nasa_banka nasa_banka = db.NasaBanka.Find(id);
             if (nasa_banka == null)
             {
                 return HttpNotFound();
@@ -110,8 +110,8 @@ namespace Mihajlo_Potrcko.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Nasa_banka nasa_banka = db.Nasa_banka.Find(id);
-            db.Nasa_banka.Remove(nasa_banka);
+            Nasa_banka nasa_banka = db.NasaBanka.Find(id);
+            db.NasaBanka.Remove(nasa_banka);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
