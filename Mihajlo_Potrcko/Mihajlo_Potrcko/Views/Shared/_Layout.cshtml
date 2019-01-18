@@ -3,34 +3,79 @@
 <head>
     <link rel="stylesheet" type="text/css" href="../../css/style.css"> 
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title Shivery Delivery</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <!-- dodao Mihajlo -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS
+    ================================================ -->
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <!-- bootstrap.min css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font-awesome.min css -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/animate.min.css">
+
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Responsive Stylesheet -->
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Js -->
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="js/jquery.nav.js"></script>
+    <script src="js/jquery.sticky.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/main.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav id="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul>
-                    <li>@Html.ActionLink("Slike","Details","Slika", new { id = 1},"")</li>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block">
+                        <nav class="navbar navbar-default">
+                            <div class="container-fluid">
+                                <!-- Brand and toggle get grouped for better mobile display -->
+                                <div class="navbar-header">
+                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                        <span class="sr-only">Toggle navigation</span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                        <span class="icon-bar"></span>
+                                    </button>
+                                    <a class="navbar-brand" href="#">
+                                        <img src="images/logo.png" alt="Logo">
+                                    </a>
+                                </div>
+                                <!-- Collect the nav links, forms, and other content for toggling -->
+                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                    <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                        <li><a href="#hero-area">Početna</a></li>
+                                        <li><a href="#about-us">Restorani</a></li>
+                                        <li><a href="#price">Prodavnice</a></li>
+                                        <li><a href="#subscribe">Novi</a></li>
+                                        <li><a href="#contact-us">Kontakt</a></li>
+                                        <li><a href="#">Login</a></li>
+                                    </ul>
+                                </div><!-- /.navbar-collapse -->
+                            </div><!-- /.container-fluid -->
+                        </nav>
+                    </div>
+                </div><!-- .col-md-12 close -->
+            </div><!-- .row close -->
+        </div><!-- .container close -->
+        </nav><!-- header close -->	
+        <section id="hero-area">
+            <img class="img-responsive" src="images/header.jpg" alt="">
+        </section>
+@RenderBody()
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

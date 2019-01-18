@@ -12,7 +12,7 @@ namespace Mihajlo_Potrcko.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Vozac()
         {
-            Racuns = new HashSet<Racun>();
+            Racun = new HashSet<Racun>();
         }
 
         public int VozacID { get; set; }
@@ -24,7 +24,7 @@ namespace Mihajlo_Potrcko.Models
         public virtual Nalog Nalog { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racuns { get; set; }
+        public virtual ICollection<Racun> Racun { get; set; }
 
         public virtual Zaposleni Zaposleni { get; set; }
     }
