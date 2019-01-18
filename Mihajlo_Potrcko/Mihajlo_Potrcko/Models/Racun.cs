@@ -13,9 +13,7 @@ namespace Mihajlo_Potrcko.Models
         public Racun()
         {
             Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();
-            Niz_Artikala_Racun1 = new HashSet<Niz_Artikala_Racun>();
-            Reklamacijas = new HashSet<Reklamacija>();
-            Reklamacijas1 = new HashSet<Reklamacija>();
+            Reklamacija = new HashSet<Reklamacija>();
         }
 
         public int RacunID { get; set; }
@@ -35,22 +33,12 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Kupac Kupac { get; set; }
 
-        public virtual Kupac Kupac1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Niz_Artikala_Racun> Niz_Artikala_Racun { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Niz_Artikala_Racun> Niz_Artikala_Racun1 { get; set; }
-
         public virtual Vozac Vozac { get; set; }
 
-        public virtual Vozac Vozac1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reklamacija> Reklamacijas { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reklamacija> Reklamacijas1 { get; set; }
+        public virtual ICollection<Reklamacija> Reklamacija { get; set; }
     }
 }

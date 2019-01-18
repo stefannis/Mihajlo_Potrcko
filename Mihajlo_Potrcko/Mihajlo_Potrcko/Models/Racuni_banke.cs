@@ -28,7 +28,5 @@ namespace Mihajlo_Potrcko.Models
         public string FK_JMBG { get; set; }
 
         public virtual Korisnik Korisnik { get; set; }
-
-        public virtual Korisnik Korisnik1 { get; set; }
     }
 }
