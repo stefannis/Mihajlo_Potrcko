@@ -13,7 +13,6 @@ namespace Mihajlo_Potrcko.Models
         public Partner()
         {
             Poslovnicas = new HashSet<Poslovnica>();
-            Poslovnicas1 = new HashSet<Poslovnica>();
         }
 
         public int PartnerID { get; set; }
@@ -35,12 +34,7 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Slika Slika { get; set; }
 
-        public virtual Slika Slika1 { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Poslovnica> Poslovnicas { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Poslovnica> Poslovnicas1 { get; set; }
     }
 }

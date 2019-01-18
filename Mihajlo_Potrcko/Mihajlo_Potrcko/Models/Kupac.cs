@@ -13,7 +13,6 @@ namespace Mihajlo_Potrcko.Models
         public Kupac()
         {
             Racuns = new HashSet<Racun>();
-            Racuns1 = new HashSet<Racun>();
         }
 
         public int KupacID { get; set; }
@@ -26,16 +25,9 @@ namespace Mihajlo_Potrcko.Models
 
         public virtual Korisnik Korisnik { get; set; }
 
-        public virtual Korisnik Korisnik1 { get; set; }
-
         public virtual Nalog Nalog { get; set; }
-
-        public virtual Nalog Nalog1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Racun> Racuns { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Racun> Racuns1 { get; set; }
     }
 }
