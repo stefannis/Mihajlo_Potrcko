@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Mihajlo_Potrcko.Models.Artikal>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Slika.Link)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NazivArtikla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CenaArtikla)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slika.Link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NazivArtikla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CenaArtikla)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArtikalId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArtikalId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArtikalId })
+        </td>
+    </tr>
+}
+
+</table>

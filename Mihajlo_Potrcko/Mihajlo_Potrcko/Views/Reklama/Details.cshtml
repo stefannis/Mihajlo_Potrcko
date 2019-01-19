@@ -1,0 +1,42 @@
+﻿@model Mihajlo_Potrcko.Models.Reklama
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Reklama</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Slika.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Slika.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv_kupca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv_kupca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum_isteka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Datum_isteka)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReklamaID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

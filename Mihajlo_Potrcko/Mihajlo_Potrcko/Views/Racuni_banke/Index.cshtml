@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Mihajlo_Potrcko.Models.Racuni_banke>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv_banke)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vlasnik_racuna)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum_isteka)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Korisnik.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv_banke)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vlasnik_racuna)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Datum_isteka)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Broj_racuna }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Broj_racuna }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Broj_racuna })
+        </td>
+    </tr>
+}
+
+</table>

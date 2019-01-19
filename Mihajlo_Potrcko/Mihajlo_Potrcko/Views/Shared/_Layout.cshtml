@@ -1,9 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@model Mihajlo_Potrcko.Models.MainView
+<!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="../../css/style.css"> 
-    <meta charset="utf-8"/>
-    <title>@ViewBag.Title Shivery Delivery</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+    <meta charset="utf-8" />
+    <title>@Model.Name</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <!-- dodao Mihajlo -->
@@ -71,16 +72,15 @@
                 </div><!-- .col-md-12 close -->
             </div><!-- .row close -->
         </div><!-- .container close -->
-        </nav><!-- header close -->	
-        <section id="hero-area">
-            <img class="img-responsive" src="images/header.jpg" alt="">
-        </section>
-@RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    </nav><!-- header close -->
+    <section id="hero-area">
+        <img class="img-responsive" src="images/header.jpg" alt="">
+    </section>
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
