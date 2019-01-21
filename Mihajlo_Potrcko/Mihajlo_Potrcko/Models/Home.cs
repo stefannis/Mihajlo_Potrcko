@@ -5,7 +5,9 @@ using System.Web;
 
 namespace Mihajlo_Potrcko.Models
 {
-    public class Home : MainView
+    public class Home 
     {
+        public IEnumerable<Partner> ListaPartnera { get; set; }
+
     }
 }

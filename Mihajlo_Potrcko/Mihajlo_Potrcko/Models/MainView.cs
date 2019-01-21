@@ -5,9 +5,25 @@ using System.Web;
 
 namespace Mihajlo_Potrcko.Models
 {
-    public abstract class MainView
+    public class MainView
     {
 
-        public string Name { get; set; }
+        protected MainView(string title)
+        {
+            Title = "MainView";
+        }
+
+        public string Title { get; set; }
+
+    }
+
+    public class MainView<T> : MainView
+    {
+        public MainView(T pageModel, string title) : base(title)
+        {
+            PageModel = pageModel;
+        }
+
+        public T PageModel { get; }
     }
 }

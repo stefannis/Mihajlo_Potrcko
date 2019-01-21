@@ -11,13 +11,6 @@ namespace Mihajlo_Potrcko.Controllers
     {
         private Potrcko db = new Potrcko();
         // GET: MainView
-
-        public ActionResult Index()
-        {
-            var listaPartnera = db.Partner.ToList();
-            listaPartnera.Sort();
-            ViewBag.Partneri = listaPartnera.Take(8);
-            return this.View(new Home() { Name = "Ovojedrugavrednost" });
-        }
+         
     }
 }

@@ -1,13 +1,12 @@
-﻿@using System.Collections
-@using Mihajlo_Potrcko.Models
+﻿@model Mihajlo_Potrcko.Models.MainView<Mihajlo_Potrcko.Models.Home>
 
 @{
     ViewBag.Title = "Index";
-    IEnumerable<Partner> PartneriLista = ViewBag.Partneri;
+
 }
 
 <body>
-    @foreach (Partner item in PartneriLista)
+    @foreach (var item in Model.PageModel.ListaPartnera)
     {
 
         <div>
@@ -16,7 +15,7 @@
     }
 
 
-    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = PartneriLista.First().PartnerID }, "Poslovnica") |
+    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = Model.PageModel.ListaPartnera.First().PartnerID }, "Poslovnica") |
     <!-- Slider start
     ============================== -->
     <section id="slider">
