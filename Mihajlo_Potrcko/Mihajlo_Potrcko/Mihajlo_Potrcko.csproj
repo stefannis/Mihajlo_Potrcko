@@ -197,13 +197,66 @@
     <Content Include="Content\bootstrap.min.css" />
     <EmbeddedResource Include="Dlls%27s\MySql.Data.dll" />
     <EmbeddedResource Include="Dlls%27s\MySql.Web.dll" />
+    <Content Include="css\animate.min.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\font-awesome.min.css" />
+    <Content Include="css\main.css" />
+    <Content Include="css\owl.carousel.css" />
+    <Content Include="css\responsive.css" />
     <Content Include="css\style.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\blog\blog-bg.jpg" />
+    <Content Include="Images\blog\blog-img-1.jpg" />
+    <Content Include="Images\blog\blog-img-2.jpg" />
+    <Content Include="Images\blog\blog-img-3.jpg" />
+    <Content Include="Images\blog\blog-img-4.jpg" />
+    <Content Include="Images\blog\blog-img-5.jpg" />
+    <Content Include="Images\blog\blog-img-6.jpg" />
+    <Content Include="Images\blog\blog-img-thumb-1.jpg" />
+    <Content Include="Images\blog\blog-img-thumb-2.jpg" />
+    <Content Include="Images\cooker-img.png" />
+    <Content Include="Images\header.jpg" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\overlay-pattern.png" />
+    <Content Include="Images\overlay-pattern2.png" />
+    <Content Include="Images\Partner\Idea.png" />
+    <Content Include="Images\Partner\Night&amp;Day.png" />
+    <Content Include="Images\Partner\Tempo.png" />
+    <Content Include="Images\photo\photo-1.jpg" />
+    <Content Include="Images\photo\photo-2.jpg" />
+    <Content Include="Images\photo\photo-3.jpg" />
+    <Content Include="Images\photo\photo-4.jpg" />
+    <Content Include="Images\slider\slider-img-1.jpg" />
+    <Content Include="Images\slider\slider-img-2.jpg" />
+    <Content Include="Images\slider\slider-img-3.jpg" />
+    <Content Include="Images\slider\slider-img-4.jpg" />
+    <Content Include="Images\subscribe-bg.jpg" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\jquery.nav.js" />
+    <Content Include="js\jquery.sticky.js" />
+    <Content Include="js\main.js" />
+    <Content Include="js\min\main.min.js" />
+    <Content Include="js\plugins.js" />
+    <Content Include="js\vendor\jquery-1.10.2.min.js" />
+    <Content Include="js\vendor\modernizr-2.6.2.min.js" />
+    <Content Include="js\wow.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Images\.DS_Store" />
+    <Content Include="Images\blog\.DS_Store" />
+    <Content Include="Images\slider\.DS_Store" />
+    <Content Include="js\.DS_Store" />
+    <Content Include="less\main.less" />
+    <Content Include="less\responsive.less" />
+    <Content Include="fonts\ufonts.com_tw-cen-mt.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -369,6 +422,10 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -307,14 +307,17 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   padding-top: 40px;
 }
 #blog .block ul li {
-  overflow: hidden;
+    overflow: hidden;
   width: 50%;
   float: left;
   background: #fff;
   text-align: center;
   color: #959595;
-  transform: 1s;
+    -ms-transform: initial;
+    -webkit-transform: initial;
+    transform: initial;
 }
+
 #blog .block ul li:hover img {
   transform: scale(1.2) rotate(10deg);
 }
@@ -456,7 +459,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 #price .block .pricing-list ul li .item .item-title .border-bottom {
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 70%;
   height: 1px;
   border: 1px dotted #C9C9C9;
   margin-top: 20px;
