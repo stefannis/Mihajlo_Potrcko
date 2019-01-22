@@ -6,16 +6,16 @@
 }
 
 <body>
-    @foreach (var item in Model.PageModel.ListaPartnera)
+    @foreach (var item in Model.PageModel.ListaPoslovnica)
     {
 
         <div>
-            @Html.DisplayFor(modelItem => item.Naziv)
+            @Html.DisplayFor(modelItem => item.Partner.Naziv)
         </div>
     }
 
 
-    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = Model.PageModel.ListaPartnera.First().PartnerID }, "Poslovnica") |
+    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = Model.PageModel.ListaPoslovnica.First().PoslovnicaID }, "Poslovnica") |
     <!-- Slider start
     ============================== -->
     <section id="slider">

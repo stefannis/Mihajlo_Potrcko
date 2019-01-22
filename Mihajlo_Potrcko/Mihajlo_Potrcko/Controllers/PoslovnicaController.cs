@@ -92,7 +92,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
-            return View(poslovnica);
+            return View(new MainView<Poslovnica>(poslovnica, "Ime"));
         }
 
         // GET: Poslovnica/Delete/5

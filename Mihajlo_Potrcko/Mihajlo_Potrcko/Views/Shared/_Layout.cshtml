@@ -1,9 +1,12 @@
-﻿@model Mihajlo_Potrcko.Models.MainView
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.MainView
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <title>@Model.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <!-- dodao Mihajlo -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -33,50 +36,54 @@
     <script src="/js/main.js"></script>
 </head>
 <body>
-    <nav id="navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="block">
-                        <nav class="navbar navbar-default">
-                            <div class="container-fluid">
-                                <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="#">
-                                        <img src="~/Images/logo.png" runat="server" alt="Logo">
-                                    </a>
-                                </div>
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                        <li><a href="#hero-area">Početna</a></li>
-                                        <li><a href="#about-us">Restorani</a></li>
-                                        <li><a href="#price">Prodavnice</a></li>
-                                        <li><a href="#subscribe">Novi</a></li>
-                                        <li><a href="#contact-us">Kontakt</a></li>
-                                        <li><a href="#">Login</a></li>
-                                    </ul>
-                                </div><!-- /.navbar-collapse -->
-                            </div><!-- /.container-fluid -->
-                        </nav>
-                    </div>
-                </div><!-- .col-md-12 close -->
-            </div><!-- .row close -->
-        </div><!-- .container close -->
-    </nav><!-- header close -->
-    <section id="hero-area">
-        <img class="img-responsive"  runat="server" src="/Images/header.jpg"  alt="">
-    </section>
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
+<nav id="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <nav class="navbar navbar-default">
+                        <div class="container-fluid">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a class="navbar-brand" href="#">
+                                    <a href="~/" runat="server"><img src="~/Images/logo.png" runat="server" alt="Logo"></a>
+                                </a>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                    <li><a href="#about-us">Restorani</a></li>
+                                    <li><a href="#price">Prodavnice</a></li>
+                                    <li><a href="#subscribe">Novi</a></li>
+                                    <li><a href="#contact-us">Kontakt</a></li>
+                                    <li><a href="#">Login</a></li>
+                                </ul>
+                            </div><!-- /.navbar-collapse -->
+                        </div><!-- /.container-fluid -->
+                    </nav>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- .row close -->
+    </div><!-- .container close -->
+</nav><!-- header close -->
+<section id="hero-area">
+    <img class="img-responsive" runat="server" src="/Images/header.jpg" alt="">
+</section>
+@RenderBody()
+<hr/>
+<footer>
+    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+</footer>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
+@RenderSection("scripts", required: false)
+
 </body>
 </html>

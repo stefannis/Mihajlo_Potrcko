@@ -7,7 +7,7 @@ namespace Mihajlo_Potrcko.Models
     using System.Data.Entity.Spatial;
 
     [Table("Poslovnica")]
-    public partial class Poslovnica
+    public partial class Poslovnica : IComparable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Poslovnica()
@@ -31,5 +31,15 @@ namespace Mihajlo_Potrcko.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Artikal_U_Poslovnici> Artikal_U_Poslovnici { get; set; }
+
+        public int CompareTo(Poslovnica drugaPoslovnica)
+        {
+            return this.PoslovnicaID > drugaPoslovnica.PoslovnicaID ? 1 : 0;
+        }
+
+        public int CompareTo(object obj)
+        {
+            return this.PoslovnicaID > ((Poslovnica)obj).PoslovnicaID ? 1 : 0;
+        }
     }
 }
