@@ -242,7 +242,9 @@
     <Content Include="js\min\main.min.js" />
     <Content Include="js\plugins.js" />
     <Content Include="js\vendor\jquery-1.10.2.min.js" />
-    <Content Include="js\vendor\modernizr-2.6.2.min.js" />
+    <Content Include="js\vendor\modernizr-2.6.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="js\wow.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

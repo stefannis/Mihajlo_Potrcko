@@ -1,12 +1,15 @@
-﻿@model Mihajlo_Potrcko.Models.MainView<Mihajlo_Potrcko.Models.Home>
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
 
+    Home pageModel = Model.PageModel;
+
 }
 
 <body>
-    @foreach (var item in Model.PageModel.ListaPartnera)
+    @foreach (Partner item in pageModel.ListaPartnera)
     {
 
         <div>
@@ -15,7 +18,7 @@
     }
 
 
-    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = Model.PageModel.ListaPartnera.First().PartnerID }, "Poslovnica") |
+    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = pageModel.ListaPartnera.First().Poslovnica.First().PoslovnicaID}, "Poslovnica") |
     <!-- Slider start
     ============================== -->
     <section id="slider">

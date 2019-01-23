@@ -7,6 +7,10 @@ namespace Mihajlo_Potrcko.Models
 {
     public class Home 
     {
+        public Home()
+        {
+            ListaPartnera = new List<Partner>();
+        }
         public IEnumerable<Partner> ListaPartnera { get; set; }
 
     }

@@ -5,25 +5,37 @@ using System.Web;
 
 namespace Mihajlo_Potrcko.Models
 {
-    public class MainView
-    {
 
-        protected MainView(string title)
+    public abstract class View
+    {
+        protected View(string title)
         {
-            Title = "MainView";
+            Title = title;
         }
+
 
         public string Title { get; set; }
-
     }
 
-    public class MainView<T> : MainView
+    public class AdminView : View
     {
-        public MainView(T pageModel, string title) : base(title)
+        public AdminView():base("Admin"){}
+    }
+
+    public class MainView : View
+    {
+        public MainView():base("Main"){}
+    }
+
+    public class ViewDataContainer
+    {
+        public ViewDataContainer(dynamic pageModel,View viewData)
         {
             PageModel = pageModel;
+            ViewData = viewData;
         }
 
-        public T PageModel { get; }
+        public dynamic PageModel { get; }
+        public View ViewData { get; }
     }
 }

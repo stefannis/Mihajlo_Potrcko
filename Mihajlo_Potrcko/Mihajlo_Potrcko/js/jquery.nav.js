@@ -17,7 +17,7 @@
  * });
  */
 
-;(function($, window, document, undefined){
+;(function($, window, document){
 
 	// our plugin constructor
 	var OnePageNav = function(elem, options){
@@ -129,13 +129,16 @@
 			var returnValue = null;
 			var windowHeight = Math.round(this.$win.height() * this.config.scrollThreshold);
 
-			for(var section in this.sections) {
-				if((this.sections[section] - windowHeight) < windowPos) {
-					returnValue = section;
-				}
-			}
+            var sections = this.sections;
+            for(var section in sections) {
+                if (sections.hasOwnProperty(section)) {
+                    if ((sections[section] - windowHeight) < windowPos) {
+                        returnValue = section;
+                    }
+                }
+            }
 
-			return returnValue;
+            return returnValue;
 		},
 
 		handleClick: function(e) {

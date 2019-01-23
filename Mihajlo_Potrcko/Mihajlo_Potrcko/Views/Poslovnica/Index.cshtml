@@ -1,8 +1,11 @@
-﻿@using Mihajlo_Potrcko.Models
-@model MainView<IEnumerable<Poslovnica>>
+﻿
+@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
+
+    IEnumerable<Poslovnica> Lokalna = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -13,18 +16,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.PageModel.First().Partner.Naziv)
+            @Html.DisplayNameFor(model => Lokalna.First().Partner.Naziv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PageModel.First().Adresa)
+            @Html.DisplayNameFor(model => Lokalna.First().Adresa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PageModel.First().Broj_telefona)
+            @Html.DisplayNameFor(model => Lokalna.First().Broj_telefona)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model.PageModel) {
+@foreach (Poslovnica item in Model.PageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Partner.Naziv)

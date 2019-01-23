@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var poslovnica = db.Poslovnica.Include(p => p.Partner);
-            return View(new MainView<IEnumerable<Poslovnica>>(poslovnica.ToList(),"Poslovnice"));
+            return View(new ViewDataContainer(poslovnica.ToList(),new MainView()));
         }
 
         // GET: Poslovnica/Details/5
@@ -34,7 +34,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new MainView<Poslovnica>(poslovnica,"Poslovnica kontroler"));
+            return View(new ViewDataContainer(poslovnica,new MainView()));
         }
 
         // GET: Poslovnica/Create
@@ -75,7 +75,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
-            return View(new MainView<Poslovnica>(poslovnica,"Ime"));
+            return View(new ViewDataContainer(poslovnica,new MainView()));
         }
 
         // POST: Poslovnica/Edit/5
@@ -92,7 +92,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
-            return View(poslovnica);
+            return View(new ViewDataContainer(poslovnica,new MainView()));
         }
 
         // GET: Poslovnica/Delete/5

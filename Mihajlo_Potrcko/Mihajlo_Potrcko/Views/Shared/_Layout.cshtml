@@ -1,9 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.MainView
+﻿@model Mihajlo_Potrcko.Models.ViewDataContainer
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>@Model.Title</title>
+    <title>@Model.ViewData.Title</title>
     <!-- dodao Mihajlo -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,7 +55,7 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                        <li><a href="#hero-area">Početna</a></li>
+                                        <li>@Html.ActionLink("Početna","Index","Home")</li>
                                         <li><a href="#about-us">Restorani</a></li>
                                         <li><a href="#price">Prodavnice</a></li>
                                         <li><a href="#subscribe">Novi</a></li>

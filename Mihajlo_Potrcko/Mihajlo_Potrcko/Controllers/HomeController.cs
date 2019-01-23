@@ -15,13 +15,13 @@ namespace Mihajlo_Potrcko.Controllers
 
         public ActionResult Index()
         {
-            var listaPartnera = db.Partner.ToList();
+            List<Partner> listaPartnera = db.Partner.ToList();
             listaPartnera.Sort();
             
-            return base.View(new MainView<Home>(new Home()
+            return base.View(new ViewDataContainer(new Home()
             {
                 ListaPartnera = listaPartnera.Take(8)
-            },"GlavniPogled"));
+            },new MainView()));
         }
     }
 }
