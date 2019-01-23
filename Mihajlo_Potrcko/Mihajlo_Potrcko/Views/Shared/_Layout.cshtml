@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8" />
     <title>@Model.ViewData.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
     <!-- dodao Mihajlo -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,11 +57,11 @@
                                 <!-- Collect the nav links, forms, and other content for toggling -->
                                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                     <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                        <li>@Html.ActionLink("Početna","Index","Home")</li>
+                                        <li>@Html.ActionLink("Početna","Index", $"Home")</li>
                                         <li><a href="#about-us">Restorani</a></li>
                                         <li><a href="#price">Prodavnice</a></li>
-                                        <li><a href="#subscribe">Novi</a></li>
-                                        <li><a href="#contact-us">Kontakt</a></li>
+                                        <li><a>Novi</a></li>
+                                        <li><a>Kontakt</a></li>
                                         <li><a href="#">Login</a></li>
                                     </ul>
                                 </div><!-- /.navbar-collapse -->
@@ -75,8 +77,9 @@
     </section>
     @RenderBody()
     <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
+<footer>
+    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+</footer>
+@RenderSection("scripts", required: false)
 </body>
 </html>
