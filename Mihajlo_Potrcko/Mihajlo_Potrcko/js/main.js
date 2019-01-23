@@ -30,6 +30,4 @@ $(document).ready(function(){
          scrollSpeed: 1200
     });
 //Initiat WOW JS
-    new window.WoW().init();
-    //DA JEDES GOVNA MAJKU TI TVOJU!!!!
 });

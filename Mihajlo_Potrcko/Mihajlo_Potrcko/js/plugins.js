@@ -50,11 +50,11 @@ if (typeof Object.create !== "function") {
 
     $.fn.owlCarousel = function (options) {
         return this.each(function () {
+           return false;
             if ($(this).data("owl-init") === true) {
                 return false;
             }
             $(this).data("owl-init", true);
-// ReSharper disable once UsageOfPossiblyUnassignedValue
             var carousel = Object.create(carousel);
             carousel.init(options, this);
             $.data(this, "owlCarousel", carousel);
@@ -284,9 +284,6 @@ if (typeof Object.create !== "function") {
                 self.$nav = self.$nav.filter(self.config.filter);
             }
             
-            //Handle clicks on the nav
-            self.$nav.on('click.onePageNav', $.proxy(self.handleClick, self));
-
             //Get the section positions
             self.getPositions();
             
@@ -329,9 +326,7 @@ if (typeof Object.create !== "function") {
             }, 250);
         },
         
-        getHash: function($link) {
-            return $link.attr('href').split('#')[1];
-        },
+        
         
         getPositions: function() {
             var self = this;
@@ -339,15 +334,7 @@ if (typeof Object.create !== "function") {
             var topPos;
             var $target;
             
-            self.$nav.each(function() {
-                linkHref = self.getHash($(this));
-                $target = $('#' + linkHref);
-
-                if($target.length) {
-                    topPos = $target.offset().top;
-                    self.sections[linkHref] = Math.round(topPos) - self.config.scrollOffset;
-                }
-            });
+            
         },
         
         getSection: function(windowPos) {
