@@ -9,16 +9,15 @@
 }
 
 <body>
-    @foreach (Partner item in pageModel.ListaPartnera)
+    @*@foreach (Partner item in pageModel.ListaPartnera)
     {
 
         <div>
             @Html.DisplayFor(modelItem => item.Naziv)
         </div>
-    }
+    }*@
 
-
-    @Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = pageModel.ListaPartnera.First().Poslovnica.First().PoslovnicaID}, "Poslovnica") |
+    @*@Html.ActionLink("Slanje na drugu stranicu", "Details", "Poslovnica", new { id = pageModel.ListaPartnera.First().Poslovnica.First().PoslovnicaID}, "Poslovnica") |*@
     <!-- Slider start
     ============================== -->
     <section id="slider">
@@ -30,6 +29,13 @@
                             <h3><span>Preporučujemo</span></h3>
                         </div>
                         <div id="owl-example" class="owl-carousel">
+                            @foreach (string item in pageModel.ListaSlika)
+                            {
+                                <div>
+                                    <img class="img-responsive" src="/Images/@item" alt="">
+                                </div>
+                            }
+                           
                         </div>
                     </div>
                 </div><!-- .col-md-12 close -->

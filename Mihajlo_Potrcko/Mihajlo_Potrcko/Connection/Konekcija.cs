@@ -39,20 +39,10 @@ namespace Mihajlo_Potrcko.Connection
             {
                 _konekcija =
                     new SqlConnection(
-                        "Database=mihajlo_Potrcko;Data Source=localhost;User Id=root;Password=");
+                        @"data source=MIHAJLO\SQLEXPRESS;initial catalog=Mihajlo_Potrcko;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
 
                 //TODO popuniti podatake za bazu podataka
                 _konekcija.Open();
-                SqlCommand command = _konekcija.CreateCommand();
-                command.CommandText = "select * from slika";
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-                    reader.GetString(0);
-                  var a =   reader["link"].ToString();
-                }
-
-                reader.Close();
             }
             catch (Exception ex)
             {
@@ -65,7 +55,7 @@ namespace Mihajlo_Potrcko.Connection
             //TODO Povezivanje na bazu opet
 
            
-
+           
             return true;
         }
 
