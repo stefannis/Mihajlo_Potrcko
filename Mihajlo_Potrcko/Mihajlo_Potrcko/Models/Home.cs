@@ -10,11 +10,11 @@ namespace Mihajlo_Potrcko.Models
     {
         public Home()
         {
-            ListaSlika = new List<string>();
+            ListaSlika = new List<Slika>();
             ListaPoslovnica = new List<Poslovnica>();
         }
 
-        public IEnumerable<string> ListaSlika { get; set; }
+        public IEnumerable<Slika> ListaSlika { get; set; }
         public IEnumerable<Poslovnica> ListaPoslovnica { get; set; }
 
     }
