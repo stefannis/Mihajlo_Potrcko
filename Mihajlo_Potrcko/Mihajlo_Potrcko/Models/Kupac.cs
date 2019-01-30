@@ -19,9 +19,11 @@ namespace Mihajlo_Potrcko.Models
 
         [Required]
         [StringLength(13)]
-        public string FK_JMBG { get; set; }
+        [Column(name:"FK_JMBG")]
+        public string JMBG { get; set; }
 
-        public int FK_NalogID { get; set; }
+        [Column(name: "FK_NalogID")]
+        public int NalogID { get; set; }
 
         public virtual Korisnik Korisnik { get; set; }
 

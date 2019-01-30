@@ -41,7 +41,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Create()
         {
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username");
-            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG");
+            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "VozacID,FK_ZaposleniID,FK_NalogID")] Vozac vozac)
+        public ActionResult Create([Bind(Include = "VozacID,ZaposleniID,NalogID")] Vozac vozac)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.FK_NalogID);
-            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG", vozac.FK_ZaposleniID);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.NalogID);
+            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", vozac.ZaposleniID);
             return View(vozac);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.FK_NalogID);
-            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG", vozac.FK_ZaposleniID);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.NalogID);
+            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", vozac.ZaposleniID);
             return View(vozac);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "VozacID,FK_ZaposleniID,FK_NalogID")] Vozac vozac)
+        public ActionResult Edit([Bind(Include = "VozacID,ZaposleniID,NalogID")] Vozac vozac)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.FK_NalogID);
-            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG", vozac.FK_ZaposleniID);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.NalogID);
+            ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", vozac.ZaposleniID);
             return View(vozac);
         }
 

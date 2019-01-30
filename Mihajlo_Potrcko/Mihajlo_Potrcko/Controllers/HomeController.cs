@@ -22,15 +22,15 @@ namespace Mihajlo_Potrcko.Controllers
 
             query.CommandText =
                 "SELECT Link FROM Slika, Poslovnica, Partner" +
-                " WHERE Poslovnica.FK_PartnerID = Partner.PartnerID AND Partner.FK_SlikaID = Slika.SlikaID";
+                " WHERE Poslovnica.PartnerID = Partner.PartnerID AND Partner.SlikaID = Slika.SlikaID";
 
 
             List<Slika> listaSlika = db.Slika.Where(slika =>
                                                 db.Partner.Where(partner =>
                                                     db.Poslovnica.Any(poslovnica =>
-                                                        poslovnica.FK_PartnerID == partner.PartnerID))
+                                                        poslovnica.PartnerID == partner.PartnerID))
                                         .Any(part =>
-                                            part.FK_SlikaID.Equals(slika.SlikaID))).ToList();
+                                            part.SlikaID.Equals(slika.SlikaID))).ToList();
 
 
 

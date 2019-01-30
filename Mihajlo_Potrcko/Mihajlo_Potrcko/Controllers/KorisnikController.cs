@@ -49,7 +49,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "JMBG,Ime,Prezime,Telefon,E_mail,FK_Broj_RacunaNB")] Korisnik korisnik)
+        public ActionResult Create([Bind(Include = "JMBG,Ime,Prezime,Telefon,E_mail,Broj_RacunaNB")] Korisnik korisnik)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.Broj_RacunaNB);
             return View(korisnik);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.Broj_RacunaNB);
             return View(korisnik);
         }
 
@@ -83,7 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "JMBG,Ime,Prezime,Telefon,E_mail,FK_Broj_RacunaNB")] Korisnik korisnik)
+        public ActionResult Edit([Bind(Include = "JMBG,Ime,Prezime,Telefon,E_mail,Broj_RacunaNB")] Korisnik korisnik)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.FK_Broj_RacunaNB);
+            ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.Broj_RacunaNB);
             return View(korisnik);
         }
 

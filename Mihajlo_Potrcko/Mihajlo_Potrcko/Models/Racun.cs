@@ -23,9 +23,11 @@ namespace Mihajlo_Potrcko.Models
 
         public decimal Iznos { get; set; }
 
-        public int FK_KupacID { get; set; }
+        [Column(name: "FK_KupacID")]
+        public int KupacID { get; set; }
 
-        public int FK_VozacID { get; set; }
+        [Column(name: "FK_VozacID")]
+        public int VozacID { get; set; }
 
         [Required]
         [StringLength(30)]

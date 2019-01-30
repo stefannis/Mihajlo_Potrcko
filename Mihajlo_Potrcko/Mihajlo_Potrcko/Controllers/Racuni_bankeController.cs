@@ -49,7 +49,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Broj_racuna,Naziv_banke,Vlasnik_racuna,Datum_isteka,FK_JMBG")] Racuni_banke racuni_banke)
+        public ActionResult Create([Bind(Include = "Broj_racuna,Naziv_banke,Vlasnik_racuna,Datum_isteka,JMBG")] Racuni_banke racuni_banke)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.FK_JMBG);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.JMBG);
             return View(racuni_banke);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.FK_JMBG);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.JMBG);
             return View(racuni_banke);
         }
 
@@ -83,7 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Broj_racuna,Naziv_banke,Vlasnik_racuna,Datum_isteka,FK_JMBG")] Racuni_banke racuni_banke)
+        public ActionResult Edit([Bind(Include = "Broj_racuna,Naziv_banke,Vlasnik_racuna,Datum_isteka,JMBG")] Racuni_banke racuni_banke)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.FK_JMBG);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.JMBG);
             return View(racuni_banke);
         }
 

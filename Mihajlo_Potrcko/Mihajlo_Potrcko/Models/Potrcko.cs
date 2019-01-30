@@ -42,13 +42,13 @@ namespace Mihajlo_Potrcko.Models
             modelBuilder.Entity<Artikal>()
                 .HasMany(e => e.Artikal_U_Poslovnici)
                 .WithRequired(e => e.Artikal)
-                .HasForeignKey(e => e.FK_ArtikalID)
+                .HasForeignKey(e => e.ArtikalID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Artikal>()
                 .HasMany(e => e.Niz_Artikala_Racun)
                 .WithRequired(e => e.Artikal)
-                .HasForeignKey(e => e.FK_ArtikalID)
+                .HasForeignKey(e => e.ArtikalID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Korisnik>()
@@ -72,41 +72,41 @@ namespace Mihajlo_Potrcko.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Korisnik>()
-                .Property(e => e.FK_Broj_RacunaNB)
+                .Property(e => e.Broj_RacunaNB)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Korisnik>()
                 .HasMany(e => e.Kupac)
                 .WithRequired(e => e.Korisnik)
-                .HasForeignKey(e => e.FK_JMBG)
+                .HasForeignKey(e => e.JMBG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Korisnik>()
                 .HasMany(e => e.Nalog)
                 .WithRequired(e => e.Korisnik)
-                .HasForeignKey(e => e.FK_JMBG)
+                .HasForeignKey(e => e.JMBG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Korisnik>()
                 .HasMany(e => e.Racuni_banke)
                 .WithRequired(e => e.Korisnik)
-                .HasForeignKey(e => e.FK_JMBG)
+                .HasForeignKey(e => e.JMBG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Korisnik>()
                 .HasMany(e => e.Zaposleni)
                 .WithRequired(e => e.Korisnik)
-                .HasForeignKey(e => e.FK_JMBG)
+                .HasForeignKey(e => e.JMBG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Kupac>()
-                .Property(e => e.FK_JMBG)
+                .Property(e => e.JMBG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Kupac>()
                 .HasMany(e => e.Racun)
                 .WithRequired(e => e.Kupac)
-                .HasForeignKey(e => e.FK_KupacID)
+                .HasForeignKey(e => e.KupacID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Nalog>()
@@ -118,19 +118,19 @@ namespace Mihajlo_Potrcko.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Nalog>()
-                .Property(e => e.FK_JMBG)
+                .Property(e => e.JMBG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Nalog>()
                 .HasMany(e => e.Kupac)
                 .WithRequired(e => e.Nalog)
-                .HasForeignKey(e => e.FK_NalogID)
+                .HasForeignKey(e => e.NalogID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Nalog>()
                 .HasMany(e => e.Vozac)
                 .WithRequired(e => e.Nalog)
-                .HasForeignKey(e => e.FK_NalogID)
+                .HasForeignKey(e => e.NalogID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Nasa_banka>()
@@ -144,7 +144,7 @@ namespace Mihajlo_Potrcko.Models
             modelBuilder.Entity<Nasa_banka>()
                 .HasMany(e => e.Korisnik)
                 .WithRequired(e => e.Nasa_banka)
-                .HasForeignKey(e => e.FK_Broj_RacunaNB)
+                .HasForeignKey(e => e.Broj_RacunaNB)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Partner>()
@@ -162,7 +162,7 @@ namespace Mihajlo_Potrcko.Models
             modelBuilder.Entity<Partner>()
                 .HasMany(e => e.Poslovnica)
                 .WithRequired(e => e.Partner)
-                .HasForeignKey(e => e.FK_PartnerID)
+                .HasForeignKey(e => e.PartnerID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Poslovnica>()
@@ -176,7 +176,7 @@ namespace Mihajlo_Potrcko.Models
             modelBuilder.Entity<Poslovnica>()
                 .HasMany(e => e.Artikal_U_Poslovnici)
                 .WithRequired(e => e.Poslovnica)
-                .HasForeignKey(e => e.FK_PoslovnicaID)
+                .HasForeignKey(e => e.PoslovnicaID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Racun>()
@@ -190,13 +190,13 @@ namespace Mihajlo_Potrcko.Models
             modelBuilder.Entity<Racun>()
                 .HasMany(e => e.Niz_Artikala_Racun)
                 .WithRequired(e => e.Racun)
-                .HasForeignKey(e => e.FK_RacunID)
+                .HasForeignKey(e => e.RacunID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Racun>()
                 .HasMany(e => e.Reklamacija)
                 .WithRequired(e => e.Racun)
-                .HasForeignKey(e => e.FK_RacunID)
+                .HasForeignKey(e => e.RacunID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Racuni_banke>()
@@ -212,7 +212,7 @@ namespace Mihajlo_Potrcko.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Racuni_banke>()
-                .Property(e => e.FK_JMBG)
+                .Property(e => e.JMBG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Reklama>()
@@ -230,41 +230,41 @@ namespace Mihajlo_Potrcko.Models
             modelBuilder.Entity<Slika>()
                 .HasMany(e => e.Artikal)
                 .WithRequired(e => e.Slika)
-                .HasForeignKey(e => e.FK_SlikaID)
+                .HasForeignKey(e => e.SlikaID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Slika>()
                 .HasMany(e => e.Nalog)
                 .WithRequired(e => e.Slika)
-                .HasForeignKey(e => e.FK_SlikaID)
+                .HasForeignKey(e => e.SlikaID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Slika>()
                 .HasMany(e => e.Partner)
                 .WithRequired(e => e.Slika)
-                .HasForeignKey(e => e.FK_SlikaID)
+                .HasForeignKey(e => e.SlikaID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Slika>()
                 .HasMany(e => e.Reklama)
                 .WithRequired(e => e.Slika)
-                .HasForeignKey(e => e.FK_SlikaID)
+                .HasForeignKey(e => e.SlikaID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Vozac>()
                 .HasMany(e => e.Racun)
                 .WithRequired(e => e.Vozac)
-                .HasForeignKey(e => e.FK_VozacID)
+                .HasForeignKey(e => e.VozacID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Zaposleni>()
-                .Property(e => e.FK_JMBG)
+                .Property(e => e.JMBG)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Zaposleni>()
                 .HasMany(e => e.Vozac)
                 .WithRequired(e => e.Zaposleni)
-                .HasForeignKey(e => e.FK_ZaposleniID)
+                .HasForeignKey(e => e.ZaposleniID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Zaposleni>()

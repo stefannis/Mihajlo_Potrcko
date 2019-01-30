@@ -17,9 +17,11 @@ namespace Mihajlo_Potrcko.Models
 
         public int VozacID { get; set; }
 
-        public int FK_ZaposleniID { get; set; }
+        [Column(name: "FK_ZaposleniID")]
+        public int ZaposleniID { get; set; }
 
-        public int FK_NalogID { get; set; }
+        [Column(name: "FK_NalogID")]
+        public int NalogID { get; set; }
 
         public virtual Nalog Nalog { get; set; }
 

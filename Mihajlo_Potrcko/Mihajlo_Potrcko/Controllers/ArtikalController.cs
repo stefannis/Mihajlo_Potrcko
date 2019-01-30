@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaId", "Link", artikal.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaId", "Link", artikal.SlikaID);
             return View(artikal);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaId", "Link", artikal.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaId", "Link", artikal.SlikaID);
             return View(artikal);
         }
 
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaId", "Link", artikal.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaId", "Link", artikal.SlikaID);
             return View(artikal);
         }
 

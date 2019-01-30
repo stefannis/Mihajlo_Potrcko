@@ -25,7 +25,8 @@ namespace Mihajlo_Potrcko.Models
         [StringLength(20)]
         public string Broj_telefona { get; set; }
 
-        public int FK_PartnerID { get; set; }
+        [Column(name: "FK_PartnerID")]
+        public int PartnerID { get; set; }
 
         public virtual Partner Partner { get; set; }
 

@@ -13,14 +13,14 @@ namespace Mihajlo_Potrcko.Models
         public bool Stanje { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [Column(name:"FK_PoslovnicaID", Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int FK_PoslovnicaID { get; set; }
+        public int PoslovnicaID { get; set; }
 
         [Key]
-        [Column(Order = 2)]
+        [Column(name:"FK_ArtikalID", Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int FK_ArtikalID { get; set; }
+        public int ArtikalID { get; set; }
 
         public virtual Artikal Artikal { get; set; }
 

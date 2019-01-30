@@ -18,18 +18,18 @@
         @Html.HiddenFor(model => model.VozacID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FK_ZaposleniID, "FK_ZaposleniID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ZaposleniID, "ZaposleniID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("FK_ZaposleniID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FK_ZaposleniID, "", new { @class = "text-danger" })
+                @Html.DropDownList("ZaposleniID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ZaposleniID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.FK_NalogID, "FK_NalogID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NalogID, "NalogID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("FK_NalogID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FK_NalogID, "", new { @class = "text-danger" })
+                @Html.DropDownList("NalogID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.NalogID, "", new { @class = "text-danger" })
             </div>
         </div>
 
