@@ -49,7 +49,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PoslovnicaID,Adresa,Broj_telefona,FK_PartnerID")] Poslovnica poslovnica)
+        public ActionResult Create([Bind(Include = "PoslovnicaID,Adresa,Broj_telefona,PartnerID")] Poslovnica poslovnica)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
+            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.PartnerID);
             return View(poslovnica);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
+            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.PartnerID);
             return View(new ViewDataContainer(poslovnica,new MainView()));
         }
 
@@ -83,7 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PoslovnicaID,Adresa,Broj_telefona,FK_PartnerID")] Poslovnica poslovnica)
+        public ActionResult Edit([Bind(Include = "PoslovnicaID,Adresa,Broj_telefona,PartnerID")] Poslovnica poslovnica)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.FK_PartnerID);
+            ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.PartnerID);
             return View(new ViewDataContainer(poslovnica,new MainView()));
         }
 

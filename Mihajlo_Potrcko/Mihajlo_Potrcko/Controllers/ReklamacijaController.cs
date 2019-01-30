@@ -49,7 +49,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReklamacijaID,FK_RacunID,Opis")] Reklamacija reklamacija)
+        public ActionResult Create([Bind(Include = "ReklamacijaID,RacunID,Opis")] Reklamacija reklamacija)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.FK_RacunID);
+            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
             return View(reklamacija);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.FK_RacunID);
+            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
             return View(reklamacija);
         }
 
@@ -83,7 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReklamacijaID,FK_RacunID,Opis")] Reklamacija reklamacija)
+        public ActionResult Edit([Bind(Include = "ReklamacijaID,RacunID,Opis")] Reklamacija reklamacija)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.FK_RacunID);
+            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
             return View(reklamacija);
         }
 

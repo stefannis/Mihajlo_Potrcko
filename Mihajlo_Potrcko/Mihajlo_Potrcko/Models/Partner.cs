@@ -30,7 +30,8 @@ namespace Mihajlo_Potrcko.Models
         [StringLength(20)]
         public string Kategorija { get; set; }
 
-        public int FK_SlikaID { get; set; }
+        [Column(name: "FK_SlikaID")]
+        public int SlikaID { get; set; }
 
         public virtual Slika Slika { get; set; }
 

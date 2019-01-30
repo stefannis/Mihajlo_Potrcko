@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "NalogID,Username,Password,FK_JMBG,FK_SlikaID")] Nalog nalog)
+        public ActionResult Create([Bind(Include = "NalogID,Username,Password,JMBG,SlikaID")] Nalog nalog)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
             return View(nalog);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
             return View(nalog);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "NalogID,Username,Password,FK_JMBG,FK_SlikaID")] Nalog nalog)
+        public ActionResult Edit([Bind(Include = "NalogID,Username,Password,JMBG,SlikaID")] Nalog nalog)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.FK_JMBG);
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.FK_SlikaID);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
             return View(nalog);
         }
 

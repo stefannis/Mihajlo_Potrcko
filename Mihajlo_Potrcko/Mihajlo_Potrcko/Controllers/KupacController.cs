@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "KupacID,FK_JMBG,FK_NalogID")] Kupac kupac)
+        public ActionResult Create([Bind(Include = "KupacID,JMBG,NalogID")] Kupac kupac)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.JMBG);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.NalogID);
             return View(kupac);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.JMBG);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.NalogID);
             return View(kupac);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "KupacID,FK_JMBG,FK_NalogID")] Kupac kupac)
+        public ActionResult Edit([Bind(Include = "KupacID,JMBG,NalogID")] Kupac kupac)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.FK_JMBG);
-            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.FK_NalogID);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.JMBG);
+            ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.NalogID);
             return View(kupac);
         }
 

@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Niz_artikla_racunID,Kolicina,FK_RacunID,FK_ArtikalID")] Niz_Artikala_Racun niz_Artikala_Racun)
+        public ActionResult Create([Bind(Include = "Niz_artikla_racunID,Kolicina,RacunID,ArtikalID")] Niz_Artikala_Racun niz_Artikala_Racun)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.FK_ArtikalID);
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.FK_RacunID);
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.ArtikalID);
+            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.RacunID);
             return View(niz_Artikala_Racun);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.FK_ArtikalID);
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.FK_RacunID);
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.ArtikalID);
+            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.RacunID);
             return View(niz_Artikala_Racun);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Niz_artikla_racunID,Kolicina,FK_RacunID,FK_ArtikalID")] Niz_Artikala_Racun niz_Artikala_Racun)
+        public ActionResult Edit([Bind(Include = "Niz_artikla_racunID,Kolicina,RacunID,ArtikalID")] Niz_Artikala_Racun niz_Artikala_Racun)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.FK_ArtikalID);
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.FK_RacunID);
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.ArtikalID);
+            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.RacunID);
             return View(niz_Artikala_Racun);
         }
 

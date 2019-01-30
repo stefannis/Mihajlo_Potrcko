@@ -49,7 +49,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PartnerID,Naziv,Procenat_zarade,Datum_pocetka_poslovanja,Kategorija,FK_SlikaID")] Partner partner)
+        public ActionResult Create([Bind(Include = "PartnerID,Naziv,Procenat_zarade,Datum_pocetka_poslovanja,Kategorija,SlikaID")] Partner partner)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.SlikaID);
             return View(partner);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.SlikaID);
             return View(partner);
         }
 
@@ -83,7 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PartnerID,Naziv,Procenat_zarade,Datum_pocetka_poslovanja,Kategorija,FK_SlikaID")] Partner partner)
+        public ActionResult Edit([Bind(Include = "PartnerID,Naziv,Procenat_zarade,Datum_pocetka_poslovanja,Kategorija,SlikaID")] Partner partner)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.SlikaID);
             return View(partner);
         }
 

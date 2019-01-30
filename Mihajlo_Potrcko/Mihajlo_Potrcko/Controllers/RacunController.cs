@@ -40,7 +40,7 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Racun/Create
         public ActionResult Create()
         {
-            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG");
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG");
             ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID");
             return View();
         }
@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RacunID,Datum_izdavanja,Iznos,FK_KupacID,FK_VozacID,Adresa")] Racun racun)
+        public ActionResult Create([Bind(Include = "RacunID,Datum_izdavanja,Iznos,KupacID,VozacID,Adresa")] Racun racun)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG", racun.FK_KupacID);
-            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.FK_VozacID);
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG", racun.KupacID);
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.VozacID);
             return View(racun);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG", racun.FK_KupacID);
-            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.FK_VozacID);
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG", racun.KupacID);
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.VozacID);
             return View(racun);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RacunID,Datum_izdavanja,Iznos,FK_KupacID,FK_VozacID,Adresa")] Racun racun)
+        public ActionResult Edit([Bind(Include = "RacunID,Datum_izdavanja,Iznos,KupacID,VozacID,Adresa")] Racun racun)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "FK_JMBG", racun.FK_KupacID);
-            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.FK_VozacID);
+            ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG", racun.KupacID);
+            ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.VozacID);
             return View(racun);
         }
 

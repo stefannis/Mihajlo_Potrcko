@@ -21,7 +21,8 @@ namespace Mihajlo_Potrcko.Models
         [Column(TypeName = "date")]
         public DateTime Datum_isteka { get; set; }
 
-        public int FK_SlikaID { get; set; }
+        [Column(name: "FK_SlikaID")]
+        public int SlikaID { get; set; }
 
         public virtual Slika Slika { get; set; }
     }

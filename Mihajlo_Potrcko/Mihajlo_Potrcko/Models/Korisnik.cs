@@ -40,7 +40,8 @@ namespace Mihajlo_Potrcko.Models
 
         [Required]
         [StringLength(20)]
-        public string FK_Broj_RacunaNB { get; set; }
+        [Column(name: "FK_Broj_RacunaNB")]
+        public string Broj_RacunaNB { get; set; }
 
         public virtual Nasa_banka Nasa_banka { get; set; }
 

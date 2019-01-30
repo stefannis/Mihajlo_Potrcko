@@ -49,7 +49,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,FK_SlikaID")] Reklama reklama)
+        public ActionResult Create([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,SlikaID")] Reklama reklama)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.SlikaID);
             return View(reklama);
         }
 
@@ -74,7 +74,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.SlikaID);
             return View(reklama);
         }
 
@@ -83,7 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,FK_SlikaID")] Reklama reklama)
+        public ActionResult Edit([Bind(Include = "ReklamaID,Naziv_kupca,Datum_isteka,SlikaID")] Reklama reklama)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.FK_SlikaID);
+            ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.SlikaID);
             return View(reklama);
         }
 

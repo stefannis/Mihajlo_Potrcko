@@ -41,7 +41,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Create()
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
-            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG");
+            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG");
             return View();
         }
 
@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ZaposleniID,FK_JMBG,Administrator")] Zaposleni zaposleni)
+        public ActionResult Create([Bind(Include = "ZaposleniID,JMBG,Administrator")] Zaposleni zaposleni)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.FK_JMBG);
-            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG", zaposleni.Administrator);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.JMBG);
+            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", zaposleni.Administrator);
             return View(zaposleni);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.FK_JMBG);
-            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG", zaposleni.Administrator);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.JMBG);
+            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", zaposleni.Administrator);
             return View(zaposleni);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ZaposleniID,FK_JMBG,Administrator")] Zaposleni zaposleni)
+        public ActionResult Edit([Bind(Include = "ZaposleniID,JMBG,Administrator")] Zaposleni zaposleni)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.FK_JMBG);
-            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "FK_JMBG", zaposleni.Administrator);
+            ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.JMBG);
+            ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", zaposleni.Administrator);
             return View(zaposleni);
         }
 

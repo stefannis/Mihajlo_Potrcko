@@ -15,7 +15,8 @@ namespace Mihajlo_Potrcko.Models
 
         public int ReklamacijaID { get; set; }
 
-        public int FK_RacunID { get; set; }
+        [Column(name: "FK_RacunID")]
+        public int RacunID { get; set; }
 
         [StringLength(256)]
         public string Opis { get; set; }

@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Stanje,FK_PoslovnicaID,FK_ArtikalID")] Artikal_U_Poslovnici artikal_U_Poslovnici)
+        public ActionResult Create([Bind(Include = "Stanje,PoslovnicaID,ArtikalID")] Artikal_U_Poslovnici artikal_U_Poslovnici)
         {
             if (ModelState.IsValid)
             {
@@ -59,8 +59,8 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.FK_ArtikalID);
-            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.FK_PoslovnicaID);
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
+            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
             return View(artikal_U_Poslovnici);
         }
 
@@ -76,8 +76,8 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.FK_ArtikalID);
-            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.FK_PoslovnicaID);
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
+            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
             return View(artikal_U_Poslovnici);
         }
 
@@ -86,7 +86,7 @@ namespace Mihajlo_Potrcko.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Stanje,FK_PoslovnicaID,FK_ArtikalID")] Artikal_U_Poslovnici artikal_U_Poslovnici)
+        public ActionResult Edit([Bind(Include = "Stanje,PoslovnicaID,ArtikalID")] Artikal_U_Poslovnici artikal_U_Poslovnici)
         {
             if (ModelState.IsValid)
             {
@@ -94,8 +94,8 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.FK_ArtikalID);
-            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.FK_PoslovnicaID);
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
+            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
             return View(artikal_U_Poslovnici);
         }
 

@@ -17,9 +17,11 @@ namespace Mihajlo_Potrcko.Models
 
         public int Kolicina { get; set; }
 
-        public int FK_RacunID { get; set; }
+        [Column(name: "FK_RacunID")]
+        public int RacunID { get; set; }
 
-        public int FK_ArtikalID { get; set; }
+        [Column(name: "FK_ArtikalID")]
+        public int ArtikalID { get; set; }
 
         public virtual Artikal Artikal { get; set; }
 
