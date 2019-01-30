@@ -6,8 +6,12 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Racuni_banke
+    public partial class Racuni_banke : Tabela
     {
+        public Racuni_banke():base("Broj_racuna")
+        {
+        }
+
         [Key]
         [StringLength(20)]
         public string Broj_racuna { get; set; }

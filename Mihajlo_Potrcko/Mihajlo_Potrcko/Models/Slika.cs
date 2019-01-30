@@ -7,10 +7,10 @@ namespace Mihajlo_Potrcko.Models
     using System.Data.Entity.Spatial;
 
     [Table("Slika")]
-    public partial class Slika : IComparable
+    public partial class Slika : Tabela,IComparable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Slika()
+        public Slika():base("SlikaID")
         {
             Artikal = new HashSet<Artikal>();
             Nalog = new HashSet<Nalog>();

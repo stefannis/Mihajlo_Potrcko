@@ -7,10 +7,10 @@ namespace Mihajlo_Potrcko.Models
     using System.Data.Entity.Spatial;
 
     [Table("Kupac")]
-    public partial class Kupac
+    public partial class Kupac : Tabela
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kupac()
+        public Kupac():base("KupacID")
         {
             Racun = new HashSet<Racun>();
         }

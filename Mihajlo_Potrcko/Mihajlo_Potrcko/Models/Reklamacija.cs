@@ -7,8 +7,12 @@ namespace Mihajlo_Potrcko.Models
     using System.Data.Entity.Spatial;
 
     [Table("Reklamacija")]
-    public partial class Reklamacija
+    public partial class Reklamacija : Tabela
     {
+        public Reklamacija():base("ReklamacijaID")
+        {
+        }
+
         public int ReklamacijaID { get; set; }
 
         public int FK_RacunID { get; set; }

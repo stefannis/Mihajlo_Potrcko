@@ -7,10 +7,10 @@ namespace Mihajlo_Potrcko.Models
     using System.Data.Entity.Spatial;
 
     [Table("Zaposleni")]
-    public partial class Zaposleni
+    public partial class Zaposleni : Tabela
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Zaposleni()
+        public Zaposleni():base("ZaposleniID")
         {
             Vozac = new HashSet<Vozac>();
             Zaposleni1 = new HashSet<Zaposleni>();

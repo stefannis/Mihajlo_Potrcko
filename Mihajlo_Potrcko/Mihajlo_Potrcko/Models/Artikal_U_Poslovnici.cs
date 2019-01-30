@@ -6,8 +6,13 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Artikal_U_Poslovnici
+    public partial class Artikal_U_Poslovnici : Tabela
     {
+        Artikal_U_Poslovnici() : base("")
+        {
+
+        }
+
         [Key]
         [Column(Order = 0)]
         public bool Stanje { get; set; }

@@ -6,10 +6,10 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Nasa_banka
+    public partial class Nasa_banka : Tabela
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Nasa_banka()
+        public Nasa_banka():base("Broj_racunaNB")
         {
             Korisnik = new HashSet<Korisnik>();
         }

@@ -4,8 +4,11 @@
 @{
     ViewBag.Title = "Index";
 
-    Home pageModel = Model.PageModel;
 
+    // S'obzirom na dinamicki tip podatka iz sigurnosnih razloga se 
+    // ovde definise koji je tip poslat
+    Home pageModel = Model.PageModel;
+    
 }
 
 <body>
@@ -29,7 +32,7 @@
                             <h3><span>Preporučujemo</span></h3>
                         </div>
                         <div id="owl-example" class="owl-carousel">
-                            @foreach (string item in pageModel.ListaSlika)
+                            @foreach (Slika item in pageModel.ListaSlika)
                             {
                                 <div>
                                     <img class="img-responsive" src="Images/@item" alt="">
