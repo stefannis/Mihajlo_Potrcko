@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Mihajlo_Potrcko.Models.Reklamacija>
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
+    Reklamacija pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>

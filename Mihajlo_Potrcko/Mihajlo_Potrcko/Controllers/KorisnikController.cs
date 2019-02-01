@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var korisnik = db.Korisnik.Include(k => k.Nasa_banka);
-            return View(korisnik.ToList());
+            return View(new ViewDataContainer((korisnik.ToList()), new AdminView()));
         }
 
         // GET: Korisnik/Details/5

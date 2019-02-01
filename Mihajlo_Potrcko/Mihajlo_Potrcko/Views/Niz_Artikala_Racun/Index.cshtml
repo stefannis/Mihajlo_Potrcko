@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Mihajlo_Potrcko.Models.Niz_Artikala_Racun>
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
+    Niz_Artikala_Racun pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>

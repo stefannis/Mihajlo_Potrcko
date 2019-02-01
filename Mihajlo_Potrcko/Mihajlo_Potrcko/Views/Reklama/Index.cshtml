@@ -1,7 +1,8 @@
-﻿@model IEnumerable<Mihajlo_Potrcko.Models.Reklama>
-
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 @{
     ViewBag.Title = "Index";
+    Reklama pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>

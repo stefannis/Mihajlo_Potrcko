@@ -8,10 +8,16 @@ namespace Mihajlo_Potrcko.Models
 {
     public abstract class Tabela
     {
-        public string ImeIDPolja { get; set; }
+        private string ImeIDPolja;
 
+        public string GetImePolja()
+        {
+            return ImeIDPolja;
+        }
         protected Tabela(string Unos)
         {
+
+            ImeIDPolja = Unos;
             var a =
                 Assembly.GetCallingAssembly().GetModules().First().GetTypes();
             var db = new Potrcko();

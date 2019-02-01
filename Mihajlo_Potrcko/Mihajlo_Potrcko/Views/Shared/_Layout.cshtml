@@ -1,83 +1,136 @@
 ﻿@model Mihajlo_Potrcko.Models.ViewDataContainer
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>@Model.ViewData.Title</title>
-    <!-- dodao Mihajlo -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- CSS
-    ================================================ -->
-    <!-- Owl Carousel -->
-    <link rel="stylesheet" href="/css/owl.carousel.css">
-    <!-- bootstrap.min css -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!-- Font-awesome.min css -->
-    <link rel="stylesheet" href="/css/font-awesome.min.css">
-    <!-- Main Stylesheet -->
-    <link rel="stylesheet" href="/css/animate.min.css">
+@if (!Model.ViewData.IsAdmin)
+{
 
-    <link rel="stylesheet" href="/css/main.css">
-    <!-- Responsive Stylesheet -->
-    <link rel="stylesheet" href="/css/responsive.css">
-    <!-- Js -->
-    <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
-    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
-    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-    <script src="/js/jquery.nav.js"></script>
-    <script src="/js/jquery.sticky.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/plugins.js"></script>
-    <script src="/js/wow.min.js"></script>
-    <script src="/js/main.js"></script>
-</head>
-<body>
-    <nav id="navigation">
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <title>@Model.ViewData.Title;</title>
+        <!-- dodao Mihajlo -->
+
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- CSS
+        ================================================ -->
+        <!-- Owl Carousel -->
+        <link rel="stylesheet" href="/css/owl.carousel.css">
+        <!-- bootstrap.min css -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <!-- Font-awesome.min css -->
+        <link rel="stylesheet" href="/css/font-awesome.min.css">
+        <!-- Main Stylesheet -->
+        <link rel="stylesheet" href="/css/animate.min.css">
+
+        <link rel="stylesheet" href="/css/main.css">
+        <!-- Responsive Stylesheet -->
+        <link rel="stylesheet" href="/css/responsive.css">
+        <!-- Js -->
+        <script src="/js/vendor/modernizr-2.6.2.min.js"></script>
+        <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> -->
+        <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="/js/jquery.nav.js"></script>
+        <script src="/js/jquery.sticky.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/wow.min.js"></script>
+        <script src="/js/main.js"></script>
+    </head>
+    <body>
+        <nav id="navigation">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <nav class="navbar navbar-default">
+                                <div class="container-fluid">
+                                    <!-- Brand and toggle get grouped for better mobile display -->
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                        <a class="navbar-brand" href="#">
+                                            <img src="~/Images/logo.png" runat="server" alt="Logo">
+                                        </a>
+                                    </div>
+                                    <!-- Collect the nav links, forms, and other content for toggling -->
+                                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                        <ul class="nav navbar-nav navbar-right" id="top-nav">
+                                            <li>@Html.ActionLink("Početna", "Index", "Home")</li>
+                                            <li><a href="#about-us">Restorani</a></li>
+                                            <li><a href="#price">Prodavnice</a></li>
+                                            <li><a href="#subscribe">Novi</a></li>
+                                            <li><a href="#contact-us">Kontakt</a></li>
+                                            <li><a href="#">Login</a></li>
+                                        </ul>
+                                    </div><!-- /.navbar-collapse -->
+                                </div><!-- /.container-fluid -->
+                            </nav>
+                        </div>
+                    </div><!-- .col-md-12 close -->
+                </div><!-- .row close -->
+            </div><!-- .container close -->
+        </nav><!-- header close -->
+        <section id="hero-area">
+            <img class="img-responsive" runat="server" src="/Images/header.jpg" alt="">
+        </section>
+
+        @RenderBody()
+
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+        @RenderSection("Scripts", required: false)
+
+    </body>
+    </html>
+}
+else
+{ 
+    <html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>@ViewBag.Title - My ASP.NET Application</title>
+        @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")
+    </head>
+    <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="block">
-                        <nav class="navbar navbar-default">
-                            <div class="container-fluid">
-                                <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header">
-                                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                    </button>
-                                    <a class="navbar-brand" href="#">
-                                        <img src="~/Images/logo.png" runat="server" alt="Logo">
-                                    </a>
-                                </div>
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                                    <ul class="nav navbar-nav navbar-right" id="top-nav">
-                                        <li>@Html.ActionLink("Početna","Index","Home")</li>
-                                        <li><a href="#about-us">Restorani</a></li>
-                                        <li><a href="#price">Prodavnice</a></li>
-                                        <li><a href="#subscribe">Novi</a></li>
-                                        <li><a href="#contact-us">Kontakt</a></li>
-                                        <li><a href="#">Login</a></li>
-                                    </ul>
-                                </div><!-- /.navbar-collapse -->
-                            </div><!-- /.container-fluid -->
-                        </nav>
-                    </div>
-                </div><!-- .col-md-12 close -->
-            </div><!-- .row close -->
-        </div><!-- .container close -->
-    </nav><!-- header close -->
-    <section id="hero-area">
-        <img class="img-responsive"  runat="server" src="/Images/header.jpg"  alt="">
-    </section>
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-    </footer>
-    @RenderSection("Scripts", required: false)
-</body>
-</html>
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "AdminView", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "AdminView")</li>
+                    <li>@Html.ActionLink("Korisnik", "Index", "Korisnik")</li>
+                    <li>@Html.ActionLink("Slika", "Index", "Slika")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+            
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    </body>
+    </html>
+    }

@@ -1,7 +1,9 @@
-﻿@model IEnumerable<Mihajlo_Potrcko.Models.Korisnik>
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
+    IEnumerable<Korisnik> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -12,24 +14,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nasa_banka.Broj_racunaNB)
+            @Html.DisplayNameFor(model => pageModel.First().Nasa_banka.Broj_racunaNB))
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Ime)
+            @Html.DisplayNameFor(model => pageModel.First().Ime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Prezime)
+            @Html.DisplayNameFor(model => pageModel.First().Prezime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Telefon)
+            @Html.DisplayNameFor(model => pageModel.First().Telefon)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.E_mail)
+            @Html.DisplayNameFor(model => pageModel.First().E_mail)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Nasa_banka.Broj_racunaNB)

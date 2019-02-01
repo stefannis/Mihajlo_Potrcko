@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var kupac = db.Kupac.Include(k => k.Korisnik).Include(k => k.Nalog);
-            return View(kupac.ToList());
+            return View(new ViewDataContainer(kupac.ToList(),new MainView()));
         }
 
         // GET: Kupac/Details/5

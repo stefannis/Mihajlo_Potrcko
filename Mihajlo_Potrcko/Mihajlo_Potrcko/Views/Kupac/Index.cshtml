@@ -1,7 +1,11 @@
-﻿@model IEnumerable<Mihajlo_Potrcko.Models.Kupac>
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
+    IEnumerable<Kupac> pageModel = Model.PageModel;
+
+    // MORAS DA PROVERIS DA LI OVAJ NIZ MAKAR JEDAN ELEMENT INACE CE DA PUKNE DOLE NA FIRST()
 }
 
 <h2>Index</h2>
@@ -12,15 +16,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+            @Html.DisplayNameFor(model => pageModel.First().Korisnik.Ime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nalog.Username)
+            @Html.DisplayNameFor(model => pageModel.First().Nalog.Username)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Korisnik.Ime)

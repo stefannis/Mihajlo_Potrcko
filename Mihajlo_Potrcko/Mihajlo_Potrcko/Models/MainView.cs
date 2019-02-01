@@ -8,23 +8,21 @@ namespace Mihajlo_Potrcko.Models
 
     public abstract class View
     {
-        protected View(string title)
+        protected View(string title,bool isAdmin)
         {
             Title = title;
+            IsAdmin = isAdmin;
         }
 
+        public bool IsAdmin { get; private set; }
 
         public string Title { get; set; }
     }
 
-    public class AdminView : View
-    {
-        public AdminView():base("Admin"){}
-    }
 
     public class MainView : View
     {
-        public MainView():base("Main"){}
+        public MainView():base("Main",false){}
     }
 
     public class ViewDataContainer
