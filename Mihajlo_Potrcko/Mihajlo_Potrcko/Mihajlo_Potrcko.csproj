@@ -149,6 +149,7 @@
     <Compile Include="Components\SessionDataContainer.cs" />
     <Compile Include="Components\ViewDataContainer.cs" />
     <Compile Include="Connection\Konekcija.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArtikalController.cs" />
     <Compile Include="Controllers\Artikal_U_PoslovniciController.cs" />
@@ -373,6 +374,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_adminLayout.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
