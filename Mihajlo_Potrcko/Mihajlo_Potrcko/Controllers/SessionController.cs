@@ -8,11 +8,11 @@ using System.Web.SessionState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class SesijaController : Controller
+    public class SessionController : Controller
     {
         private SessionIDManager m = new SessionIDManager();
 
-        private Dictionary<string, SessionDataContainer> Sessions = new Dictionary<string, SessionDataContainer>();
+        public static Dictionary<string, SessionDataContainer> Sessions = new Dictionary<string, SessionDataContainer>();
 
         // GET: Sesija
         public ActionResult Index()
@@ -28,6 +28,15 @@ namespace Mihajlo_Potrcko.Controllers
                 return tmpSessionData;
             }
             return null;
+        }
+
+        internal static void UserLogIn(string jMBG, string sessionNumber)
+        {
+            var dicKeyValuePairs = Sessions.Where(dic => dic.Key.Equals(sessionNumber));
+            if (dicKeyValuePairs.Count() == 1)
+            {
+                dicKeyValuePairs.First().Value.JMBG = jMBG;
+            }
         }
 
         public void AddNewSessionData(string sessionNumber,SessionDataContainer sessionDataContainer)

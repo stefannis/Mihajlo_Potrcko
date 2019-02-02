@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Components;
 using Mihajlo_Potrcko.LayoutViews;
+using Mihajlo_Potrcko.Models;
 
 namespace Mihajlo_Potrcko.Controllers
 {
@@ -19,14 +20,25 @@ namespace Mihajlo_Potrcko.Controllers
 
         public ActionResult Login(string Username, string Password)
         {
-            if (true)
+            var db = new Potrcko();
+            if ((db.Nalog.Where(nalog => nalog.Username.Equals(Username)).Count() ==1))
             {
-                // ovde se dodaje JMBG u SESSIONS DICTIONARY
-
-                return Redirect() // na home page
+                var Nalogs = db.Nalog.Where(nalog =>
+                    nalog.Username.Equals(Username) && nalog.Password.Equals(Password));
+       
+                if (Nalogs.Count() == 1)
+                {
+                    SessionController.UserLogIn(Nalogs.First().JMBG, Session["brojSesije"].ToString());
+                    // da se proveri da li pravi problem ViewDataContainer 
+                    return Redirect("../Home/Index.cshtml");
+                }
+                else
+                {
+                    return View(new ViewDataContainer("Dobar user los password", new MainView()));
+                }
             }
             // ovde je false;
-            return View(); // sa podacima da je los login
+            return View(new ViewDataContainer("Ne postoji user", new MainView())); // sa podacima da je los login
         }
 
         public ActionResult LogOut()
