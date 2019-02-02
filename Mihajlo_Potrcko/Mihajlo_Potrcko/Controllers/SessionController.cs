@@ -51,13 +51,32 @@ namespace Mihajlo_Potrcko.Controllers
         public void Session_Start()
         {
             string sessionNumber = m.CreateSessionID(System.Web.HttpContext.Current);
-            AddNewSessionData(sessionNumber, new SessionDataContainer());
+            AddNewSessionData(sessionNumber, new SessionDataContainer()
+            {
+                pocetakSesije = DateTime.Now
+            });
             Session["brojSesije"] = sessionNumber;
-
         }
 
         public void Session_End()
         {
+            DateTime sessionStart;
+            var sessionID = m.GetSessionID(System.Web.HttpContext.Current);
+            var sessionIDIzSession = Session["brojSesije"];
+
+            if (Sessions.ContainsKey(sessionID))
+            {
+
+                // Ako uzimas
+                SessionDataContainer podatak;
+                Sessions.TryGetValue(sessionID,out podatak);
+                sessionStart = podatak.pocetakSesije;
+
+                DateTime sessionEnd = DateTime.Now;
+                TimeSpan duration = sessionEnd - sessionStart;
+                Sessions.Where(a => a.Key.Equals(sessionID)).First().Value.trajanjeSesije = duration.ToString();
+
+            }
             Session.Clear();
             Session.Abandon();
         }
