@@ -8,6 +8,8 @@ namespace Mihajlo_Potrcko.Components
     public class SessionDataContainer
     {
         public string JMBG { get; set; }
+        public DateTime pocetakSesije { get; set; }
 
+        public string trajanjeSesije { get; set; }
     }
 }

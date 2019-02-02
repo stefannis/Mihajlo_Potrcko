@@ -165,7 +165,7 @@
     <Compile Include="Controllers\Racuni_bankeController.cs" />
     <Compile Include="Controllers\ReklamacijaController.cs" />
     <Compile Include="Controllers\ReklamaController.cs" />
-    <Compile Include="Controllers\SesijaController.cs" />
+    <Compile Include="Controllers\SessionController.cs" />
     <Compile Include="Controllers\SlikaController.cs" />
     <Compile Include="Controllers\VozacController.cs" />
     <Compile Include="Controllers\ZaposleniController.cs" />
@@ -377,7 +377,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\MainView\" />
-    <Folder Include="Views\Sesija\" />
+    <Folder Include="Views\Session\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
