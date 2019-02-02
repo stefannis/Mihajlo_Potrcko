@@ -146,6 +146,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Components\SessionDataContainer.cs" />
     <Compile Include="Components\ViewDataContainer.cs" />
     <Compile Include="Connection\Konekcija.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -165,6 +166,7 @@
     <Compile Include="Controllers\Racuni_bankeController.cs" />
     <Compile Include="Controllers\ReklamacijaController.cs" />
     <Compile Include="Controllers\ReklamaController.cs" />
+    <Compile Include="Controllers\SesijaController.cs" />
     <Compile Include="Controllers\SlikaController.cs" />
     <Compile Include="Controllers\VozacController.cs" />
     <Compile Include="Controllers\ZaposleniController.cs" />
@@ -377,6 +379,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\MainView\" />
+    <Folder Include="Views\Sesija\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
