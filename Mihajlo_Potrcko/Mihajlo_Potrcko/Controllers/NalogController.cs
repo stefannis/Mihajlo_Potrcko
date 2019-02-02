@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var nalog = db.Nalog.Include(n => n.Korisnik).Include(n => n.Slika);
-            return View(nalog.ToList());
+            return View(new ViewDataContainer(nalog.ToList(), new AdminView()));
         }
 
         // GET: Nalog/Details/5

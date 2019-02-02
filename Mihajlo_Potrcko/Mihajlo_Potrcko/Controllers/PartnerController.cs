@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var partner = db.Partner.Include(p => p.Slika);
-            return View(partner.ToList());
+            return View(new ViewDataContainer(partner.ToList(), new AdminView()));
         }
 
         // GET: Partner/Details/5

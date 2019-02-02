@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var vozac = db.Vozac.Include(v => v.Nalog).Include(v => v.Zaposleni);
-            return View(vozac.ToList());
+            return View(new ViewDataContainer(vozac.ToList(), new AdminView()));
         }
 
         // GET: Vozac/Details/5

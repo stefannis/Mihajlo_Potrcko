@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var racuni_banke = db.Racuni_banke.Include(r => r.Korisnik);
-            return View(racuni_banke.ToList());
+            return View(new ViewDataContainer(racuni_banke.ToList(), new AdminView()));
         }
 
         // GET: Racuni_banke/Details/5

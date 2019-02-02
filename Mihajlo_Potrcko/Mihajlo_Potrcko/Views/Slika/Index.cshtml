@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Slika pageModel = Model.PageModel;
+    IEnumerable<Slika> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -14,12 +14,12 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Link)
+            @Html.DisplayNameFor(model => pageModel.First().Link)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Link)

@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Artikal pageModel = Model.PageModel;
+    IEnumerable<Artikal> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -14,32 +14,32 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.First().Slika.Link)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NazivArtikla)
+            @Html.DisplayNameFor(model => pageModel.First().Naziv_artikla)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CenaArtikla)
+            @Html.DisplayNameFor(model => pageModel.First().Cena_artikla)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Slika.Link)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NazivArtikla)
+            @Html.DisplayFor(modelItem => item.Naziv_artikla)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CenaArtikla)
+            @Html.DisplayFor(modelItem => item.Cena_artikla)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ArtikalId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ArtikalId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ArtikalId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArtikalID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArtikalID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArtikalID })
         </td>
     </tr>
 }

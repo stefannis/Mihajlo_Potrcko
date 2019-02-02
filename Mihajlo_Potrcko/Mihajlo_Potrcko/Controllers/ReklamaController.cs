@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var reklama = db.Reklama.Include(r => r.Slika);
-            return View(reklama.ToList());
+            return View(new ViewDataContainer(reklama.ToList(), new AdminView()));
         }
 
         // GET: Reklama/Details/5

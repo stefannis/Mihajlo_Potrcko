@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var artikal = db.Artikal.Include(a => a.Slika);
-            return View(artikal.ToList());
+            return View(new ViewDataContainer(artikal.ToList(), new MainView()));
         }
 
         // GET: Artikal/Details/5

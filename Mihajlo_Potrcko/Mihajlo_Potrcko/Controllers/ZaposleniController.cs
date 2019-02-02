@@ -19,7 +19,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var zaposleni = db.Zaposleni.Include(z => z.Korisnik).Include(z => z.Zaposleni2);
-            return View(zaposleni.ToList());
+            return View(new ViewDataContainer(zaposleni.ToList(), new AdminView()));
         }
 
         // GET: Zaposleni/Details/5

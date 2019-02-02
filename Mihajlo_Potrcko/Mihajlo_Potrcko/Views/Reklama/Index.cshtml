@@ -2,7 +2,7 @@
 @model Mihajlo_Potrcko.Models.ViewDataContainer
 @{
     ViewBag.Title = "Index";
-    Reklama pageModel = Model.PageModel;
+    IEnumerable<Reklama> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -13,18 +13,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.First().Slika.Link)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Naziv_kupca)
+            @Html.DisplayNameFor(model => pageModel.First().Naziv_kupca)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Datum_isteka)
+            @Html.DisplayNameFor(model => pageModel.First().Datum_isteka)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Slika.Link)

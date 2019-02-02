@@ -18,7 +18,7 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Slika
         public ActionResult Index()
         {
-            return View(db.Slika.ToList());
+            return View(new ViewDataContainer(db.Slika.ToList(), new AdminView()));
         }
 
         // GET: Slika/Details/5

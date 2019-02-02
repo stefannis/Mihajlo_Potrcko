@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Partner pageModel = Model.PageModel;
+    IEnumerable<Partner> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -14,24 +14,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.First().Slika.Link)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Naziv)
+            @Html.DisplayNameFor(model => pageModel.First().Naziv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Procenat_zarade)
+            @Html.DisplayNameFor(model => pageModel.First().Procenat_zarade)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Datum_pocetka_poslovanja)
+            @Html.DisplayNameFor(model => pageModel.First().Datum_pocetka_poslovanja)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Kategorija)
+            @Html.DisplayNameFor(model => pageModel.First().Kategorija)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Slika.Link)

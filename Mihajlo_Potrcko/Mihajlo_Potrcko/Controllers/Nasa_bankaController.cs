@@ -18,7 +18,7 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Nasa_banka
         public ActionResult Index()
         {
-            return View(db.Nasa_banka.ToList());
+            return View(new ViewDataContainer(db.Nasa_banka.ToList(), new AdminView()));
         }
 
         // GET: Nasa_banka/Details/5

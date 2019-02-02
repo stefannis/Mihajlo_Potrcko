@@ -1,8 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.ViewDataContainer
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Models.ViewDataContainer
 
 @{
     ViewBag.Title = "Index";
-    Nalog pageModel = Model.PageModel;
+    IEnumerable<Nalog> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -13,21 +14,21 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+            @Html.DisplayNameFor(model => pageModel.First().Korisnik.Ime)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.First().Slika.Link)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Username)
+            @Html.DisplayNameFor(model => pageModel.First().Username)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => pageModel.First().Password)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Korisnik.Ime)
