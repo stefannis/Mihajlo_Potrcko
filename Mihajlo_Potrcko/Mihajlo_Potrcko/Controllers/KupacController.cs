@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -21,6 +23,7 @@ namespace Mihajlo_Potrcko.Controllers
             var kupac = db.Kupac.Include(k => k.Korisnik).Include(k => k.Nalog);
             return View(new ViewDataContainer(kupac.ToList(),new MainView()));
         }
+
 
         // GET: Kupac/Details/5
         public ActionResult Details(int? id)

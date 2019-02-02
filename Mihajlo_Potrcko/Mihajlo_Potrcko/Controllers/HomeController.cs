@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Components;
 using Mihajlo_Potrcko.Connection;
+using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Lib.Structs;
 using Mihajlo_Potrcko.Models;
 
