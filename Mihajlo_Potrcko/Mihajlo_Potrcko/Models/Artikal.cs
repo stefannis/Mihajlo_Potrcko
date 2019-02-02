@@ -4,7 +4,6 @@ namespace Mihajlo_Potrcko.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("Artikal")]
     public partial class Artikal : Tabela

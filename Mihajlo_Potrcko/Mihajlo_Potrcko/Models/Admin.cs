@@ -5,8 +5,7 @@ using System.Web;
 
 namespace Mihajlo_Potrcko.Models
 {
-    public class AdminView : View
+    public class Admin
     {
-        public AdminView() : base("Admin",true) { }
     }
 }
