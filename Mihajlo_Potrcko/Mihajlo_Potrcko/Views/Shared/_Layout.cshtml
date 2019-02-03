@@ -1,13 +1,28 @@
-﻿@model Mihajlo_Potrcko.Components.ViewDataContainer
+﻿@using Mihajlo_Potrcko.Components
+@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 <!DOCTYPE html>
+@{
+    SessionDataContainer CurrentSessionData = MvcApplication.GetDataBySessionNumber(Session["brojSesije"].ToString());
+
+    //Pretpostavljamo da potoji sesija sa brojem Sesssion["brojSesije]
+    //true == admin, false == normal or no user
+    var userType = false; //Querry baze podataka koristeci CurrentSessionData.JMBG da vidis da li je admin i staviti na false ako nije uopste ulogovan
+
+    Potrcko db = new Potrcko();
+    
+}
 @if (!Model.ViewData.IsAdmin)
 {
-
+    if (userType)
+    {
+        // Redirektujes ga na AdminHomePage
+    }
     <html>
     <head>
         <meta charset="utf-8" />
         <title>@Model.ViewData.Title;</title>
-        <!-- dodao Mihajlo -->
+        <!-- dodato-->
 
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +80,8 @@
                                             <li><a href="#price">Prodavnice</a></li>
                                             <li><a href="#subscribe">Novi</a></li>
                                             <li><a href="#contact-us">Kontakt</a></li>
-                                            <li><a href="#">Login</a></li>
+                                            <li>@Html.ActionLink("Uloguj se", "Login", "Accout")</li>
+                                            <li>@Html.ActionLink("Odjavi se", "LogOut", "Accout")</li>
                                         </ul>
                                     </div><!-- /.navbar-collapse -->
                                 </div><!-- /.container-fluid -->
@@ -91,7 +107,11 @@
     </html>
 }
 else
-{ 
+{
+    if (!userType)
+    {
+        //Redirektujes ga na Home/Index.cshtml
+    }
     <html>
     <head>
         <meta charset="utf-8" />

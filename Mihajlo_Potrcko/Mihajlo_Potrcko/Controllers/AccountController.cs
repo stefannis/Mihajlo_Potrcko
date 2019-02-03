@@ -47,8 +47,14 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult LogOut()
         {
             //LOGIKA KAD SE ODJAVI
-            
+
+            MvcApplication.Sessions.Where(a => a.Key.Equals(Session["brojSesije"].ToString())).First().Value.JMBG = "";
             return Redirect("/Login.cshtml");
+        }
+
+        public ActionResult Signup()
+        {
+            return null;
         }
     }
 }

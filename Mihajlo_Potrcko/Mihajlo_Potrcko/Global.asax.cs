@@ -29,7 +29,7 @@ namespace Mihajlo_Potrcko
 
      
 
-        public SessionDataContainer GetDataBySessionNumber(string sessionNumber)
+        public static SessionDataContainer GetDataBySessionNumber(string sessionNumber)
         {
             var tmpSessionData = new SessionDataContainer();
             if (Sessions.TryGetValue(sessionNumber, out tmpSessionData))
@@ -82,6 +82,8 @@ namespace Mihajlo_Potrcko
                 DateTime sessionEnd = DateTime.Now;
                 TimeSpan duration = sessionEnd - sessionStart;
                 Sessions.Where(a => a.Key.Equals(sessionID)).First().Value.trajanjeSesije = duration.ToString();
+                // slanje bazi pre brisanja dictionary unosa
+                Sessions.Remove(sessionID);
 
             }
             Session.Clear();
