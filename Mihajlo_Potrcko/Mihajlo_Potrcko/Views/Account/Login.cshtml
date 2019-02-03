@@ -1,5 +1,7 @@
-﻿
+﻿@model Mihajlo_Potrcko.Components.ViewDataContainer
 @{
+    string pageModel = Model.PageModel;
+
 }
 
 <!DOCTYPE html>
@@ -16,5 +18,7 @@
     <input type="password" name="Password" placeholder="Lozinka"/>
     <input type="submit" name="Potvrdi"/>
 }
+
+<p>@pageModel</p>
 </body>
 </html>

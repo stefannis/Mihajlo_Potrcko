@@ -28,9 +28,9 @@ namespace Mihajlo_Potrcko.Controllers
        
                 if (Nalogs.Count() == 1)
                 {
-                    SessionController.UserLogIn(Nalogs.First().JMBG, Session["brojSesije"].ToString());
+                    MvcApplication.UserLogIn(Nalogs.First().JMBG, Session["brojSesije"].ToString());
                     // da se proveri da li pravi problem ViewDataContainer 
-                    return Redirect("../Home/Index.cshtml");
+                    return Redirect("~/");
                 }
                 else
                 {
@@ -38,6 +38,10 @@ namespace Mihajlo_Potrcko.Controllers
                 }
             }
             // ovde je false;
+            if (Username == null)
+            {
+                return View(new ViewDataContainer("", new MainView())); // inicijalna konstrukcija
+            }
             return View(new ViewDataContainer("Ne postoji user", new MainView())); // sa podacima da je los login
         }
 
