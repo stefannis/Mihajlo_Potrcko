@@ -66,8 +66,6 @@ namespace Mihajlo_Potrcko.Controllers
 
             if (Sessions.ContainsKey(sessionID))
             {
-
-                // Ako uzimas
                 SessionDataContainer podatak;
                 Sessions.TryGetValue(sessionID,out podatak);
                 sessionStart = podatak.pocetakSesije;
