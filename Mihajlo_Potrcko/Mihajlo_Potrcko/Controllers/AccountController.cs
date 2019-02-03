@@ -29,7 +29,6 @@ namespace Mihajlo_Potrcko.Controllers
                 if (Nalogs.Count() == 1)
                 {
                     MvcApplication.UserLogIn(Nalogs.First().JMBG, Session["brojSesije"].ToString());
-                    // da se proveri da li pravi problem ViewDataContainer 
                     return Redirect("~/");
                 }
                 else

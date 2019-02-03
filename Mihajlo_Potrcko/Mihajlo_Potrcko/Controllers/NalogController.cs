@@ -36,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(nalog);
+            return View(new ViewDataContainer(nalog, new MainView()));
         }
 
         // GET: Nalog/Create

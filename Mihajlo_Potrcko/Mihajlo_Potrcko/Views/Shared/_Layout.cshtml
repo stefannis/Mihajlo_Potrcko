@@ -61,7 +61,7 @@
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                         <ul class="nav navbar-nav navbar-right" id="top-nav">
                                             <li>@Html.ActionLink("Početna", "Index", "Home")</li>
-                                            <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id=MvcApplication.GetNalogID(Session["brojSesije"].ToString()) })</li>
+                                            <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id=MvcApplication.GetNalogID(Session["brojSesije"].ToString()) }, null)</li>
                                             <li><a href="#price">Prodavnice</a></li>
                                             <li><a href="#subscribe">Novi</a></li>
                                             <li><a href="#contact-us">Kontakt</a></li>

@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Nalog
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Nalog pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,40 +13,40 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+            @Html.DisplayNameFor(model => pageModel.Korisnik.Ime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Korisnik.Ime)
+            @Html.DisplayFor(model => pageModel.Korisnik.Ime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.Slika.Link)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Slika.Link)
+            @Html.DisplayFor(model => pageModel.Slika.Link)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Username)
+            @Html.DisplayNameFor(model => pageModel.Username)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Username)
+            @Html.DisplayFor(model => pageModel.Username)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => pageModel.Password)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Password)
+            @Html.DisplayFor(model => pageModel.Password)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.NalogID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = pageModel.NalogID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
