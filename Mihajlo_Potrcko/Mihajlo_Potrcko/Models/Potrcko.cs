@@ -268,8 +268,8 @@ namespace Mihajlo_Potrcko.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Zaposleni>()
-                .HasMany(e => e.Zaposleni1)
-                .WithRequired(e => e.Zaposleni2)
+                .HasMany(e => e.ZaposleniAdministratora)
+                .WithRequired(e => e.AdministratorOdZaposlenog)
                 .HasForeignKey(e => e.Administrator);
         }
     }

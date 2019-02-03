@@ -13,7 +13,7 @@ namespace Mihajlo_Potrcko.Models
         public Zaposleni():base("ZaposleniID")
         {
             Vozac = new HashSet<Vozac>();
-            Zaposleni1 = new HashSet<Zaposleni>();
+            ZaposleniAdministratora = new HashSet<Zaposleni>();
         }
 
         public int ZaposleniID { get; set; }
@@ -31,8 +31,8 @@ namespace Mihajlo_Potrcko.Models
         public virtual ICollection<Vozac> Vozac { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zaposleni> Zaposleni1 { get; set; }
+        public virtual ICollection<Zaposleni> ZaposleniAdministratora { get; set; }
 
-        public virtual Zaposleni Zaposleni2 { get; set; }
+        public virtual Zaposleni AdministratorOdZaposlenog { get; set; }
     }
 }
