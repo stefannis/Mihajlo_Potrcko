@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Nasa_banka
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Edit";
+    Nasa_banka pageModel = Model.PageModel;
 }
 
 <h2>Edit</h2>
@@ -15,21 +17,21 @@
         <h4>Nasa_banka</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Broj_racunaNB)
+        @Html.HiddenFor(model => pageModel.Broj_racunaNB)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Stanje_racuna, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Stanje_racuna, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Stanje_racuna, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stanje_racuna, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Stanje_racuna, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Stanje_racuna, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Poslednja_uplata, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Poslednja_uplata, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Poslednja_uplata, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Poslednja_uplata, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Poslednja_uplata, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Poslednja_uplata, "", new { @class = "text-danger" })
             </div>
         </div>
 

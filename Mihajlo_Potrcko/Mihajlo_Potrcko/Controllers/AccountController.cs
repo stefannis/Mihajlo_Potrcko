@@ -47,8 +47,15 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult LogOut()
         {
             //LOGIKA KAD SE ODJAVI
-            
+
+            MvcApplication.Sessions.Where(a => a.Key.Equals(Session["brojSesije"].ToString())).First().Value.JMBG = "";
             return Redirect("/Login.cshtml");
+        }
+
+        // resenje za sliku i broj racuna nase banke?
+        public ActionResult Signup(string JMBG, string Ime, string Prezime, string Telefon, string Email, string Username, string Password)
+        {
+            return null;
         }
     }
 }

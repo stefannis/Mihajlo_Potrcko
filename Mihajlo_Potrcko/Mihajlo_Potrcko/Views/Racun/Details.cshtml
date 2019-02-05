@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Racun
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Racun pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,48 +13,48 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Kupac.JMBG)
+            @Html.DisplayNameFor(model => pageModel.Kupac.JMBG)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kupac.JMBG)
+            @Html.DisplayFor(model => pageModel.Kupac.JMBG)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Vozac.VozacID)
+            @Html.DisplayNameFor(model => pageModel.Vozac.VozacID)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Vozac.VozacID)
+            @Html.DisplayFor(model => pageModel.Vozac.VozacID)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Datum_izdavanja)
+            @Html.DisplayNameFor(model => pageModel.Datum_izdavanja)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Datum_izdavanja)
+            @Html.DisplayFor(model => pageModel.Datum_izdavanja)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Iznos)
+            @Html.DisplayNameFor(model => pageModel.Iznos)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Iznos)
+            @Html.DisplayFor(model => pageModel.Iznos)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Adresa)
+            @Html.DisplayNameFor(model => pageModel.Adresa)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Adresa)
+            @Html.DisplayFor(model => pageModel.Adresa)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.RacunID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = pageModel.RacunID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

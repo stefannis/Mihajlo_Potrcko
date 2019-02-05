@@ -37,7 +37,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(kupac);
+            return View(new ViewDataContainer(kupac, new AdminView()));
         }
 
         // GET: Kupac/Create
@@ -45,7 +45,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username");
-            return View();
+            return View(new ViewDataContainer(null,new AdminView()));
         }
 
         // POST: Kupac/Create
@@ -64,7 +64,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.JMBG);
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.NalogID);
-            return View(kupac);
+            return View(new ViewDataContainer(kupac, new AdminView()));
         }
 
         // GET: Kupac/Edit/5
@@ -81,7 +81,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.JMBG);
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.NalogID);
-            return View(kupac);
+            return View(new ViewDataContainer(kupac, new AdminView()));
         }
 
         // POST: Kupac/Edit/5
@@ -99,7 +99,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", kupac.JMBG);
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", kupac.NalogID);
-            return View(kupac);
+            return View(new ViewDataContainer(kupac, new AdminView()));
         }
 
         // GET: Kupac/Delete/5
@@ -114,7 +114,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(kupac);
+            return View(new ViewDataContainer(kupac, new AdminView()));
         }
 
         // POST: Kupac/Delete/5

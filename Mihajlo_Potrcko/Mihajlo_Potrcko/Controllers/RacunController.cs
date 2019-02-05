@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -19,7 +21,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var racun = db.Racun.Include(r => r.Kupac).Include(r => r.Vozac);
-            return View(racun.ToList());
+            return View(new ViewDataContainer(racun.ToList(), new AdminView()));
         }
 
         // GET: Racun/Details/5
@@ -34,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(racun);
+            return View(new ViewDataContainer(racun, new AdminView()));
         }
 
         // GET: Racun/Create
@@ -42,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG");
             ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Racun/Create
@@ -61,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG", racun.KupacID);
             ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.VozacID);
-            return View(racun);
+            return View(new ViewDataContainer(racun, new AdminView()));
         }
 
         // GET: Racun/Edit/5
@@ -78,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG", racun.KupacID);
             ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.VozacID);
-            return View(racun);
+            return View(new ViewDataContainer(racun, new AdminView()));
         }
 
         // POST: Racun/Edit/5
@@ -96,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_KupacID = new SelectList(db.Kupac, "KupacID", "JMBG", racun.KupacID);
             ViewBag.FK_VozacID = new SelectList(db.Vozac, "VozacID", "VozacID", racun.VozacID);
-            return View(racun);
+            return View(new ViewDataContainer(racun, new AdminView()));
         }
 
         // GET: Racun/Delete/5
@@ -111,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(racun);
+            return View(new ViewDataContainer(racun, new AdminView()));
         }
 
         // POST: Racun/Delete/5

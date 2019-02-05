@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -19,7 +21,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var niz_Artikala_Racun = db.Niz_Artikala_Racun.Include(n => n.Artikal).Include(n => n.Racun);
-            return View(niz_Artikala_Racun.ToList());
+            return View(new ViewDataContainer(niz_Artikala_Racun.ToList(), new MainView()));
         }
 
         // GET: Niz_Artikala_Racun/Details/5
@@ -34,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(niz_Artikala_Racun);
+            return View(new ViewDataContainer(niz_Artikala_Racun, new AdminView()));
         }
 
         // GET: Niz_Artikala_Racun/Create
@@ -42,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla");
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Niz_Artikala_Racun/Create
@@ -61,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.ArtikalID);
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.RacunID);
-            return View(niz_Artikala_Racun);
+            return View(new ViewDataContainer(niz_Artikala_Racun, new AdminView()));
         }
 
         // GET: Niz_Artikala_Racun/Edit/5
@@ -78,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.ArtikalID);
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.RacunID);
-            return View(niz_Artikala_Racun);
+            return View(new ViewDataContainer(niz_Artikala_Racun, new AdminView()));
         }
 
         // POST: Niz_Artikala_Racun/Edit/5
@@ -96,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", niz_Artikala_Racun.ArtikalID);
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", niz_Artikala_Racun.RacunID);
-            return View(niz_Artikala_Racun);
+            return View(new ViewDataContainer(niz_Artikala_Racun, new AdminView()));
         }
 
         // GET: Niz_Artikala_Racun/Delete/5
@@ -111,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(niz_Artikala_Racun);
+            return View(new ViewDataContainer(niz_Artikala_Racun, new AdminView()));
         }
 
         // POST: Niz_Artikala_Racun/Delete/5

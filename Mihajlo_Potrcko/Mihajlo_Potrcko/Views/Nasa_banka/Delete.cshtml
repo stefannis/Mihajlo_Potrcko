@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Nasa_banka
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Delete";
+    Nasa_banka pageModel = Model.PageModel;
 }
 
 <h2>Delete</h2>
@@ -12,19 +14,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Stanje_racuna)
+            @Html.DisplayNameFor(model => pageModel.Stanje_racuna)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Stanje_racuna)
+            @Html.DisplayFor(model => pageModel.Stanje_racuna)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Poslednja_uplata)
+            @Html.DisplayNameFor(model => pageModel.Poslednja_uplata)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Poslednja_uplata)
+            @Html.DisplayFor(model => pageModel.Poslednja_uplata)
         </dd>
 
     </dl>

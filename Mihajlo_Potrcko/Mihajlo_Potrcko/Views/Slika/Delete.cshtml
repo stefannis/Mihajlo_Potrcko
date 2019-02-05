@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Slika
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Delete";
+    Slika pageModel = Model.PageModel;
 }
 
 <h2>Delete</h2>
@@ -12,11 +14,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Link)
+            @Html.DisplayNameFor(model => pageModel.Link)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Link)
+            @Html.DisplayFor(model => pageModel.Link)
         </dd>
 
     </dl>

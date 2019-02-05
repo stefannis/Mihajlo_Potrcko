@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Slika
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Create";
+    Slika pageModel = Model.PageModel;
 }
 
 <h2>Create</h2>
@@ -16,10 +18,10 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Link, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Link, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Link, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Link, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Link, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Link, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -35,13 +35,13 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(nasa_banka);
+            return View(new ViewDataContainer(nasa_banka, new AdminView()));
         }
 
         // GET: Nasa_banka/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Nasa_banka/Create
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(nasa_banka);
+            return View(new ViewDataContainer(nasa_banka, new AdminView()));
         }
 
         // GET: Nasa_banka/Edit/5
@@ -73,7 +73,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(nasa_banka);
+            return View(new ViewDataContainer(nasa_banka, new AdminView()));
         }
 
         // POST: Nasa_banka/Edit/5
@@ -89,7 +89,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(nasa_banka);
+            return View(new ViewDataContainer(nasa_banka, new AdminView()));
         }
 
         // GET: Nasa_banka/Delete/5
@@ -104,7 +104,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(nasa_banka);
+            return View(new ViewDataContainer(nasa_banka, new AdminView()));
         }
 
         // POST: Nasa_banka/Delete/5

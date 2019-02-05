@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -19,7 +21,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var reklamacija = db.Reklamacija.Include(r => r.Racun);
-            return View(reklamacija.ToList());
+            return View(new ViewDataContainer(reklamacija.ToList(), new MainView()));
         }
 
         // GET: Reklamacija/Details/5
@@ -34,14 +36,14 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(reklamacija);
+            return View(new ViewDataContainer(reklamacija, new MainView()));
         }
 
         // GET: Reklamacija/Create
         public ActionResult Create()
         {
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa");
-            return View();
+            return View(new ViewDataContainer(null, new MainView()));
         }
 
         // POST: Reklamacija/Create
@@ -59,7 +61,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
-            return View(reklamacija);
+            return View(new ViewDataContainer(reklamacija, new MainView()));
         }
 
         // GET: Reklamacija/Edit/5
@@ -75,7 +77,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
-            return View(reklamacija);
+            return View(new ViewDataContainer(reklamacija, new MainView()));
         }
 
         // POST: Reklamacija/Edit/5
@@ -92,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
-            return View(reklamacija);
+            return View(new ViewDataContainer(reklamacija, new MainView()));
         }
 
         // GET: Reklamacija/Delete/5
@@ -107,7 +109,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(reklamacija);
+            return View(new ViewDataContainer(reklamacija, new MainView()));
         }
 
         // POST: Reklamacija/Delete/5

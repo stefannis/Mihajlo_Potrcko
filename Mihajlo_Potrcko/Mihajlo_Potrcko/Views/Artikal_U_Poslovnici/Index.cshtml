@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Artikal_U_Poslovnici pageModel = Model.PageModel;
+    IEnumerable<Artikal_U_Poslovnici> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -14,15 +14,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Artikal.Naziv_artikla)
+            @Html.DisplayNameFor(model => pageModel.First().Artikal.Naziv_artikla)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Poslovnica.Adresa)
+            @Html.DisplayNameFor(model => pageModel.First().Poslovnica.Adresa)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Artikal.Naziv_artikla)

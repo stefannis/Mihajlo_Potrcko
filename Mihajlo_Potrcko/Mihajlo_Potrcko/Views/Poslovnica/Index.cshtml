@@ -5,7 +5,7 @@
 @{
     ViewBag.Title = "Index";
 
-    IEnumerable<Poslovnica> Lokalna = Model.PageModel;
+    IEnumerable<Poslovnica> pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
@@ -16,18 +16,18 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => Lokalna.First().Partner.Naziv)
+            @Html.DisplayNameFor(model => pageModel.First().Partner.Naziv)
         </th>
         <th>
-            @Html.DisplayNameFor(model => Lokalna.First().Adresa)
+            @Html.DisplayNameFor(model => pageModel.First().Adresa)
         </th>
         <th>
-            @Html.DisplayNameFor(model => Lokalna.First().Broj_telefona)
+            @Html.DisplayNameFor(model => pageModel.First().Broj_telefona)
         </th>
         <th></th>
     </tr>
 
-@foreach (Poslovnica item in Model.PageModel) {
+@foreach (Poslovnica item in pageModel) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Partner.Naziv)

@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Zaposleni
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Delete";
+    Zaposleni pageModel = Model.PageModel;
 }
 
 <h2>Delete</h2>
@@ -12,19 +14,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+            @Html.DisplayNameFor(model => pageModel.Korisnik.Ime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Korisnik.Ime)
+            @Html.DisplayFor(model => pageModel.Korisnik.Ime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AdministratorOdZaposlenog.JMBG)
+            @Html.DisplayNameFor(model => pageModel.AdministratorOdZaposlenog.JMBG)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.AdministratorOdZaposlenog.JMBG)
+            @Html.DisplayFor(model => pageModel.AdministratorOdZaposlenog.JMBG)
         </dd>
 
     </dl>

@@ -35,13 +35,13 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(slika);
+            return View(new ViewDataContainer(slika, new AdminView()));
         }
 
         // GET: Slika/Create
         public ActionResult Create()
         {
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Slika/Create
@@ -58,7 +58,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View(slika);
+            return View(new ViewDataContainer(slika, new AdminView()));
         }
 
         // GET: Slika/Edit/5
@@ -73,7 +73,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(slika);
+            return View(new ViewDataContainer(slika, new AdminView()));
         }
 
         // POST: Slika/Edit/5
@@ -89,7 +89,7 @@ namespace Mihajlo_Potrcko.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(slika);
+            return View(new ViewDataContainer(slika, new AdminView()));
         }
 
         // GET: Slika/Delete/5
@@ -104,7 +104,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(slika);
+            return View(new ViewDataContainer(slika, new AdminView()));
         }
 
         // POST: Slika/Delete/5

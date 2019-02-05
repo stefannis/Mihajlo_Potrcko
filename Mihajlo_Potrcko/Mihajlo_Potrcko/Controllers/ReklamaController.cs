@@ -36,14 +36,14 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(reklama);
+            return View(new ViewDataContainer(reklama, new AdminView()));
         }
 
         // GET: Reklama/Create
         public ActionResult Create()
         {
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Reklama/Create
@@ -61,7 +61,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.SlikaID);
-            return View(reklama);
+            return View(new ViewDataContainer(reklama, new AdminView()));
         }
 
         // GET: Reklama/Edit/5
@@ -77,7 +77,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.SlikaID);
-            return View(reklama);
+            return View(new ViewDataContainer(reklama, new AdminView()));
         }
 
         // POST: Reklama/Edit/5
@@ -94,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", reklama.SlikaID);
-            return View(reklama);
+            return View(new ViewDataContainer(reklama, new AdminView()));
         }
 
         // GET: Reklama/Delete/5
@@ -109,7 +109,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(reklama);
+            return View(new ViewDataContainer(reklama, new AdminView()));
         }
 
         // POST: Reklama/Delete/5

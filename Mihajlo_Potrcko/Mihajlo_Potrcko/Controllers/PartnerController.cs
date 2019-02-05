@@ -36,14 +36,14 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(partner);
+            return View(new ViewDataContainer(partner, new AdminView()));
         }
 
         // GET: Partner/Create
         public ActionResult Create()
         {
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Partner/Create
@@ -61,7 +61,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.SlikaID);
-            return View(partner);
+            return View(new ViewDataContainer(partner, new AdminView()));
         }
 
         // GET: Partner/Edit/5
@@ -77,7 +77,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.SlikaID);
-            return View(partner);
+            return View(new ViewDataContainer(partner, new AdminView()));
         }
 
         // POST: Partner/Edit/5
@@ -94,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", partner.SlikaID);
-            return View(partner);
+            return View(new ViewDataContainer(partner, new AdminView()));
         }
 
         // GET: Partner/Delete/5
@@ -109,7 +109,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(partner);
+            return View(new ViewDataContainer(partner, new AdminView()));
         }
 
         // POST: Partner/Delete/5

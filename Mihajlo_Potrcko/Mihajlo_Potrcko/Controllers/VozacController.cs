@@ -36,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vozac);
+            return View(new ViewDataContainer(vozac, new AdminView()));
         }
 
         // GET: Vozac/Create
@@ -44,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username");
             ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Vozac/Create
@@ -63,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.NalogID);
             ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", vozac.ZaposleniID);
-            return View(vozac);
+            return View(new ViewDataContainer(vozac, new AdminView()));
         }
 
         // GET: Vozac/Edit/5
@@ -80,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.NalogID);
             ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", vozac.ZaposleniID);
-            return View(vozac);
+            return View(new ViewDataContainer(vozac, new AdminView()));
         }
 
         // POST: Vozac/Edit/5
@@ -98,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_NalogID = new SelectList(db.Nalog, "NalogID", "Username", vozac.NalogID);
             ViewBag.FK_ZaposleniID = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", vozac.ZaposleniID);
-            return View(vozac);
+            return View(new ViewDataContainer(vozac, new AdminView()));
         }
 
         // GET: Vozac/Delete/5
@@ -113,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(vozac);
+            return View(new ViewDataContainer(vozac, new AdminView()));
         }
 
         // POST: Vozac/Delete/5

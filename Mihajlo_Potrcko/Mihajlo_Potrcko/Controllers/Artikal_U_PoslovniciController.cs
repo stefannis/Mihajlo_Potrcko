@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
 
@@ -19,7 +21,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Include(a => a.Artikal).Include(a => a.Poslovnica);
-            return View(artikal_U_Poslovnici.ToList());
+            return View(new ViewDataContainer(artikal_U_Poslovnici.ToList(), new AdminView()));
         }
 
         // GET: Artikal_U_Poslovnici/Details/5
@@ -34,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(artikal_U_Poslovnici);
+            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
         }
 
         // GET: Artikal_U_Poslovnici/Create
@@ -42,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla");
             ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Artikal_U_Poslovnici/Create
@@ -61,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
             ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
-            return View(artikal_U_Poslovnici);
+            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
         }
 
         // GET: Artikal_U_Poslovnici/Edit/5
@@ -78,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
             ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
-            return View(artikal_U_Poslovnici);
+            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
         }
 
         // POST: Artikal_U_Poslovnici/Edit/5
@@ -96,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
             ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
-            return View(artikal_U_Poslovnici);
+            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
         }
 
         // GET: Artikal_U_Poslovnici/Delete/5
@@ -111,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(artikal_U_Poslovnici);
+            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
         }
 
         // POST: Artikal_U_Poslovnici/Delete/5

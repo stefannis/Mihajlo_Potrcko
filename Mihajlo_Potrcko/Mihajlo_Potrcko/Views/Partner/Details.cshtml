@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Partner
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Partner pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,48 +13,48 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.Slika.Link)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Slika.Link)
+            @Html.DisplayFor(model => pageModel.Slika.Link)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Naziv)
+            @Html.DisplayNameFor(model => pageModel.Naziv)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Naziv)
+            @Html.DisplayFor(model => pageModel.Naziv)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Procenat_zarade)
+            @Html.DisplayNameFor(model => pageModel.Procenat_zarade)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Procenat_zarade)
+            @Html.DisplayFor(model => pageModel.Procenat_zarade)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Datum_pocetka_poslovanja)
+            @Html.DisplayNameFor(model => pageModel.Datum_pocetka_poslovanja)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Datum_pocetka_poslovanja)
+            @Html.DisplayFor(model => pageModel.Datum_pocetka_poslovanja)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Kategorija)
+            @Html.DisplayNameFor(model => pageModel.Kategorija)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kategorija)
+            @Html.DisplayFor(model => pageModel.Kategorija)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.PartnerID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = pageModel.PartnerID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
