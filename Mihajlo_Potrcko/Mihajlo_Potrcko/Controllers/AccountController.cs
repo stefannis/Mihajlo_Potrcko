@@ -55,6 +55,7 @@ namespace Mihajlo_Potrcko.Controllers
         // resenje za sliku i broj racuna nase banke?
         public ActionResult Signup(string JMBG, string Ime, string Prezime, string Telefon, string Email, string Username, string Password)
         {
+            string slika = @"Images\NoImage.png";
             return null;
         }
     }
