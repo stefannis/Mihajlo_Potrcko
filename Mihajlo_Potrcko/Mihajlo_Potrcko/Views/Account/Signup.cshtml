@@ -11,7 +11,18 @@
     <title>Signup</title>
 </head>
 <body>
-    <div> 
-    </div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <input type="text" name="Username" placeholder="Korisnicko ime"/>
+    <input type="password" name="Password" placeholder="Lozinka"/>
+    <input type="text" name="JMBG" placeholder="JMBG" />
+    <input type="text" name="Ime" placeholder="Ime" />
+    <input type="text" name="Prezime" placeholder="Prezime" />
+    <input type="text" name="Telefon" placeholder="Telefon" />
+    <input type="email" name="Email" placeholder="E-mail" />
+
+    <input type="submit" name="Potvrdi" value="Potvrdi"/>
+}
 </body>
 </html>

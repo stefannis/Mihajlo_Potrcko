@@ -36,14 +36,14 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(poslovnica,new MainView()));
+            return View(new ViewDataContainer(poslovnica,new AdminView()));
         }
 
         // GET: Poslovnica/Create
         public ActionResult Create()
         {
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Poslovnica/Create
@@ -61,7 +61,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.PartnerID);
-            return View(poslovnica);
+            return View(new ViewDataContainer(poslovnica, new AdminView()));
         }
 
         // GET: Poslovnica/Edit/5
@@ -77,7 +77,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.PartnerID);
-            return View(new ViewDataContainer(poslovnica, viewData: new MainView()));
+            return View(new ViewDataContainer(poslovnica, new AdminView()));
         }
 
         // POST: Poslovnica/Edit/5
@@ -94,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_PartnerID = new SelectList(db.Partner, "PartnerID", "Naziv", poslovnica.PartnerID);
-            return View(new ViewDataContainer(poslovnica,new MainView()));
+            return View(new ViewDataContainer(poslovnica, new AdminView()));
         }
 
         // GET: Poslovnica/Delete/5
@@ -109,7 +109,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(poslovnica);
+            return View(new ViewDataContainer(poslovnica, new AdminView()));
         }
 
         // POST: Poslovnica/Delete/5

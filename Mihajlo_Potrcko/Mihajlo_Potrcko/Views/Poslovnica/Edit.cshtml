@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Components.ViewDataContainer<Mihajlo_Potrcko.Models.Poslovnica>
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Edit";
+    Poslovnica pageModel = Model.PageModel;
 }
 
 <h2>Edit</h2>
@@ -15,29 +17,29 @@
         <h4>Poslovnica</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.PageModel.PoslovnicaID)
+        @Html.HiddenFor(model => pageModel.PoslovnicaID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PageModel.Adresa, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Adresa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PageModel.Adresa, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PageModel.Adresa, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Adresa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Adresa, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PageModel.Broj_telefona, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Broj_telefona, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.PageModel.Broj_telefona, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.PageModel.Broj_telefona, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Broj_telefona, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Broj_telefona, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.PageModel.FK_PartnerID, "PartnerID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.PartnerID, "PartnerID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("PartnerID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.PageModel.FK_PartnerID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => pageModel.PartnerID, "", new { @class = "text-danger" })
             </div>
         </div>
 

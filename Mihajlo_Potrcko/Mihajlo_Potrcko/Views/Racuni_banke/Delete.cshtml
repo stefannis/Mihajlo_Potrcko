@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Racuni_banke
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Delete";
+    Racuni_banke pageModel = Model.PageModel;
 }
 
 <h2>Delete</h2>
@@ -12,35 +14,35 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Korisnik.Ime)
+            @Html.DisplayNameFor(model => pageModel.Korisnik.Ime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Korisnik.Ime)
+            @Html.DisplayFor(model => pageModel.Korisnik.Ime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Naziv_banke)
+            @Html.DisplayNameFor(model => pageModel.Naziv_banke)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Naziv_banke)
+            @Html.DisplayFor(model => pageModel.Naziv_banke)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Vlasnik_racuna)
+            @Html.DisplayNameFor(model => pageModel.Vlasnik_racuna)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Vlasnik_racuna)
+            @Html.DisplayFor(model => pageModel.Vlasnik_racuna)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Datum_isteka)
+            @Html.DisplayNameFor(model => pageModel.Datum_isteka)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Datum_isteka)
+            @Html.DisplayFor(model => pageModel.Datum_isteka)
         </dd>
 
     </dl>

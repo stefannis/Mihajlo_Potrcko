@@ -1,7 +1,10 @@
-﻿@model Mihajlo_Potrcko.Models.Artikal
+﻿@using System.Web.Configuration
+@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Artikal pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,32 +14,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Slika.Link)
+            @Html.DisplayNameFor(model => pageModel.Slika.Link)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Slika.Link)
+            @Html.DisplayFor(model => pageModel.Slika.Link)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NazivArtikla)
+            @Html.DisplayNameFor(model => pageModel.Naziv_artikla)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NazivArtikla)
+            @Html.DisplayFor(model => pageModel.Naziv_artikla)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CenaArtikla)
+            @Html.DisplayNameFor(model => pageModel.Cena_artikla)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.CenaArtikla)
+            @Html.DisplayFor(model => pageModel.Cena_artikla)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ArtikalId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = pageModel.ArtikalID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -36,14 +36,14 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(korisnik);
+            return View(new ViewDataContainer(korisnik, new AdminView()));
         }
 
         // GET: Korisnik/Create
         public ActionResult Create()
         {
             ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Korisnik/Create
@@ -61,7 +61,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.Broj_RacunaNB);
-            return View(korisnik);
+            return View(new ViewDataContainer(korisnik, new AdminView()));
         }
 
         // GET: Korisnik/Edit/5
@@ -77,7 +77,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.Broj_RacunaNB);
-            return View(korisnik);
+            return View(new ViewDataContainer(korisnik, new AdminView()));
         }
 
         // POST: Korisnik/Edit/5
@@ -94,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_Broj_RacunaNB = new SelectList(db.Nasa_banka, "Broj_racunaNB", "Broj_racunaNB", korisnik.Broj_RacunaNB);
-            return View(korisnik);
+            return View(new ViewDataContainer(korisnik, new AdminView()));
         }
 
         // GET: Korisnik/Delete/5
@@ -109,7 +109,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(korisnik);
+            return View(new ViewDataContainer(korisnik, new AdminView()));
         }
 
         // POST: Korisnik/Delete/5

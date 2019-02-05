@@ -52,7 +52,8 @@ namespace Mihajlo_Potrcko.Controllers
             return Redirect("/Login.cshtml");
         }
 
-        public ActionResult Signup()
+        // resenje za sliku i broj racuna nase banke?
+        public ActionResult Signup(string JMBG, string Ime, string Prezime, string Telefon, string Email, string Username, string Password)
         {
             return null;
         }

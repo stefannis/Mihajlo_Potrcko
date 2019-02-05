@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Zaposleni
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Edit";
+    Zaposleni pageModel = Model.PageModel;
 }
 
 <h2>Edit</h2>
@@ -15,21 +17,21 @@
         <h4>Zaposleni</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ZaposleniID)
+        @Html.HiddenFor(model => pageModel.ZaposleniID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.JMBG, "JMBG", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.JMBG, "JMBG", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("JMBG", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.JMBG, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => pageModel.JMBG, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Administrator, "Administrator", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Administrator, "Administrator", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("Administrator", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Administrator, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => pageModel.Administrator, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -36,14 +36,14 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(racuni_banke);
+            return View(new ViewDataContainer(racuni_banke, new AdminView()));
         }
 
         // GET: Racuni_banke/Create
         public ActionResult Create()
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Racuni_banke/Create
@@ -61,7 +61,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.JMBG);
-            return View(racuni_banke);
+            return View(new ViewDataContainer(racuni_banke, new AdminView()));
         }
 
         // GET: Racuni_banke/Edit/5
@@ -77,7 +77,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.JMBG);
-            return View(racuni_banke);
+            return View(new ViewDataContainer(racuni_banke, new AdminView()));
         }
 
         // POST: Racuni_banke/Edit/5
@@ -94,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", racuni_banke.JMBG);
-            return View(racuni_banke);
+            return View(new ViewDataContainer(racuni_banke, new AdminView()));
         }
 
         // GET: Racuni_banke/Delete/5
@@ -109,7 +109,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(racuni_banke);
+            return View(new ViewDataContainer(racuni_banke, new AdminView()));
         }
 
         // POST: Racuni_banke/Delete/5

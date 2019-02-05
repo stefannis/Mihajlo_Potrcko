@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Niz_Artikala_Racun
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Niz_Artikala_Racun pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,32 +13,32 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Artikal.Naziv_artikla)
+            @Html.DisplayNameFor(model => pageModel.Artikal.Naziv_artikla)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Artikal.Naziv_artikla)
+            @Html.DisplayFor(model => pageModel.Artikal.Naziv_artikla)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Racun.Adresa)
+            @Html.DisplayNameFor(model => pageModel.Racun.Adresa)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Racun.Adresa)
+            @Html.DisplayFor(model => pageModel.Racun.Adresa)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Kolicina)
+            @Html.DisplayNameFor(model => pageModel.Kolicina)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Kolicina)
+            @Html.DisplayFor(model => pageModel.Kolicina)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Niz_artikla_racunID }) |
+    @Html.ActionLink("Edit", "Edit", new { id = pageModel.Niz_artikla_racunID }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

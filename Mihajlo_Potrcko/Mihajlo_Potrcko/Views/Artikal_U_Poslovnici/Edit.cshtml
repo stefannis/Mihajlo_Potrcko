@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Artikal_U_Poslovnici
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Edit";
+    Artikal_U_Poslovnici pageModel = Model.PageModel;
 }
 
 <h2>Edit</h2>
@@ -15,11 +17,11 @@
         <h4>Artikal_U_Poslovnici</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Stanje)
+        @Html.HiddenFor(model => pageModel.Stanje)
 
-        @Html.HiddenFor(model => model.PoslovnicaID)
+        @Html.HiddenFor(model => pageModel.PoslovnicaID)
 
-        @Html.HiddenFor(model => model.ArtikalID)
+        @Html.HiddenFor(model => pageModel.ArtikalID)
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

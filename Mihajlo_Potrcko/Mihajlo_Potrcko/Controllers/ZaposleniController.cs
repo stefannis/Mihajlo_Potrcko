@@ -36,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(zaposleni);
+            return View(new ViewDataContainer(zaposleni, new AdminView()));
         }
 
         // GET: Zaposleni/Create
@@ -44,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
             ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Zaposleni/Create
@@ -63,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.JMBG);
             ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", zaposleni.Administrator);
-            return View(zaposleni);
+            return View(new ViewDataContainer(zaposleni, new AdminView()));
         }
 
         // GET: Zaposleni/Edit/5
@@ -80,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.JMBG);
             ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", zaposleni.Administrator);
-            return View(zaposleni);
+            return View(new ViewDataContainer(zaposleni, new AdminView()));
         }
 
         // POST: Zaposleni/Edit/5
@@ -98,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", zaposleni.JMBG);
             ViewBag.Administrator = new SelectList(db.Zaposleni, "ZaposleniID", "JMBG", zaposleni.Administrator);
-            return View(zaposleni);
+            return View(new ViewDataContainer(zaposleni, new AdminView()));
         }
 
         // GET: Zaposleni/Delete/5
@@ -113,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(zaposleni);
+            return View(new ViewDataContainer(zaposleni, new AdminView()));
         }
 
         // POST: Zaposleni/Delete/5

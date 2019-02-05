@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Artikal_U_Poslovnici
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Artikal_U_Poslovnici pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,19 +13,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Artikal.Naziv_artikla)
+            @Html.DisplayNameFor(model => pageModel.Artikal.Naziv_artikla)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Artikal.Naziv_artikla)
+            @Html.DisplayFor(model => pageModel.Artikal.Naziv_artikla)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Poslovnica.Adresa)
+            @Html.DisplayNameFor(model => pageModel.Poslovnica.Adresa)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Poslovnica.Adresa)
+            @Html.DisplayFor(model => pageModel.Poslovnica.Adresa)
         </dd>
 
     </dl>

@@ -14,9 +14,10 @@
 <body>
 @using (Html.BeginForm())
 {
+    @Html.AntiForgeryToken()
     <input type="text" name="Username" placeholder="Korisnicko ime"/>
     <input type="password" name="Password" placeholder="Lozinka"/>
-    <input type="submit" name="Potvrdi"/>
+    <input type="submit" name="Potvrdi" value="Potvrdi"/>
 }
 
 <p>@pageModel</p>

@@ -10,13 +10,18 @@
     var userType = false; //Querry baze podataka koristeci CurrentSessionData.JMBG da vidis da li je admin i staviti na false ako nije uopste ulogovan
 
     Potrcko db = new Potrcko();
-    
+
+    if (db.Zaposleni.Where(z => z.JMBG.Equals(CurrentSessionData.JMBG) && z.AdministratorOdZaposlenog.ZaposleniID.Equals(z.ZaposleniID)).Count() == 1)
+    {
+        userType = true;
+    }
 }
 @if (!Model.ViewData.IsAdmin)
 {
     if (userType)
     {
-        // Redirektujes ga na AdminHomePage
+        // druge opcije za redirect
+        Response.Redirect("~/Views/Admin/Index.cshtml");
     }
     <html>
     <head>
@@ -110,7 +115,7 @@ else
 {
     if (!userType)
     {
-        //Redirektujes ga na Home/Index.cshtml
+        Response.Redirect("~/Views/Home/Index.cshtml");
     }
     <html>
     <head>

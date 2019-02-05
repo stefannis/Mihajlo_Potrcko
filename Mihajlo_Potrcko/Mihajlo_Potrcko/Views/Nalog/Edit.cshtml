@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Nalog
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Edit";
+    Nalog pageModel = Model.PageModel;
 }
 
 <h2>Edit</h2>
@@ -15,37 +17,37 @@
         <h4>Nalog</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.NalogID)
+        @Html.HiddenFor(model => pageModel.NalogID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Username, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Username, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => pageModel.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => pageModel.Password, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.JMBG, "JMBG", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.JMBG, "JMBG", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("JMBG", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.JMBG, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => pageModel.JMBG, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.SlikaID, "SlikaID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => pageModel.SlikaID, "SlikaID", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("SlikaID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.SlikaID, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => pageModel.SlikaID, "", new { @class = "text-danger" })
             </div>
         </div>
 

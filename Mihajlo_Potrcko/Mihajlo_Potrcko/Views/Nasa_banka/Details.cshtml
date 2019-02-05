@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Nasa_banka
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Details";
+    Nasa_banka pageModel = Model.PageModel;
 }
 
 <h2>Details</h2>
@@ -11,24 +13,24 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Stanje_racuna)
+            @Html.DisplayNameFor(model => pageModel.Stanje_racuna)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Stanje_racuna)
+            @Html.DisplayFor(model => pageModel.Stanje_racuna)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Poslednja_uplata)
+            @Html.DisplayNameFor(model => pageModel.Poslednja_uplata)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Poslednja_uplata)
+            @Html.DisplayFor(model => pageModel.Poslednja_uplata)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Broj_racunaNB }) |
+    @Html.ActionLink("Edit", "Edit", new { id = pageModel.Broj_racunaNB }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

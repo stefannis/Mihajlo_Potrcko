@@ -1,7 +1,9 @@
-﻿@model Mihajlo_Potrcko.Models.Korisnik
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
     ViewBag.Title = "Delete";
+    Korisnik pageModel = Model.PageModel;
 }
 
 <h2>Delete</h2>
@@ -12,43 +14,43 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Nasa_banka.Broj_racunaNB)
+            @Html.DisplayNameFor(model => pageModel.Nasa_banka.Broj_racunaNB)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nasa_banka.Broj_racunaNB)
+            @Html.DisplayFor(model => pageModel.Nasa_banka.Broj_racunaNB)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Ime)
+            @Html.DisplayNameFor(model => pageModel.Ime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Ime)
+            @Html.DisplayFor(model => pageModel.Ime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Prezime)
+            @Html.DisplayNameFor(model => pageModel.Prezime)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Prezime)
+            @Html.DisplayFor(model => pageModel.Prezime)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Telefon)
+            @Html.DisplayNameFor(model => pageModel.Telefon)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Telefon)
+            @Html.DisplayFor(model => pageModel.Telefon)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.E_mail)
+            @Html.DisplayNameFor(model => pageModel.E_mail)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.E_mail)
+            @Html.DisplayFor(model => pageModel.E_mail)
         </dd>
 
     </dl>

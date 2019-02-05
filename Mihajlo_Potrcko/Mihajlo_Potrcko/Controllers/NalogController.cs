@@ -36,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(nalog, new MainView()));
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // GET: Nalog/Create
@@ -44,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
-            return View();
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Nalog/Create
@@ -63,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
-            return View(nalog);
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // GET: Nalog/Edit/5
@@ -80,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
-            return View(nalog);
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // POST: Nalog/Edit/5
@@ -98,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
-            return View(nalog);
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // GET: Nalog/Delete/5
@@ -113,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(nalog);
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // POST: Nalog/Delete/5
