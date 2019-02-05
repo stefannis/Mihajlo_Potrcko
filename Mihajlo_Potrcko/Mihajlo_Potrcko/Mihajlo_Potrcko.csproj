@@ -155,6 +155,7 @@
     <Compile Include="Controllers\Artikal_U_PoslovniciController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisnikController.cs" />
+    <Compile Include="Controllers\KorpaController.cs" />
     <Compile Include="Controllers\KupacController.cs" />
     <Compile Include="Controllers\MainViewController.cs" />
     <Compile Include="Controllers\NalogController.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Models\Artikal_U_Poslovnici.cs" />
     <Compile Include="Models\Home.cs" />
     <Compile Include="Models\Korisnik.cs" />
+    <Compile Include="Models\Korpa.cs" />
     <Compile Include="Models\Kupac.cs" />
     <Compile Include="Models\Nalog.cs" />
     <Compile Include="Models\Nasa_banka.cs" />
@@ -377,6 +379,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Korpa\" />
     <Folder Include="Views\MainView\" />
     <Folder Include="Views\Session\" />
   </ItemGroup>
