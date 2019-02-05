@@ -49,42 +49,5 @@ namespace Mihajlo_Potrcko.Connection
                 var temp = ex;
             }
         }
-
-        public static bool Reconnect(string databaseName, string address, string username, string password)
-        {
-            //TODO Povezivanje na bazu opet
-
-           
-           
-            return true;
-        }
-
-
-    }
-    
-    public enum TypeOfQuery
-    {
-        Insert = 0x00,
-        Update = 0x01,
-        Select = 0x02,
-    }
-
-
-    public static class EnumMethods
-    {
-        public static string GetStringFromTypeOfQuery(this TypeOfQuery query)
-        {
-            switch (query)
-            {
-                case TypeOfQuery.Insert:
-                    return "Insert";
-                case TypeOfQuery.Update:
-                    return "Update";
-                case TypeOfQuery.Select:
-                    return "Select";
-                default:
-                    return "???";
-            }
-        }
     }
 }

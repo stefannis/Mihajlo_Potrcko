@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.Connection;
 using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 
@@ -64,9 +67,15 @@ namespace Mihajlo_Potrcko.Controllers
             return View(new ViewDataContainer("",new MainView()));
 
         }
+        public ActionResult Signup(string message)
+        {
+            return View(new ViewDataContainer(message, new MainView()));
+
+        }
 
         // resenje za sliku i broj racuna nase banke?
-        public ActionResult Signup(string JMBG, string Ime, string Prezime, string Telefon, string Email, string Username, string Password)
+        public ActionResult Signup(string JMBG, string Ime, string Prezime, string Telefon, string Email,
+            string Username, string Password)
         {
             var db = new Potrcko();
             string AccountNumber;
@@ -74,6 +83,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return View(new ViewDataContainer("Postoji korisnik sa istim JMBG-om", new MainView()));
             }
+
             if (db.Korisnik.Where(korisnik => korisnik.E_mail.Equals(Email)).Count() > 0)
             {
                 return View(new ViewDataContainer("Postoji korisnik sa istim Email-om", new MainView()));
@@ -83,6 +93,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return View(new ViewDataContainer("Postoji korisnik sa istim Username-om", new MainView()));
             }
+
             // OVDE IDE QUERRY ZA INSERT U BAZU
             do
             {
@@ -91,6 +102,44 @@ namespace Mihajlo_Potrcko.Controllers
             } while (db.Korisnik.Where(
                          korisnik => korisnik.Broj_RacunaNB.Equals(AccountNumber)).Count() > 0);
 
+            try
+            {
+                string sql =
+                    "INSERT INTO Korisnik(JMBG,Ime,Prezime,Telefon,Email,FK_Broj_RacunaNB) VALUES(@param1,@param2,@param3,@param4,@param5,@param6)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, Konekcija.PKonekcija);
+                cmd.Parameters.Add("@param1", SqlDbType.VarChar, 13).Value = JMBG;
+                cmd.Parameters.Add("@param2", SqlDbType.VarChar, 20).Value = Ime;
+                cmd.Parameters.Add("@param3", SqlDbType.VarChar, 30).Value = Prezime;
+                cmd.Parameters.Add("@param4", SqlDbType.VarChar, 20).Value = Telefon;
+                cmd.Parameters.Add("@param5", SqlDbType.VarChar, 50).Value = Email;
+                cmd.Parameters.Add("@param6", SqlDbType.VarChar, 20).Value = AccountNumber;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return Signup("Failed to create new Korisnik");
+            }
+            try
+            {
+                string sql =
+                    "INSERT INTO Nalog(Username,Password,FK_JMBG,FK_SlikaID) VALUES(@param1,@param2,@param3,@param4)";
+
+
+                SqlCommand cmd = new SqlCommand(sql, Konekcija.PKonekcija);
+                cmd.Parameters.Add("@param1", SqlDbType.VarChar, 20).Value = Username;
+                cmd.Parameters.Add("@param2", SqlDbType.VarChar, 256).Value = Password;
+                cmd.Parameters.Add("@param3", SqlDbType.VarChar, 13).Value = JMBG;
+                cmd.Parameters.Add("@param4", SqlDbType.Int).Value = 0;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                return Signup("Failed to create new Nalog");
+            }
             return new HomeController().Index();
         }
 
