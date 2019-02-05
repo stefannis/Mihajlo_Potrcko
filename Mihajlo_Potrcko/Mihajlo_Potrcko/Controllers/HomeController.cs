@@ -34,11 +34,6 @@ namespace Mihajlo_Potrcko.Controllers
                                         .Any(part =>
                                             part.SlikaID.Equals(slika.SlikaID))).ToList();
 
-
-
-            
-
-
           return View(new ViewDataContainer(new Home
             {
                 ListaSlika = listaSlika,
