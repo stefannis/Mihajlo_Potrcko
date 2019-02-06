@@ -17,11 +17,11 @@
     }
 }
 @if (!Model.ViewData.IsAdmin)
-{
+{ 
     if (userType)
     {
         // druge opcije za redirect
-        Response.Redirect("~/Views/Admin/Index.cshtml");
+        Response.Redirect("~/Admin/Index.cshtml");
     }
     <html>
     <head>
@@ -95,11 +95,13 @@
                     </div><!-- .col-md-12 close -->
                 </div><!-- .row close -->
             </div><!-- .container close -->
-        </nav><!-- header close -->
-        <section id="hero-area">
-            <img class="img-responsive" runat="server" src="/Images/header.jpg" alt="">
-        </section>
-
+    </nav><!-- header close -->
+   @if(Model.ViewData.IsPicture)
+    {
+    <section id="hero-area">
+        <img class="img-responsive" runat="server" src="/Images/header.jpg" alt="">
+    </section>
+    }
         @RenderBody()
 
         <hr />
@@ -115,7 +117,7 @@ else
 {
     if (!userType)
     {
-        Response.Redirect("~/Views/Home/Index.cshtml");
+        Response.Redirect("~/");
     }
     <html>
     <head>
