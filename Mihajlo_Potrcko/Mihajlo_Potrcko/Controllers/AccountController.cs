@@ -94,7 +94,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return View(new ViewDataContainer("Postoji korisnik sa istim Username-om", new MainView()));
             }
 
-            // OVDE IDE QUERRY ZA INSERT U BAZU
+            
             do
             {
                 AccountNumber = GenerateRandomAccountNumber();
@@ -132,7 +132,7 @@ namespace Mihajlo_Potrcko.Controllers
                 cmd.Parameters.Add("@param1", SqlDbType.VarChar, 20).Value = Username;
                 cmd.Parameters.Add("@param2", SqlDbType.VarChar, 256).Value = Password;
                 cmd.Parameters.Add("@param3", SqlDbType.VarChar, 13).Value = JMBG;
-                cmd.Parameters.Add("@param4", SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@param4", SqlDbType.Int).Value = 1;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
