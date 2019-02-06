@@ -1,6 +1,7 @@
-﻿
+﻿@model Mihajlo_Potrcko.Components.ViewDataContainer
 @{
-    Layout = null;
+
+    string pageModel = Model.PageModel;
 }
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
     <title>Signup</title>
 </head>
 <body>
-@using (Html.BeginForm())
+@using (Html.BeginForm("ParseSignup","Account"))
 {
     @Html.AntiForgeryToken()
     <input type="text" name="Username" placeholder="Korisnicko ime"/>
@@ -24,5 +25,7 @@
 
     <input type="submit" name="Potvrdi" value="Potvrdi"/>
 }
+
+<p?>@pageModel</p?>
 </body>
 </html>

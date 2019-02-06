@@ -15,18 +15,14 @@ namespace Mihajlo_Potrcko.Controllers
     public class AccountController : Controller
     {
 
-        // GET: Account
-        public ActionResult Index()
+
+        public ActionResult Login(string message)
         {
-            return Login();
+           
+        return View(new ViewDataContainer(message ?? "", new MainView()));
         }
 
-        public ActionResult Login()
-        {
-            return View(new ViewDataContainer(null, new MainView()));
-        }
-
-        public ActionResult Login(string Username, string Password)
+        public ActionResult ParseLogin(string Username, string Password)
         {
             var db = new Potrcko();
             if ((db.Nalog.Where(nalog => nalog.Username.Equals(Username)).Count() == 1))
@@ -37,76 +33,80 @@ namespace Mihajlo_Potrcko.Controllers
                 if (Nalogs.Count() == 1)
                 {
                     MvcApplication.UserLogIn(Nalogs.First().JMBG, Session["brojSesije"].ToString());
-                    return new HomeController().Index();
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
-                    return View(new ViewDataContainer("Dobar user los password", new MainView()));
+                    return RedirectToAction("Login", new { message = "Pogresan password" });
                 }
             }
-
-            // ovde je false;
             if (Username == null)
             {
-                return View(new ViewDataContainer("", new MainView())); // inicijalna konstrukcija
+                return RedirectToAction("Login", new { message = "Username polje ne moze biti prazno" });
             }
 
-            return View(new ViewDataContainer("Ne postoji user", new MainView())); // sa podacima da je los login
+            return RedirectToAction("Login",new {message = "Username ne postoji"});
+
         }
 
         public ActionResult LogOut()
         {
             //LOGIKA KAD SE ODJAVI
             MvcApplication.Sessions.Where(a => a.Key.Equals(Session["brojSesije"].ToString())).First().Value.JMBG = "";
-            return Login();
+            return RedirectToAction("Login", new {message = "Uspesno ste se izlogovali"});
         }
 
-
-        public ActionResult Signup()
-        {
-            return View(new ViewDataContainer("",new MainView()));
-
-        }
         public ActionResult Signup(string message)
         {
-            return View(new ViewDataContainer(message, new MainView()));
+            // staviti na false da se ne vidi slika 
+            return View(new ViewDataContainer(message ?? " ", new MainView(true)));
 
         }
 
-        // resenje za sliku i broj racuna nase banke?
-        public ActionResult Signup(string JMBG, string Ime, string Prezime, string Telefon, string Email,
+        public ActionResult ParseSignup(string JMBG, string Ime, string Prezime, string Telefon, string Email,
             string Username, string Password)
         {
             var db = new Potrcko();
             string AccountNumber;
             if (db.Korisnik.Where(korisnik => korisnik.JMBG.Equals(JMBG)).Count() > 0)
             {
-                return View(new ViewDataContainer("Postoji korisnik sa istim JMBG-om", new MainView()));
+                return RedirectToAction("Signup", new {message = "Postoji korisnik sa istim JMBG-om"});
             }
-
             if (db.Korisnik.Where(korisnik => korisnik.E_mail.Equals(Email)).Count() > 0)
             {
-                return View(new ViewDataContainer("Postoji korisnik sa istim Email-om", new MainView()));
+                return RedirectToAction("Signup", new { message = "Postoji korisnik sa istim Email-om" });
             }
-
             if (db.Nalog.Where(nalog => nalog.Username.Equals(Username)).Count() > 0)
             {
-                return View(new ViewDataContainer("Postoji korisnik sa istim Username-om", new MainView()));
+                return RedirectToAction("Signup", new {message = "Postoji korisnik sa istim Username-om"});
             }
-
-            // OVDE IDE QUERRY ZA INSERT U BAZU
             do
             {
                 AccountNumber = GenerateRandomAccountNumber();
-
             } while (db.Korisnik.Where(
                          korisnik => korisnik.Broj_RacunaNB.Equals(AccountNumber)).Count() > 0);
-
             try
             {
                 string sql =
-                    "INSERT INTO Korisnik(JMBG,Ime,Prezime,Telefon,Email,FK_Broj_RacunaNB) VALUES(@param1,@param2,@param3,@param4,@param5,@param6)";
+                    "INSERT INTO Nasa_banka(Broj_racunaNB,Stanje_racuna,Poslednja_uplata) " +
+                    "VALUES(@param1,@param2,@param3)";
 
+                SqlCommand cmd = new SqlCommand(sql, Konekcija.PKonekcija);
+                cmd.Parameters.Add("@param1", SqlDbType.VarChar, 20).Value = AccountNumber;
+                cmd.Parameters.Add("@param2", SqlDbType.Decimal, 18).Value = 0;
+                cmd.Parameters.Add("@param3", SqlDbType.Date).Value = DateTime.Now.Date;
+                cmd.CommandType = CommandType.Text;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                RedirectToAction("Signup", new { message = string.Format("Failed to create new Account i  ako vas zanima da citate: {0}", ex.Message.ToString()) });
+            }
+            try
+            {
+                string sql =
+                    "INSERT INTO Korisnik(JMBG,Ime,Prezime,Telefon,E_mail,FK_Broj_RacunaNB) " +
+                    "VALUES(@param1,@param2,@param3,@param4,@param5,@param6)";
 
                 SqlCommand cmd = new SqlCommand(sql, Konekcija.PKonekcija);
                 cmd.Parameters.Add("@param1", SqlDbType.VarChar, 13).Value = JMBG;
@@ -117,33 +117,31 @@ namespace Mihajlo_Potrcko.Controllers
                 cmd.Parameters.Add("@param6", SqlDbType.VarChar, 20).Value = AccountNumber;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
+
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Signup("Failed to create new Korisnik");
+                RedirectToAction("Signup",new {message = string.Format("Failed to create new Korisnik i  ako vas zanima da citate: {0}",ex.Message.ToString()) });
             }
             try
             {
                 string sql =
-                    "INSERT INTO Nalog(Username,Password,FK_JMBG,FK_SlikaID) VALUES(@param1,@param2,@param3,@param4)";
-
-
+                    "INSERT INTO Nalog(Username,Password,FK_JMBG,FK_SlikaID) " +
+                    "VALUES(@param1,@param2,@param3,@param4)";
                 SqlCommand cmd = new SqlCommand(sql, Konekcija.PKonekcija);
                 cmd.Parameters.Add("@param1", SqlDbType.VarChar, 20).Value = Username;
                 cmd.Parameters.Add("@param2", SqlDbType.VarChar, 256).Value = Password;
                 cmd.Parameters.Add("@param3", SqlDbType.VarChar, 13).Value = JMBG;
-                cmd.Parameters.Add("@param4", SqlDbType.Int).Value = 0;
+                cmd.Parameters.Add("@param4", SqlDbType.Int).Value = 1;
                 cmd.CommandType = CommandType.Text;
                 cmd.ExecuteNonQuery();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                return Signup("Failed to create new Nalog");
+                return RedirectToAction("Signup",new {message = string.Format("Failed to create new Nalog i ako vas zanima da citate:",ex.Message.ToString())});
             }
-            return new HomeController().Index();
+            return RedirectToAction("Login", "Account",new {message = "Sada se mozete ulogovati"});
         }
-
-
 
         public string GenerateRandomAccountNumber()
         {

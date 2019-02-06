@@ -12,7 +12,7 @@
     <title>Login</title>
 </head>
 <body>
-@using (Html.BeginForm())
+@using (Html.BeginForm("ParseLogin","Account"))
 {
     @Html.AntiForgeryToken()
     <input type="text" name="Username" placeholder="Korisnicko ime"/>
