@@ -14,17 +14,15 @@ namespace Mihajlo_Potrcko.Controllers
 {
     public class AccountController : Controller
     {
-
+        Potrcko db = new Potrcko();
 
         public ActionResult Login(string message)
         {
-           
         return View(new ViewDataContainer(message ?? "", new MainView()));
         }
 
         public ActionResult ParseLogin(string Username, string Password)
         {
-            var db = new Potrcko();
             if ((db.Nalog.Where(nalog => nalog.Username.Equals(Username)).Count() == 1))
             {
                 var Nalogs = db.Nalog.Where(nalog =>
@@ -65,8 +63,8 @@ namespace Mihajlo_Potrcko.Controllers
 
         public ActionResult ParseSignup(string JMBG, string Ime, string Prezime, string Telefon, string Email,
             string Username, string Password)
-        {
-            var db = new Potrcko();
+        { 
+
             string AccountNumber;
             if (db.Korisnik.Where(korisnik => korisnik.JMBG.Equals(JMBG)).Count() > 0)
             {
