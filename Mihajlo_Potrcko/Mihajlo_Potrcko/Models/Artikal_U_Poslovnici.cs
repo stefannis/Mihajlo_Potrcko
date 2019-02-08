@@ -6,9 +6,9 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Artikal_U_Poslovnici : Tabela
+    public partial class Artikal_U_Poslovnici
     {
-        Artikal_U_Poslovnici() : base("")
+        Artikal_U_Poslovnici()
         {
 
         }

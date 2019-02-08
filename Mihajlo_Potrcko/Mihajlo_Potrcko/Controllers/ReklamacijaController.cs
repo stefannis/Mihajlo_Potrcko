@@ -123,6 +123,12 @@ namespace Mihajlo_Potrcko.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Reklamacije(string JMBG)
+        {
+            List<Reklamacija> listaReklamacija;
+            return View();
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
