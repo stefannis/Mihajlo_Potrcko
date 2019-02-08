@@ -6,9 +6,9 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Niz_Artikala_Racun : Tabela
+    public partial class Niz_Artikala_Racun 
     {
-        public Niz_Artikala_Racun():base("Niz_artikala_racunID")
+        public Niz_Artikala_Racun()
         {
         }
 

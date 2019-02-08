@@ -1,0 +1,33 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+
+@{
+    IEnumerable<Artikal> pageModel = Model.PageModel;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ListaArtikala</title>
+</head>
+<body>
+<table>
+@foreach (var item in pageModel)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slika.Link)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv_artikla)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cena_artikla)
+        </td>
+    </tr>
+}
+</table>
+</body>
+</html>

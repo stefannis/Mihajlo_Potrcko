@@ -6,9 +6,9 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Racuni_banke : Tabela
+    public partial class Racuni_banke
     {
-        public Racuni_banke():base("Broj_racuna")
+        public Racuni_banke()
         {
         }
 

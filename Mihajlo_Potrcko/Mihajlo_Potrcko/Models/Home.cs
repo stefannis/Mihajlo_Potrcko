@@ -8,9 +8,9 @@ using System.Web;
 
 namespace Mihajlo_Potrcko.Models
 {
-    public class Home : Tabela
+    public class Home
     {
-        public Home():base("")
+        public Home()
         {
             ListaSlika = new List<Slika>();
             ListaPoslovnica = new List<Poslovnica>();

@@ -6,10 +6,10 @@ namespace Mihajlo_Potrcko.Models
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Artikal")]
-    public partial class Artikal : Tabela
+    public partial class Artikal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Artikal():base("ArtikalID")
+        public Artikal()
         {
             Artikal_U_Poslovnici = new HashSet<Artikal_U_Poslovnici>();
             Niz_Artikala_Racun = new HashSet<Niz_Artikala_Racun>();

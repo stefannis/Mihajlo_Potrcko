@@ -1,0 +1,46 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+@{
+    Artikal pageModel = Model.PageModel;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+<div>
+    <h4>Artikal</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => pageModel.Slika.Link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => pageModel.Slika.Link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => pageModel.Naziv_artikla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => pageModel.Naziv_artikla)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => pageModel.Cena_artikla)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => pageModel.Cena_artikla)
+        </dd>
+
+    </dl>
+</div>
+</body>
+</html>

@@ -153,6 +153,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ArtikalController.cs" />
     <Compile Include="Controllers\Artikal_U_PoslovniciController.cs" />
+    <Compile Include="Controllers\ArtikliController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisnikController.cs" />
     <Compile Include="Controllers\KorpaController.cs" />
@@ -191,7 +192,6 @@
     <Compile Include="Models\Reklama.cs" />
     <Compile Include="Models\Reklamacija.cs" />
     <Compile Include="Models\Slika.cs" />
-    <Compile Include="Models\Tabela.cs" />
     <Compile Include="Models\Vozac.cs" />
     <Compile Include="Models\Zaposleni.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -375,6 +375,8 @@
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Artikli\ListaArtikala.cshtml" />
+    <Content Include="Views\Artikli\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

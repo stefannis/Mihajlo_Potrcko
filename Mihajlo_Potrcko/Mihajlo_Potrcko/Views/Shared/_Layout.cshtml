@@ -1,13 +1,21 @@
-﻿@using Mihajlo_Potrcko.Components
+﻿@using Microsoft.Ajax.Utilities
+@using Mihajlo_Potrcko.Components
 @using Mihajlo_Potrcko.Models
 @model Mihajlo_Potrcko.Components.ViewDataContainer
 <!DOCTYPE html>
 @{
     SessionDataContainer CurrentSessionData = MvcApplication.GetDataBySessionNumber(Session["brojSesije"].ToString());
 
-    //Pretpostavljamo da potoji sesija sa brojem Sesssion["brojSesije]
+
     //true == admin, false == normal or no user
-    var userType = false; //Querry baze podataka koristeci CurrentSessionData.JMBG da vidis da li je admin i staviti na false ako nije uopste ulogovan
+    var userType = false;
+
+    bool isLogged = false;
+
+    if (MvcApplication.GetNalogID(Session["brojSesije"].ToString()) != null)
+    {
+        isLogged = true;
+    }
 
     Potrcko db = new Potrcko();
 
@@ -20,8 +28,8 @@
 { 
     if (userType)
     {
-        // druge opcije za redirect
-        Response.Redirect("~/Admin/Index.cshtml");
+        
+        Response.Redirect(Url.Action("Index", "Admin"));
     }
     <html>
     <head>
@@ -81,12 +89,21 @@
                                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                                         <ul class="nav navbar-nav navbar-right" id="top-nav">
                                             <li>@Html.ActionLink("Početna", "Index", "Home")</li>
-                                            <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id=MvcApplication.GetNalogID(Session["brojSesije"].ToString()) }, null)</li>
+                                            
                                             <li><a href="#price">Prodavnice</a></li>
                                             <li><a href="#subscribe">Novi</a></li>
                                             <li><a href="#contact-us">Kontakt</a></li>
-                                            <li>@Html.ActionLink("Uloguj se", "Login", "Account")</li>
-                                            <li>@Html.ActionLink("Odjavi se", "LogOut", "Account")</li>
+                                            @if (isLogged)
+                                            {
+                                                <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id = MvcApplication.GetNalogID(Session["brojSesije"].ToString())}, null)</li>
+                                                <li>@Html.ActionLink("Odjavi se", "LogOut", "Account")</li>
+                                            }
+                                            else
+                                            {
+                                                <li>@Html.ActionLink("Uloguj se", "Login", "Account")</li>
+                                            }
+                                            
+
                                         </ul>
                                     </div><!-- /.navbar-collapse -->
                                 </div><!-- /.container-fluid -->
@@ -117,7 +134,7 @@ else
 {
     if (!userType)
     {
-        Response.Redirect("~/");
+        Response.Redirect(Url.Action("Index", "Home"));
     }
     <html>
     <head>

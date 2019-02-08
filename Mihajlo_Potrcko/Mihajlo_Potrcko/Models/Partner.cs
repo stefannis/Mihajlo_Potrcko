@@ -7,10 +7,10 @@ namespace Mihajlo_Potrcko.Models
     using System.Data.Entity.Spatial;
 
     [Table("Partner")]
-    public partial class Partner : Tabela,IComparable
+    public partial class Partner : IComparable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Partner():base("PartnerID")
+        public Partner()
         {
             Poslovnica = new HashSet<Poslovnica>();
         }
