@@ -38,8 +38,8 @@ namespace Mihajlo_Potrcko.Connection
             try
             {
                 _konekcija =
-                    new SqlConnection(
-                        @"data source=MIHAJLO\SQLEXPRESS;initial catalog=Mihajlo_Potrcko;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
+                    new SqlConnection(  
+                        @"data source=STEFANMARKOVIC;initial catalog=Mihajlo_Potrcko;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework");
 
                 //TODO popuniti podatake za bazu podataka
                 _konekcija.Open();

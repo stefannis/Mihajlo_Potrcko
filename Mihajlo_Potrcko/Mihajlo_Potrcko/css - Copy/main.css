@@ -1,7 +1,7 @@
 /* var text-decoration */
 @font-face {
   font-family: myfont;
-  src: url(../fonts/ufonts.com_tw-cen-mt.ttf);
+  src: url(/fonts/ufonts.com_tw-cen-mt.ttf);
 }
 /*--
     Common Css
@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0px;
+  margin: 0;
   font-family: myfont;
 }
 h1 {
@@ -35,7 +35,7 @@ p {
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  margin: 0px;
+  margin: 0;
   font-family: myfont;
 }
 ul {
@@ -60,7 +60,7 @@ a:active {
   top: 0;
   width: 100%;
   height: 100%;
-  background: url("../images/overlay-pattern.png") #000000;
+  background: url("/images/overlay-pattern.png") #000000;
   opacity: 0.3;
 }
 /*--
@@ -70,7 +70,7 @@ a:active {
   text-align: center;
   font-weight: 500;
   color: #2E2E2E;
-  padding: 40px 0px;
+  padding: 40px 0;
   position: relative;
 }
 .heading span {
@@ -94,7 +94,7 @@ a:active {
 .title {
   color: #2E2E2E;
   text-transform: uppercase;
-  padding: 30px 0px;
+  padding: 30px 0;
 }
 .title span {
   color: #FF5333;
@@ -122,7 +122,7 @@ a:active {
     header-img start Start
 --*/
 #hero-area {
-  position: relative;
+  position: relative
 }
 #hero-area:before {
   content: "";
@@ -133,7 +133,7 @@ a:active {
   top: 0;
   width: 100%;
   height: 100%;
-  background: url("../images/overlay-pattern.png") #000000;
+  background: url("/images/overlay-pattern.png") #000000;
   opacity: 0.3;
 }
 /*--
@@ -151,20 +151,20 @@ nav .block {
 }
 nav .block .navbar-default {
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   margin-bottom: 0;
   background: none;
 }
 nav .block .navbar-default .navbar-brand {
-  padding-left: 0px;
+  padding-left: 0;
 }
 nav .block .navbar-default .navbar-nav {
   padding-top: 10px;
 }
 nav .block .navbar-default .navbar-nav > li > a {
   color: #2E2E2E;
-  padding: 10px 0px;
-  margin: 0px 15px;
+  padding: 10px 0;
+  margin: 0 15px;
   font-size: 15px;
   text-transform: uppercase;
 }
@@ -188,8 +188,8 @@ nav .block .navbar-default .navbar-nav > li > a:hover:before {
 }
 nav .block .navbar-default .navbar-nav > li.current > a {
   color: #2E2E2E;
-  padding: 10px 0px;
-  margin: 0px 15px;
+  padding: 10px 0;
+  margin: 0 15px;
 }
 nav .block .navbar-default .navbar-nav > li.current > a:before {
   background-color: transparent;
@@ -215,7 +215,7 @@ nav .block .navbar-default .navbar-nav > .active > a:focus:before,
 nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   content: "";
   position: absolute;
-  bottom: 0px;
+  bottom: 0;
   width: 100%;
   height: 2px;
   background: #FF5333;
@@ -224,13 +224,13 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     slider Start
 --*/
 #slider {
-  padding: 50px 0px;
+  padding: 50px 0;
 }
 #slider .block {
-  padding: 0px 40px;
+  padding: 0 40px;
 }
 #slider .block .title {
-  padding: 0px ;
+  padding: 0 ;
 }
 #slider .block .owl-carousel {
   padding-top: 30px;
@@ -264,7 +264,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     about-us Start
 --*/
 #about-us {
-  padding: 100px 0px;
+  padding: 100px 0;
   background: #F6F6F6;
 }
 #about-us .block {
@@ -274,7 +274,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   color: #959595;
   font-size: 16px;
   line-height: 26px;
-  padding: 40px 0px;
+  padding: 40px 0;
 }
 /*--
     blog Start
@@ -282,7 +282,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 #blog {
   padding-top: 75px;
   padding-bottom: 100px;
-  background: url("../images/blog/blog-bg.jpg");
+  background: url("/images/blog/blog-bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -297,7 +297,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   top: 0;
   width: 100%;
   height: 100%;
-  background: url("../images/overlay-pattern.png") #000000;
+  background: url("/images/overlay-pattern.png") #000000;
   opacity: 0.3;
 }
 #blog .block .heading {
@@ -307,20 +307,23 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   padding-top: 40px;
 }
 #blog .block ul li {
-  overflow: hidden;
+    overflow: hidden;
   width: 50%;
   float: left;
   background: #fff;
   text-align: center;
   color: #959595;
-  transform: 1s;
+    -ms-transform: initial;
+    -webkit-transform: initial;
+    transform: initial;
 }
+
 #blog .block ul li:hover img {
   transform: scale(1.2) rotate(10deg);
 }
 #blog .block ul li h3 {
   color: #323232;
-  padding: 0px 40px 20px;
+  padding: 0 40px 20px;
   line-height: 26px;
   position: relative;
 }
@@ -398,14 +401,14 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   top: 50%;
   width: 30px;
   height: 30px;
-  margin-top: 0px;
+  margin-top: 0;
   background: #fff;
   transform: rotate(45deg);
 }
 #blog .block .btn-more-info {
   float: right;
   padding: 28px 102.5px;
-  border-radius: 0px;
+  border-radius: 0;
   background: #ff530a;
   color: #fff;
   border: 1px solid transparent ;
@@ -425,7 +428,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     price Start
 --*/
 #price {
-  padding: 70px 0px;
+  padding: 70px 0;
 }
 #price .block > p {
   color: #9D9D9D;
@@ -442,7 +445,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   margin: 0;
 }
 #price .block .pricing-list ul li {
-  padding: 21px 0px;
+  padding: 21px 0;
 }
 #price .block .pricing-list ul li .item .item-title {
   position: relative;
@@ -456,7 +459,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 #price .block .pricing-list ul li .item .item-title .border-bottom {
   position: absolute;
   top: 0;
-  width: 100%;
+  width: 70%;
   height: 1px;
   border: 1px dotted #C9C9C9;
   margin-top: 20px;
@@ -466,12 +469,12 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   color: #938463;
 }
 #price .block .pricing-list ul li .item p {
-  padding: 12px 0 0px;
+  padding: 12px 0 0;
   color: #949494;
 }
 #price .block .pricing-list .btn {
   padding: 28px 105px;
-  border-radius: 0px;
+  border-radius: 0;
   background: none;
   color: #FF4F02;
   border: 1px solid #FF4F02;
@@ -490,9 +493,9 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     subscribe Start
 --*/
 #subscribe {
-  padding: 100px 0px;
+  padding: 100px 0;
   text-align: center;
-  background: url("../images/subscribe-bg.jpg");
+  background: url("/images/subscribe-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -507,14 +510,14 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   top: 0;
   width: 100%;
   height: 100%;
-  background: url("../images/overlay-pattern.png") #000000;
+  background: url("/images/overlay-pattern.png") #000000;
   opacity: 0.3;
 }
 #subscribe .block h1.heading {
   color: #fff;
 }
 #subscribe .block p {
-  padding: 25px 0px;
+  padding: 25px 0;
   color: #fff;
   font-size: 18px;
 }
@@ -524,11 +527,11 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   opacity: 0.9;
   border: none;
   height: 65px;
-  border-radius: 0px;
+  border-radius: 0;
   font-size: 15px;
 }
 #subscribe .block form .input-group-addon {
-  padding: 0px;
+  padding: 0;
   border: none;
   background: none;
 }
@@ -536,7 +539,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   width: 212px;
   height: 65px;
   border: none;
-  border-radius: 0px;
+  border-radius: 0;
   background: #7EC3BB;
   color: #fff;
   font-weight: 600;
@@ -554,7 +557,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     contact-us Start
 --*/
 #contact-us {
-  padding: 70px 0px;
+  padding: 70px 0;
 }
 #contact-us .block .title {
   padding: 20px 0;
@@ -564,7 +567,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 }
 #contact-us .block form input {
   height: 48px;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   -webkit-transition: .3s all;
   -o-transition: .3s all;
@@ -575,7 +578,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 }
 #contact-us .block form textarea {
   height: 140px;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   -webkit-transition: .3s all;
   -o-transition: .3s all;
@@ -590,8 +593,8 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
   color: #fff;
   font-weight: 600;
   text-transform: uppercase;
-  border-radius: 0px;
-  border: 0px;
+  border-radius: 0;
+  border: 0;
   width: 512px;
   height: 50px;
   padding-top: 15px;
@@ -603,7 +606,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
     footer Start
 --*/
 #footer {
-  padding: 70px 0px;
+  padding: 70px 0;
 }
 #footer .block h3 {
   color: #2E2E2E;
@@ -686,7 +689,7 @@ nav .block .navbar-default .navbar-nav > .active > a:hover:before {
 --*/
 #footer-bottom {
   background: #E9E9E9;
-  padding: 20px 0px;
+  padding: 20px 0;
 }
 #footer-bottom p {
   text-align: center;

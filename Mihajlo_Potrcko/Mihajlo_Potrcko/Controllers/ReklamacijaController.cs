@@ -120,6 +120,7 @@ namespace Mihajlo_Potrcko.Controllers
             Reklamacija reklamacija = db.Reklamacija.Find(id);
             db.Reklamacija.Remove(reklamacija);
             db.SaveChanges();
+
             return RedirectToAction("Index");
         }
 

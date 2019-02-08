@@ -1,0 +1,24 @@
+.header, .container{
+	width: 100%;
+}
+.nav-bar{
+	width: 100%;
+	text-align: right;
+	height: 20px;
+	border-width: 2px;
+	border-style: solid;
+}
+.item, .cat{
+	float: left;
+	border-style: solid;
+	border-width: 2px;
+	width: 33%;
+	height: 100px;
+}
+.header-cat{
+	width: 100%;
+	border-width: 2px;
+	border-style: solid;
+	height: 100px;
+	text-align: center;
+}

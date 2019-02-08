@@ -8,12 +8,12 @@ $(document).ready(function(){
     paginationSpeed : 1000,
     navigation : true,
     navigationText : ["","<i class='fa fa-angle-right'></i>"],
-    slideSpeed : 800,
+    slideSpeed : 800
  });
 
 	$("#navigation").sticky({
-		topSpacing : 75,
-	});
+		topSpacing : 75
+    });
 
 	$('#nav').onePageNav({
 		currentClass: 'current',
@@ -30,6 +30,4 @@ $(document).ready(function(){
          scrollSpeed: 1200
     });
 //Initiat WOW JS
-    new WOW().init();
-
 });
