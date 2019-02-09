@@ -1,0 +1,49 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+@{
+    IEnumerable<Poslovnica> pageModel = Model.PageModel;
+
+    ViewBag.Title = "PoslovnicePoPartneru";
+}
+
+<h2>PoslovnicePoPartneru</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.First().Partner.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.First().Adresa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.First().Broj_telefona)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (Poslovnica item in pageModel) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Partner.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Broj_telefona)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.PoslovnicaID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.PoslovnicaID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.PoslovnicaID })
+            </td>
+        </tr>
+    }
+
+</table>
+
+

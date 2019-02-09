@@ -17,22 +17,13 @@ namespace Mihajlo_Potrcko.Controllers
 
         public ActionResult Index()
         {
-            var listaPoslovnica = db.Poslovnica.ToList();
-            listaPoslovnica.Sort();
-            listaPoslovnica = listaPoslovnica.Take(8).ToList();
+            var listaPartnera = db.Partner.ToList();
+            listaPartnera.Sort();
+            listaPartnera = listaPartnera.Take(8).ToList();
             
-            List<Slika> listaSlika = db.Slika.Where(slika =>
-                                                db.Partner.Where(partner =>
-                                                    db.Poslovnica.Any(poslovnica =>
-                                                        poslovnica.PartnerID == partner.PartnerID))
-                                        .Any(part =>
-                                            part.SlikaID.Equals(slika.SlikaID))).ToList();
+            
 
-          return View(new ViewDataContainer(new Home
-            {
-                ListaSlika = listaSlika,
-                ListaPoslovnica = listaPoslovnica
-            }, new MainView()));
+          return View(new ViewDataContainer(listaPartnera, new MainView()));
 
 
         }

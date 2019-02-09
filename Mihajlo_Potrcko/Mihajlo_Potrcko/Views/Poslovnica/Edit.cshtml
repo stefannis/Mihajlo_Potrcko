@@ -1,6 +1,5 @@
 ﻿@using Mihajlo_Potrcko.Models
 @model Mihajlo_Potrcko.Components.ViewDataContainer
-
 @{
     ViewBag.Title = "Edit";
     Poslovnica pageModel = Model.PageModel;
@@ -17,7 +16,7 @@
         <h4>Poslovnica</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => pageModel.PoslovnicaID)
+        @Html.HiddenFor(() => pageModel.PoslovnicaID);
 
         <div class="form-group">
             @Html.LabelFor(model => pageModel.Adresa, htmlAttributes: new { @class = "control-label col-md-2" })
