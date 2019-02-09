@@ -1,0 +1,51 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+@{
+    ViewBag.Title = "Index";
+    IDictionary<Artikal, IncInt> pageModel = Model.PageModel;
+}
+
+
+<body>
+<h3>Korpa</h3>
+
+<section id="price">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h1 class="heading wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">our <span>MENU</span> the <span>PRICE</span></h1>
+                    <p class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco </p>
+                    <div class="pricing-list">
+                        <div class="title">
+                            <h3>Featured <span>on the week</span></h3>
+                        </div>
+                        <ul>
+                            @foreach (var item in pageModel)
+                            {
+                                <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                                    <div class="item">
+                                        <div class="item-title">
+                                            <h2>@item.Key.Naziv_artikla</h2>
+                                            <div class="border-bottom"></div>
+                                            @{ var Mul = item.Key.Cena_artikla.AsDecimal() * item.Value.Quantity}
+                                            <span>@Mul</span>
+                                            <div style="width: 3.5%; float: right;"><input type="number" style="width: 100%; right: 0px;" value="@item.Value.Quantity"></div>
+                                        </div>
+                                        <p>Naruceno iz poslovnice: @item.Key.Artikal_U_Poslovnici.First().Poslovnica.Partner.Naziv</p>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
+                    </div>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- .row close -->
+    </div><!-- .containe close -->
+</section><!-- #price close -->
+
+
+
+</body>
+

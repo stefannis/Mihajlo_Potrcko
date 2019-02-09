@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.LayoutViews;
 
 namespace Mihajlo_Potrcko.Controllers
 {
@@ -14,7 +15,8 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Korpa
         public ActionResult Index()
         {
-            return View();
+            var korpa = sessionDataContainer.korpa.SadrzajKorpe;
+            return View(new ViewDataContainer(korpa, new MainView()));
         }
 
         public void Add(Artikal artikal, int kolicina)
