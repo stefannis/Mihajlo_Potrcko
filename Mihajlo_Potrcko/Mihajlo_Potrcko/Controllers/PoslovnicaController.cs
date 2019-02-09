@@ -13,7 +13,7 @@ using EntityState = System.Data.Entity.EntityState;
 
 namespace Mihajlo_Potrcko.Controllers
 {
-    public class PoslovnicaController : MainViewController
+    public class PoslovnicaController : Controller
     {
         private Potrcko db = new Potrcko();
 
@@ -21,7 +21,13 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var poslovnica = db.Poslovnica.Include(p => p.Partner);
-            return View(new ViewDataContainer(poslovnica.ToList(),new MainView()));
+            return View(new ViewDataContainer(poslovnica.ToList(),new AdminView()));
+        }
+
+        public ActionResult PoslovnicePoPartneru(int partnerID)
+        {
+            return View(new ViewDataContainer(db.Poslovnica.Where(poslovnica => poslovnica.PartnerID.Equals(partnerID)),
+                new AdminView()));
         }
 
         // GET: Poslovnica/Details/5

@@ -341,6 +341,11 @@
     <Content Include="Views\Racun\Details.cshtml" />
     <Content Include="Views\Racun\Edit.cshtml" />
     <Content Include="Views\Racun\Index.cshtml" />
+    <Content Include="Views\Racuni_banke\Create.cshtml" />
+    <Content Include="Views\Racuni_banke\Delete.cshtml" />
+    <Content Include="Views\Racuni_banke\Details.cshtml" />
+    <Content Include="Views\Racuni_banke\Edit.cshtml" />
+    <Content Include="Views\Racuni_banke\Index.cshtml" />
     <Content Include="Views\Reklama\Create.cshtml" />
     <Content Include="Views\Reklama\Delete.cshtml" />
     <Content Include="Views\Reklama\Details.cshtml" />
@@ -372,15 +377,11 @@
     <Content Include="Views\Account\Signup.cshtml" />
     <Content Include="Views\Artikli\ListaArtikala.cshtml" />
     <Content Include="Views\Artikli\Index.cshtml" />
-    <Content Include="Views\Korpa\Index.cshtml" />
-    <Content Include="Views\Racuni_banke\Create.cshtml" />
-    <Content Include="Views\Racuni_banke\Delete.cshtml" />
-    <Content Include="Views\Racuni_banke\Details.cshtml" />
-    <Content Include="Views\Racuni_banke\Edit.cshtml" />
-    <Content Include="Views\Racuni_banke\Index.cshtml" />
+    <Content Include="Views\Poslovnica\PoslovnicePoPartneru.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Korpa\" />
     <Folder Include="Views\MainView\" />
     <Folder Include="Views\Session\" />
   </ItemGroup>

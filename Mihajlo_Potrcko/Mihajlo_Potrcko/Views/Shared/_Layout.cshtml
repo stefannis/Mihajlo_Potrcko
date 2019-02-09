@@ -1,25 +1,19 @@
-﻿@using Microsoft.Ajax.Utilities
-@using Mihajlo_Potrcko.Components
+﻿@using Mihajlo_Potrcko.Components
 @using Mihajlo_Potrcko.Models
 @model Mihajlo_Potrcko.Components.ViewDataContainer
 <!DOCTYPE html>
 @{
-    SessionDataContainer CurrentSessionData = MvcApplication.GetDataBySessionNumber(Session["brojSesije"].ToString());
+    SessionDataContainer currentSessionData = MvcApplication.GetDataBySessionNumber(Session["brojSesije"].ToString());
 
 
     //true == admin, false == normal or no user
     var userType = false;
 
-    bool isLogged = false;
-
-    if (MvcApplication.GetNalogID(Session["brojSesije"].ToString()) != null)
-    {
-        isLogged = true;
-    }
+    bool isLogged = MvcApplication.GetNalogID(Session["brojSesije"].ToString()) != null;
 
     Potrcko db = new Potrcko();
 
-    if (db.Zaposleni.Where(z => z.JMBG.Equals(CurrentSessionData.JMBG) && z.AdministratorOdZaposlenog.ZaposleniID.Equals(z.ZaposleniID)).Count() == 1)
+    if (db.Zaposleni.Count(z => z.JMBG.Equals(currentSessionData.JMBG) && z.AdministratorOdZaposlenog.ZaposleniID.Equals(z.ZaposleniID)) == 1)
     {
         userType = true;
     }
@@ -29,7 +23,7 @@
     if (userType)
     {
         
-        Response.Redirect(Url.Action("Index", "Admin"));
+        Response.Redirect(Url.Action("Index", "Admin") ?? throw new InvalidOperationException());
     }
     <html>
     <head>
@@ -91,8 +85,8 @@
                                             <li>@Html.ActionLink("Početna", "Index", "Home")</li>
                                             
                                             <li><a href="#price">Prodavnice</a></li>
-                                            <li><a href="#subscribe">Novi</a></li>
-                                            <li><a href="#contact-us">Kontakt</a></li>
+                                            <li><a>Novi</a></li>
+                                            <li><a>Kontakt</a></li>
                                             @if (isLogged)
                                             {
                                                 <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id = MvcApplication.GetNalogID(Session["brojSesije"].ToString())}, null)</li>
@@ -134,7 +128,7 @@ else
 {
     if (!userType)
     {
-        Response.Redirect(Url.Action("Index", "Home"));
+        Response.Redirect(Url.Action("Index", "Home") ?? throw new InvalidOperationException());
     }
     <html>
     <head>

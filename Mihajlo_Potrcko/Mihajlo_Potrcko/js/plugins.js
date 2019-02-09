@@ -1533,7 +1533,7 @@ if (typeof Object.create !== "function") {
         beforeMove : false,
         afterMove : false,
         afterAction : false,
-        startDragging : false,
+        startDragging: false,
         afterLazyLoad: false
     };
 }(jQuery, window, document));
@@ -1662,7 +1662,7 @@ if (typeof Object.create !== "function") {
         },
         
         getHash: function($link) {
-            return $link.attr('href').split('#')[1];
+            return $link.attr('href');
         },
         
         getPositions: function() {
