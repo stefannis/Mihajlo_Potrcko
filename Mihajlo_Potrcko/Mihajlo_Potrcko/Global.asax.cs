@@ -90,21 +90,30 @@ namespace Mihajlo_Potrcko
             Session.Abandon();
         }
 
-        public static int? GetNalogID(string sessionNumber)
+        public static int? GetNalogId(string sessionNumber)
         {
-            var tmpSessionData = new SessionDataContainer();
-            if (Sessions.TryGetValue(sessionNumber, out tmpSessionData))
-            {
-                var db = new Potrcko();
-                var tmpNalogs = db.Nalog.Where(nalog => nalog.JMBG.Equals(tmpSessionData.JMBG));
+            if (!Sessions.TryGetValue(sessionNumber, out var tmpSessionData)) return null;
+            var db = new Potrcko();
+            var tmpNalogs = db.Nalog.Where(nalog => nalog.JMBG.Equals(tmpSessionData.JMBG));
 
-                if (tmpNalogs.Count() == 1)
-                {
-                    return tmpNalogs.First().NalogID;
-                }
-                return null;
+            if (tmpNalogs.Count() == 1)
+            {
+                return tmpNalogs.First().NalogID;
             }
             return null;
+        }
+
+        public static Korpa GetCurrentKorpa(string sessionNumber)
+        {
+            return !Sessions.TryGetValue(sessionNumber, out var tmpSessionData) ? null : tmpSessionData.korpa;
+        }
+
+        public static void SetCurrentKorpa(string sessionNumber, Korpa value)
+        {
+            if (Sessions.Count(session => session.Key.Equals(sessionNumber)) > 0)
+            {
+                Sessions.First(session => session.Key.Equals(sessionNumber)).Value.korpa.Set(value);
+            }
         }
 
     }

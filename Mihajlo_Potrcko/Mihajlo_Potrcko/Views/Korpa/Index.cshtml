@@ -1,11 +1,55 @@
-﻿
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
 @{
     ViewBag.Title = "Index";
+
+    Korpa pageModel = Model.PageModel;
 }
 
 <h2>Index</h2>
 
-@{
-    Html.RenderPartial("_");
-}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.SadrzajKorpe.First().KPartner.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.SadrzajKorpe.First().KArtikal.Naziv_artikla)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.SadrzajKorpe.First().IncInt.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => pageModel.SadrzajKorpe.First().KArtikal.Cena_artikla)
+        </th>
+        <th>
+            "Ukupna Cena"
+        </th>
+        <th></th>
+    </tr>
 
+    @foreach (var item in pageModel.SadrzajKorpe) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KPartner.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KArtikal.Naziv_artikla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncInt.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KArtikal.Cena_artikla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IncInt.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {item.KArtikal.ArtikalID, item.KPartner.PartnerID}) |
+                @Html.ActionLink("Delete", "Index", new {key = item.KArtikal})
+            </td>
+        </tr>
+    }
+
+</table>

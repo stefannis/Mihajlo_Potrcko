@@ -9,7 +9,7 @@
     //true == admin, false == normal or no user
     var userType = false;
 
-    bool isLogged = MvcApplication.GetNalogID(Session["brojSesije"].ToString()) != null;
+    bool isLogged = MvcApplication.GetNalogId(Session["brojSesije"].ToString()) != null;
 
     Potrcko db = new Potrcko();
 
@@ -89,7 +89,7 @@
                                             <li><a>Kontakt</a></li>
                                             @if (isLogged)
                                             {
-                                                <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id = MvcApplication.GetNalogID(Session["brojSesije"].ToString())}, null)</li>
+                                                <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id = MvcApplication.GetNalogId(Session["brojSesije"].ToString())}, null)</li>
                                                 <li>@Html.ActionLink("Odjavi se", "LogOut", "Account")</li>
                                             }
                                             else
