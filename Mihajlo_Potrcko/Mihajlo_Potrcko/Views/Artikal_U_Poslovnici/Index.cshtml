@@ -31,9 +31,9 @@
             @Html.DisplayFor(modelItem => item.Poslovnica.Adresa)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Edit", "Edit", new { idPoslovnice = item.PoslovnicaID, idArtikla = item.ArtikalID }) |
+            @Html.ActionLink("Details", "Details", new { idPoslovnice = item.PoslovnicaID, idArtikla = item.ArtikalID }) |
+            @Html.ActionLink("Delete", "Delete", new { idPoslovnice = item.PoslovnicaID, idArtikla = item.ArtikalID })
         </td>
     </tr>
 }

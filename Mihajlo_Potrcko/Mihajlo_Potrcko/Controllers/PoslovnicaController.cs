@@ -129,12 +129,6 @@ namespace Mihajlo_Potrcko.Controllers
                 new MainView()));
         }
 
-        public ActionResult PoslovnicePoKategoriji(string kategorija)
-        {
-            return View(new ViewDataContainer(db.Poslovnica.Where(poslovnica => poslovnica.Partner.Kategorija.Equals(kategorija)),
-                new MainView()));
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

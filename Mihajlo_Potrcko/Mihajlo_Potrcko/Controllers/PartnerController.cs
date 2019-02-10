@@ -123,6 +123,13 @@ namespace Mihajlo_Potrcko.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult PartneriPoKategoriji(string kategorija)
+        {
+            
+            return View(new ViewDataContainer(db.Partner.Where(par => par.Kategorija.Equals(kategorija)), new MainView()));
+        }
+
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -8,7 +8,7 @@ namespace Mihajlo_Potrcko.Models
 
     public partial class Artikal_U_Poslovnici
     {
-        Artikal_U_Poslovnici()
+        public Artikal_U_Poslovnici()
         {
 
         }
