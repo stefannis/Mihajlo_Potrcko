@@ -379,10 +379,13 @@
     <Content Include="Views\Artikli\Index.cshtml" />
     <Content Include="Views\Poslovnica\PoslovnicePoPartneru.cshtml" />
     <Content Include="Views\Poslovnica\_EditPostForm.cshtml" />
+    <Content Include="Views\Partial\_MenuItem.cshtml" />
+    <Content Include="Views\Partial\_Blog.cshtml" />
+    <Content Include="Views\Partial\_Slider.cshtml" />
+    <Content Include="Views\Korpa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Korpa\" />
     <Folder Include="Views\MainView\" />
     <Folder Include="Views\Session\" />
   </ItemGroup>

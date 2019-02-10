@@ -1,0 +1,33 @@
+﻿@using Mihajlo_Potrcko.Models
+@model IEnumerable<Mihajlo_Potrcko.Models.Partner>
+
+<section id="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h1 class="heading">
+                        <span>Restorani</span><span></span>
+                    </h1>
+                    <ul>
+                        @foreach (Partner partner in Model.Where(partner => partner.Kategorija.Equals("Hrana")).Take(6))
+                        {
+                            <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
+
+                                <a href=@Url.Action("PoslovnicePoPartneru", "Poslovnica", new {partnerID = partner.PartnerID})>
+                                    <div class="blog-img">
+                                        <img src="/images/@partner.Slika.Link" alt=":(">
+                                    </div>
+                                    <div class="content-right">
+                                        <h3>@partner.Naziv</h3>
+                                        <p> Since: @partner.Datum_pocetka_poslovanja</p>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- .row close -->
+    </div><!-- .containe close -->
+</section>
