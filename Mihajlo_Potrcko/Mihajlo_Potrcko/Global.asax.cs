@@ -115,6 +115,14 @@ namespace Mihajlo_Potrcko
                 Sessions.First(session => session.Key.Equals(sessionNumber)).Value.korpa.Set(value);
             }
         }
-
+        public static void UpdateKorpa(string sessionNumber,int key, KorpaContainer value)
+        {
+            if (Sessions.Count(session => session.Key.Equals(sessionNumber)) > 0)
+            {
+                Sessions.First(
+                    session => session.Key.Equals(sessionNumber)).Value.korpa.SadrzajKorpe.First(
+                    container => container.Key.Equals(key)).Value.Update(value);
+            }
+        }
     }
 }

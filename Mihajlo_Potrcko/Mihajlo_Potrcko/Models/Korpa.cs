@@ -6,11 +6,24 @@ namespace Mihajlo_Potrcko.Models
 {
     public class Korpa
     {
-        public List<KorpaContainer> SadrzajKorpe { get; private set; }
+        public Dictionary<int,KorpaContainer> SadrzajKorpe { get; private set; }
+
+        private readonly object LockObject = new object();
+        private int _indexCounter = 0;
+        public int IndexCounter
+        {
+            get
+            {
+                lock (LockObject)
+                {
+                    return _indexCounter++;
+                }
+            }
+        }
 
         public Korpa()
         {
-            SadrzajKorpe = new List<KorpaContainer>();
+            SadrzajKorpe = new Dictionary<int, KorpaContainer>();
             var db = new Potrcko();
             var rand = new Random();
             foreach (Partner partner in db.Partner)
@@ -21,7 +34,7 @@ namespace Mihajlo_Potrcko.Models
                     {
                         var tmpArtikal =
                             db.Artikal.First(artikal => artikal.ArtikalID.Equals(artikalUPoslovnici.ArtikalID));
-                        SadrzajKorpe.Add(new KorpaContainer()
+                        SadrzajKorpe.Add(IndexCounter,new KorpaContainer()
                         {
                             KPartner = partner,
                             KArtikal = tmpArtikal,
@@ -36,16 +49,34 @@ namespace Mihajlo_Potrcko.Models
 
         public void Set(Korpa value)
         {
-            SadrzajKorpe = new List<KorpaContainer>();
+            SadrzajKorpe =new Dictionary<int, KorpaContainer>();
 
             foreach (var dic in value.SadrzajKorpe)
             {
-                SadrzajKorpe.Add(new KorpaContainer()
+                SadrzajKorpe.Add(dic.Key,new KorpaContainer()
                 {
-                    KPartner = dic.KPartner,
-                    KArtikal = dic.KArtikal,
-                    IncInt = dic.IncInt,
+                    KPartner = dic.Value.KPartner,
+                    KArtikal = dic.Value.KArtikal,
+                    IncInt = dic.Value.IncInt,
                 });
+            }
+        }
+
+        public void Update(int index,KorpaContainer value)
+        {
+            if (SadrzajKorpe.ContainsKey(index))
+            {
+                SadrzajKorpe.First(container => container.Key.Equals(index)).Value.Update(value);
+                return;
+            }
+           SadrzajKorpe.Add(index,value);
+        }
+
+        public void Remove(int key)
+        {
+            if (SadrzajKorpe.ContainsKey(key))
+            {
+                SadrzajKorpe.Remove(key);
             }
         }
     }
@@ -55,6 +86,13 @@ namespace Mihajlo_Potrcko.Models
         public Partner KPartner { get; set; }
         public Artikal KArtikal { get; set; }
         public IncInt IncInt   { get; set; }
+
+        public void Update(KorpaContainer value)
+        {
+            KPartner = value.KPartner;
+            KArtikal = value.KArtikal;
+            IncInt = value.IncInt;
+        }
     }
 
     public struct IncInt

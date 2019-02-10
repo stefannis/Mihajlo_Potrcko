@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Mihajlo_Potrcko.Components;
 using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
@@ -20,23 +21,28 @@ namespace Mihajlo_Potrcko.Controllers
                 new MainView()));
         }
 
-
-        public ActionResult Edit(int? artikalId, int? partnerId)
+        [RequireRequestValue("key")]
+        public ActionResult Edit(int? key)
         {
             var db = new Potrcko();
-            if (artikalId == null || partnerId == null)
+            if (key == null)
+            {
+                return HttpNotFound();
+            }
+            var currentKorpa = MvcApplication.GetCurrentKorpa(Session["brojSesije"].ToString());
+
+            return View(new ViewDataContainer(currentKorpa.SadrzajKorpe.First(sadrzaj => sadrzaj.Key.Equals(key)), new MainView()));
+        }
+
+        public ActionResult Edit(KeyValuePair<int,KorpaContainer> ?pair)
+        {
+            if (pair.HasValue)
             {
                 return HttpNotFound();
             }
 
-            var currentKorpa = MvcApplication.GetCurrentKorpa(Session["brojSesije"].ToString());
-
-
-            return View(new ViewDataContainer(currentKorpa.SadrzajKorpe.First(
-                sadrzaj => sadrzaj.KArtikal.ArtikalID.Equals(artikalId)
-                           &&
-                           sadrzaj.KPartner.PartnerID.Equals(partnerId)
-            ), new MainView()));
+            MvcApplication.UpdateKorpa(Session["brojSesije"].ToString(), pair.Value.Key,pair.Value.Value);
+            return RedirectToAction("Index");
         }
 //        // GET: Korisnik/Edit/5
 //        public ActionResult Edit(string id)

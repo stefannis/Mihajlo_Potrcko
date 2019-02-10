@@ -1,14 +1,13 @@
-﻿@model Mihajlo_Potrcko.Components.ViewDataContainer
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+@{
+    ViewBag.Title = "Edit";
 
-<!DOCTYPE html>
+    KeyValuePair<int, KorpaContainer> ?pageModel = Model.PageModel;
+}
 
-<html>
-<head>
-    <title>title</title>
-</head>
-<body>
-<div>
-      
-</div>
-</body>
-</html>
+<h2>Edit</h2>
+
+@{
+    Html.RenderPartial("_Form", pageModel);
+}

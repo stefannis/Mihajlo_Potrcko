@@ -146,6 +146,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Components\RequireRequestValueAttribute.cs" />
     <Compile Include="Components\SessionDataContainer.cs" />
     <Compile Include="Components\ViewDataContainer.cs" />
     <Compile Include="Connection\Konekcija.cs" />
@@ -400,6 +401,7 @@
     <Content Include="Views\Partial\_Blog.cshtml" />
     <Content Include="Views\Partial\_MenuItem.cshtml" />
     <Content Include="Views\Partial\_Slider.cshtml" />
+    <Content Include="Views\Korpa\_Form.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
