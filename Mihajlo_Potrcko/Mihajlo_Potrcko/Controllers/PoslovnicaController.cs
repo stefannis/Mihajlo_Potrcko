@@ -24,12 +24,6 @@ namespace Mihajlo_Potrcko.Controllers
             return View(new ViewDataContainer(poslovnica.ToList(),new AdminView()));
         }
 
-        public ActionResult PoslovnicePoPartneru(int partnerID)
-        {
-            return View(new ViewDataContainer(db.Poslovnica.Where(poslovnica => poslovnica.PartnerID.Equals(partnerID)),
-                new AdminView()));
-        }
-
         // GET: Poslovnica/Details/5
         public ActionResult Details(int? id)
         {
@@ -127,6 +121,18 @@ namespace Mihajlo_Potrcko.Controllers
             db.Poslovnica.Remove(poslovnica);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult PoslovnicePoPartneru(int partnerID)
+        {
+            return View(new ViewDataContainer(db.Poslovnica.Where(poslovnica => poslovnica.PartnerID.Equals(partnerID)),
+                new MainView()));
+        }
+
+        public ActionResult PoslovnicePoKategoriji(string kategorija)
+        {
+            return View(new ViewDataContainer(db.Poslovnica.Where(poslovnica => poslovnica.Partner.Kategorija.Equals(kategorija)),
+                new MainView()));
         }
 
         protected override void Dispose(bool disposing)

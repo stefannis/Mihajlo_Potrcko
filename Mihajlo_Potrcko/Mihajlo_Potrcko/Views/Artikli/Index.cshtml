@@ -4,43 +4,74 @@
     Artikal pageModel = Model.PageModel;
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
 <body>
-<div>
-    <h4>Artikal</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => pageModel.Slika.Link)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => pageModel.Slika.Link)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => pageModel.Naziv_artikla)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => pageModel.Naziv_artikla)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => pageModel.Cena_artikla)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => pageModel.Cena_artikla)
-        </dd>
-
-    </dl>
-</div>
-</body>
-</html>
+    @if (pageModel != null)
+    {
+        //using (Html.BeginForm("Add", "Korpa"))
+        //{
+            <section id="blog">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <ul>
+                                    <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
+                                        <div class="blog-img">
+                                            <img src="/images/@pageModel.Slika.Link" alt=":(">
+                                        </div>
+                                        <div class="content-right">
+                                            <h3>@pageModel.Naziv_artikla</h3>
+                                            <p></p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- .col-md-12 close -->
+                    </div><!-- .row close -->
+                </div><!-- .containe close -->
+            </section>
+            <!-- #blog close -->
+            <section id="price">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="block">
+                                <div class="pricing-list">
+                                    <ul>
+                                        <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                                            <div class="item">
+                                                <div class="item-title">
+                                                    <h2>Cena artikla</h2>
+                                                    <div class="border-bottom"></div>
+                                                    <span>@pageModel.Cena_artikla</span><br />
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="400ms">
+                                            <div class="item">
+                                                <div class="item-title">
+                                                    <h2>Kolicina artikla:</h2>
+                                                    <div class="border-bottom"></div>
+                                                    <span>
+                                                        <span>
+                                                            <div style="width: 27%; float: right;"><input type="number" style="width: 100%; right: 0px;"></div>
+                                                        </span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div><!-- .col-md-12 close -->
+                    </div><!-- .row close -->
+                </div><!-- .containe close -->
+            </section>
+    <!-- #price close -->
+        //}
+    }
+    else
+    {
+        <h2>Trenutno nema registrovanih poslovnica u odabranoj kategoriji</h2>
+    }
+}

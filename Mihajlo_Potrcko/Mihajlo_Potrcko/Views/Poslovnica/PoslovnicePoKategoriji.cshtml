@@ -3,12 +3,12 @@
 @{
     IEnumerable<Poslovnica> pageModel = Model.PageModel;
 
-    ViewBag.Title = "Pretraga poslovnica po partneru";
+    ViewBag.Title = "Pretraga poslovnica po kategoriji";
 }
 <body>
     @if (pageModel.Count() > 0)
     {
-        <h2>Pretraga poslovnica po partneru: @pageModel.First().Partner.Naziv</h2>
+        <h2>Pretraga poslovnica po kategoriji: @pageModel.First().Partner.Kategorija</h2>
 
         <section id="blog">
             <div class="container">
@@ -45,6 +45,7 @@
     }
     else
     {
-        <h2>Trazeni prodavac trenutno nema ni jednu registrovanu poslovnicu</h2>
+        <h2>Trenutno nema registrovanih poslovnica u odabranoj kategoriji</h2>
     }
 </body>
+
