@@ -399,7 +399,7 @@
     <Content Include="Views\Zaposleni\_PostForm.cshtml" />
     <Content Include="Views\Korpa\Edit.cshtml" />
     <Content Include="Views\Partial\_Blog.cshtml" />
-    <Content Include="Views\Partial\_MenuItem.cshtml" />
+    <Content Include="Views\Racun\_Racuni.cshtml" />
     <Content Include="Views\Partial\_Slider.cshtml" />
     <Content Include="Views\Korpa\_Form.cshtml" />
   </ItemGroup>

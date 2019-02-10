@@ -1,0 +1,18 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Int32
+
+@{
+    Potrcko db = new Potrcko();
+}
+
+@using (Html.BeginForm("addReklamaciju", "Reklamacija"))
+{
+    <label for="racunID">Broj racuna: </label>
+    <input readonly type="text" value="@Model" name="racunID"/>
+    <br/>
+    <label for="opis">Opis reklamacije</label>
+    <br/>
+    <input type="text" name="opis" height="100px" width="50px"/>
+    <br/>
+    <input type="submit" name="Potvrdi" value="Potvrdi"/>
+}

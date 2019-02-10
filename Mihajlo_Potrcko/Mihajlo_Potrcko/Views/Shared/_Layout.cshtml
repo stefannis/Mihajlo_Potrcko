@@ -19,11 +19,10 @@
     }
 }
 @if (!Model.ViewData.IsAdmin)
-{ 
+{
     if (userType)
     {
-        
-        Response.Redirect(Url.Action("Index", "Admin") ?? throw new InvalidOperationException());
+            Response.Redirect(Url.Action("Index", "Admin"));
     }
     <html>
     <head>
@@ -76,7 +75,7 @@
                                             <span class="icon-bar"></span>
                                         </button>
                                         <a class="navbar-brand" href="#">
-                                            <img src="~/Images/logo.png" runat="server" alt="Logo">
+                                            <img src="/images/logo.png" alt="Logo">
                                         </a>
                                     </div>
                                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -90,6 +89,7 @@
                                             @if (isLogged)
                                             {
                                                 <li>@Html.ActionLink("Nalog", "Details", "Nalog", new {id = MvcApplication.GetNalogId(Session["brojSesije"].ToString())}, null)</li>
+                                                <li>@Html.ActionLink("Racuni", "RacunKorisnika","Racun", new {JMBG = currentSessionData.JMBG}, null)</li>
                                                 <li>@Html.ActionLink("Odjavi se", "LogOut", "Account")</li>
                                             }
                                             else
@@ -110,7 +110,7 @@
    @if(Model.ViewData.IsPicture)
     {
     <section id="hero-area">
-        <img class="img-responsive" runat="server" src="/Images/header.jpg" alt="">
+        <img class="img-responsive" src="/Images/header.jpg" alt="">
     </section>
     }
         @RenderBody()
@@ -128,7 +128,7 @@ else
 {
     if (!userType)
     {
-        Response.Redirect(Url.Action("Index", "Home") ?? throw new InvalidOperationException());
+        Response.Redirect(Url.Action("Index", "Home"));
     }
     <html>
     <head>

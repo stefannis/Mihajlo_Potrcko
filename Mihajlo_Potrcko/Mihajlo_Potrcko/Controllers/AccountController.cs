@@ -50,7 +50,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult LogOut()
         {
             MvcApplication.Sessions.Where(a => a.Key.Equals(Session["brojSesije"].ToString())).First().Value.JMBG = "";
-            return RedirectToAction("Login", new {message = "Uspesno ste se izlogovali"});
+            return RedirectToAction("Login","Account", new {message = "Uspesno ste se izlogovali"});
         }
 
         public ActionResult Signup(string message)

@@ -1,0 +1,18 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+@{
+    ViewBag.Title = "Racuni";
+    IEnumerable<Racun> pageModel = Model.PageModel;
+}
+
+@if (pageModel.Any())
+{
+    <h3>Vasi racuni</h3>
+    Html.RenderPartial("_Racuni", pageModel);
+
+}
+else
+{
+    <h2>Trenutno nemate ni jedan racun</h2>
+}
+

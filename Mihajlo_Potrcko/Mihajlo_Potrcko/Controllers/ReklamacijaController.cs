@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Mihajlo_Potrcko.Components;
+using Mihajlo_Potrcko.Connection;
 using Mihajlo_Potrcko.LayoutViews;
 using Mihajlo_Potrcko.Models;
 using EntityState = System.Data.Entity.EntityState;
@@ -21,7 +23,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var reklamacija = db.Reklamacija.Include(r => r.Racun);
-            return View(new ViewDataContainer(reklamacija.ToList(), new MainView()));
+            return View(new ViewDataContainer(reklamacija.ToList(), new AdminView()));
         }
 
         // GET: Reklamacija/Details/5
@@ -36,16 +38,15 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(reklamacija, new MainView()));
+            return View(new ViewDataContainer(reklamacija, new AdminView()));
         }
 
         // GET: Reklamacija/Create
         public ActionResult Create()
         {
-            ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa");
-            return View(new ViewDataContainer(null, new MainView()));
+            ViewBag.FK_RacunID  = new SelectList(db.Racun, "RacunID", "Adresa");
+            return View(new ViewDataContainer(null, new AdminView()));
         }
-
         // POST: Reklamacija/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -61,7 +62,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
 
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
-            return View(new ViewDataContainer(reklamacija, new MainView()));
+            return View(new ViewDataContainer(reklamacija, new AdminView()));
         }
 
         // GET: Reklamacija/Edit/5
@@ -77,7 +78,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return HttpNotFound();
             }
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
-            return View(new ViewDataContainer(reklamacija, new MainView()));
+            return View(new ViewDataContainer(reklamacija, new AdminView()));
         }
 
         // POST: Reklamacija/Edit/5
@@ -94,7 +95,7 @@ namespace Mihajlo_Potrcko.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.FK_RacunID = new SelectList(db.Racun, "RacunID", "Adresa", reklamacija.RacunID);
-            return View(new ViewDataContainer(reklamacija, new MainView()));
+            return View(new ViewDataContainer(reklamacija, new AdminView()));
         }
 
         // GET: Reklamacija/Delete/5
@@ -109,7 +110,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(reklamacija, new MainView()));
+            return View(new ViewDataContainer(reklamacija, new AdminView()));
         }
 
         // POST: Reklamacija/Delete/5
@@ -124,12 +125,39 @@ namespace Mihajlo_Potrcko.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Reklamacije(string JMBG)
+        
+        public ActionResult novaReklamacija(int racunID)
         {
-            List<Reklamacija> listaReklamacija;
-            return View();
+            return View(new ViewDataContainer(racunID, new MainView()));
         }
 
+        public ActionResult addReklamaciju(string racunID, string opis)
+        {
+            if (racunID != null)
+            {
+                int idRacuna = int.Parse(racunID);
+                try
+                {
+                    string sql =
+                        "INSERT INTO Reklamacija (FK_RacunID, Opis) VALUES(@param1, @param2)"; 
+
+                    SqlCommand cmd = new SqlCommand(sql, Konekcija.PKonekcija);
+                    cmd.Parameters.Add("@param1", SqlDbType.Int).Value = idRacuna;
+                    cmd.Parameters.Add("@param2", SqlDbType.VarChar, 256).Value = opis;
+                    cmd.CommandType = CommandType.Text;
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            
+            return RedirectToAction("Index", "Home");
+        }
+        //public ActionResult addReklamaciju(int racunID, string opis)
+        //{
+        //    Reklamacija reklamacija = new Reklamacija() {};
+        //}
         protected override void Dispose(bool disposing)
         {
             if (disposing)
