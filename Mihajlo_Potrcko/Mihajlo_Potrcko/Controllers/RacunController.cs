@@ -127,6 +127,11 @@ namespace Mihajlo_Potrcko.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult RacunKorisnika(string JMBG)
+        {
+            return View(new ViewDataContainer(db.Racun.Where(rac => rac.Kupac.JMBG.Equals(JMBG)).ToList(), new MainView()));
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
