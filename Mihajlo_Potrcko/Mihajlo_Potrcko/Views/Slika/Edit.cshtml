@@ -2,43 +2,13 @@
 @model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Slika";
     Slika pageModel = Model.PageModel;
-}
+    if (pageModel == null)
+    {
+        pageModel = new Slika();
+    }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Slika</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => pageModel.SlikaID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => pageModel.Link, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => pageModel.Link, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => pageModel.Link, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <h2>Izmeni sliku</h2>
+    Html.RenderPartial("_PostForm", pageModel);
 }

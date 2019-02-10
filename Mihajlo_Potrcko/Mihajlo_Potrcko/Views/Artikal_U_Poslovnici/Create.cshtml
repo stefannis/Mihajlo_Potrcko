@@ -2,59 +2,13 @@
 @model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Artikli u poslovnici";
     Artikal_U_Poslovnici pageModel = Model.PageModel;
-}
+    if (pageModel == null)
+    {
+        pageModel = new Artikal_U_Poslovnici();
+    }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Artikal_U_Poslovnici</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => pageModel.Stanje, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => pageModel.Stanje)
-                    @Html.ValidationMessageFor(model => pageModel.Stanje, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => pageModel.PoslovnicaID, "PoslovnicaID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("PoslovnicaID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => pageModel.PoslovnicaID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => pageModel.ArtikalID, "ArtikalID", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ArtikalID", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => pageModel.ArtikalID, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <h2>Dodaj novi artikal u poslovnicu</h2>
+    Html.RenderPartial("_PostForm", pageModel);
 }

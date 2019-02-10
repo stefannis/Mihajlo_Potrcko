@@ -20,23 +20,27 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Artikal_U_Poslovnici
         public ActionResult Index()
         {
-            var artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Include(a => a.Artikal).Include(a => a.Poslovnica);
-            return View(new ViewDataContainer(artikal_U_Poslovnici.ToList(), new AdminView()));
+            var artikalUPoslovnici = db.Artikal_U_Poslovnici.Include(a => a.Artikal).Include(a => a.Poslovnica);
+            return View(new ViewDataContainer(artikalUPoslovnici.ToList(), new AdminView()));
         }
 
         // GET: Artikal_U_Poslovnici/Details/5
-        public ActionResult Details(bool? id)
+        public ActionResult Details(int? idPoslovnice, int? idArtikla)
         {
-            if (id == null)
+            if (idPoslovnice == null || idArtikla == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
-            if (artikal_U_Poslovnici == null)
+            var poslovnicaId = (int)idPoslovnice;
+            var artikalId = (int)idArtikla;
+            var artikalUPoslovnici = db.Artikal_U_Poslovnici.First(aup => aup.PoslovnicaID.Equals(poslovnicaId) && aup.ArtikalID.Equals(artikalId));
+            if (artikalUPoslovnici == null)
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikalUPoslovnici.ArtikalID);
+            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikalUPoslovnici.PoslovnicaID);
+            return View(new ViewDataContainer(artikalUPoslovnici, new AdminView()));
         }
 
         // GET: Artikal_U_Poslovnici/Create
@@ -67,20 +71,24 @@ namespace Mihajlo_Potrcko.Controllers
         }
 
         // GET: Artikal_U_Poslovnici/Edit/5
-        public ActionResult Edit(bool? id)
+        public ActionResult Edit(int? idPoslovnice, int? idArtikla)
         {
-            if (id == null)
+            if (idPoslovnice == null || idArtikla == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
-            if (artikal_U_Poslovnici == null)
+
+            var PoslovnicaID = (int) idPoslovnice;
+            var ArtikalID = (int) idArtikla;
+            var artikalUPoslovnici = db.Artikal_U_Poslovnici.First(
+                aup => aup.PoslovnicaID.Equals(PoslovnicaID) && aup.ArtikalID.Equals(ArtikalID));
+            if (artikalUPoslovnici == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikal_U_Poslovnici.ArtikalID);
-            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikal_U_Poslovnici.PoslovnicaID);
-            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
+            ViewBag.FK_ArtikalID = new SelectList(db.Artikal, "ArtikalID", "Naziv_artikla", artikalUPoslovnici.ArtikalID);
+            ViewBag.FK_PoslovnicaID = new SelectList(db.Poslovnica, "PoslovnicaID", "Adresa", artikalUPoslovnici.PoslovnicaID);
+            return View(new ViewDataContainer(artikalUPoslovnici, new AdminView()));
         }
 
         // POST: Artikal_U_Poslovnici/Edit/5
@@ -102,27 +110,31 @@ namespace Mihajlo_Potrcko.Controllers
         }
 
         // GET: Artikal_U_Poslovnici/Delete/5
-        public ActionResult Delete(bool? id)
+        public ActionResult Delete(int? idPoslovnice, int? idArtikla)
         {
-            if (id == null)
+            if (idPoslovnice == null || idArtikla == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
-            if (artikal_U_Poslovnici == null)
+            int PoslovnicaID = (int)idPoslovnice;
+            int ArtikalID = (int)idArtikla;
+            Artikal_U_Poslovnici artikalUPoslovnici = db.Artikal_U_Poslovnici.First(aup => aup.PoslovnicaID.Equals(PoslovnicaID) && aup.ArtikalID.Equals(ArtikalID));
+            if (artikalUPoslovnici == null)
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(artikal_U_Poslovnici, new AdminView()));
+            return View(new ViewDataContainer(artikalUPoslovnici, new AdminView()));
         }
 
         // POST: Artikal_U_Poslovnici/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(bool id)
+        public ActionResult DeleteConfirmed(int? idPoslovnice, int? idArtikla)
         {
-            Artikal_U_Poslovnici artikal_U_Poslovnici = db.Artikal_U_Poslovnici.Find(id);
-            db.Artikal_U_Poslovnici.Remove(artikal_U_Poslovnici);
+            int PoslovnicaID = (int)idPoslovnice;
+            int ArtikalID = (int)idArtikla;
+            Artikal_U_Poslovnici artikalUPoslovnici = db.Artikal_U_Poslovnici.First(aup => aup.PoslovnicaID.Equals(PoslovnicaID) && aup.ArtikalID.Equals(ArtikalID));
+            db.Artikal_U_Poslovnici.Remove(artikalUPoslovnici);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

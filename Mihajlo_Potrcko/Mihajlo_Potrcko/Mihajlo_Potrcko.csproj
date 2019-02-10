@@ -378,12 +378,24 @@
     <Content Include="Views\Artikli\ListaArtikala.cshtml" />
     <Content Include="Views\Artikli\Index.cshtml" />
     <Content Include="Views\Poslovnica\PoslovnicePoPartneru.cshtml" />
-    <Content Include="Views\Poslovnica\_EditPostForm.cshtml" />
-    <Content Include="Views\Partial\_MenuItem.cshtml" />
-    <Content Include="Views\Partial\_Blog.cshtml" />
-    <Content Include="Views\Partial\_Slider.cshtml" />
     <Content Include="Views\Korpa\Index.cshtml" />
-    <Content Include="Views\Korpa\Edit.cshtml" />
+    <Content Include="Views\Poslovnica\_PostForm.cshtml" />
+    <Content Include="Views\Partner\PartneriPoKategoriji.cshtml" />
+    <Content Include="Views\Artikal\_PostForm.cshtml" />
+    <Content Include="Views\Artikal_U_Poslovnici\_PostForm.cshtml" />
+    <Content Include="Views\Korisnik\_PostForm.cshtml" />
+    <Content Include="Views\Kupac\_PostForm.cshtml" />
+    <Content Include="Views\Nalog\_PostForm.cshtml" />
+    <Content Include="Views\Nasa_banka\_PostForm.cshtml" />
+    <Content Include="Views\Niz_Artikala_Racun\_PostForm.cshtml" />
+    <Content Include="Views\Partner\_PostForm.cshtml" />
+    <Content Include="Views\Racun\_PostForm.cshtml" />
+    <Content Include="Views\Racuni_banke\_PostForm.cshtml" />
+    <Content Include="Views\Reklama\_PostForm.cshtml" />
+    <Content Include="Views\Reklamacija\_PostForm.cshtml" />
+    <Content Include="Views\Slika\_PostForm.cshtml" />
+    <Content Include="Views\Vozac\_PostForm.cshtml" />
+    <Content Include="Views\Zaposleni\_PostForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

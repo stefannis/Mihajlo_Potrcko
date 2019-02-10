@@ -4,49 +4,11 @@
 @{
     ViewBag.Title = "Edit";
     Zaposleni pageModel = Model.PageModel;
-}
+    if (pageModel == null)
+    {
+        pageModel = new Zaposleni();
+    }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Zaposleni</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => pageModel.ZaposleniID)
-
-        <div class="form-group">
-            @Html.LabelFor(model => pageModel.JMBG, "JMBG", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("JMBG", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => pageModel.JMBG, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => pageModel.Administrator, "Administrator", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Administrator", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => pageModel.Administrator, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
+    <h2>Izmeni zaposlenog</h2>
+    Html.RenderPartial("_PostForm", pageModel);
 }

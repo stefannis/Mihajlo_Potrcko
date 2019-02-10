@@ -7,27 +7,48 @@
 
 <!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ListaArtikala</title>
-</head>
 <body>
-<table>
-@foreach (var item in pageModel)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Slika.Link)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naziv_artikla)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cena_artikla)
-        </td>
-    </tr>
-}
-</table>
+    @if (pageModel.Count() > 0)
+    {
+        <h2>Pretraga artikala u poslovnici</h2>
+
+        <section id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h1 class="heading">
+                                <span>Restorani</span><span></span>
+                            </h1>
+                            <ul>
+                                @foreach (Artikal artikal in pageModel)
+                                {
+                                    <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="500ms">
+                                        <div class="content-left">
+                                            <h3>@artikal.Naziv_artikla</h3>
+                                            <p> Cena: @artikal.Cena_artikla</p>
+                                        </div>
+                                        <a href=@Url.Action("Index", "Artikli", new {artikalID = artikal.ArtikalID})>
+                                            <div class="blog-img-2">
+                                                <img src="/images/@artikal.Slika.Link" alt=":(">
+                                            </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    </div><!-- .col-md-12 close -->
+                </div><!-- .row close -->
+            </div><!-- .containe close -->
+        </section>
+    <!-- #blog close -->
+    }
+    else
+    {
+        <h2>Trenutno nema registrovanih artikala u odabranoj poslovnici</h2>
+    }
 </body>
-</html>
+
+
+
+
+

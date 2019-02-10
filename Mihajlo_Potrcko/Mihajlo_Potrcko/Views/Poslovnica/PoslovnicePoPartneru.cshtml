@@ -3,47 +3,48 @@
 @{
     IEnumerable<Poslovnica> pageModel = Model.PageModel;
 
-    ViewBag.Title = "PoslovnicePoPartneru";
+    ViewBag.Title = "Pretraga poslovnica po partneru";
 }
+<body>
+    @if (pageModel.Count() > 0)
+    {
+        <h2>Pretraga poslovnica po partneru: @pageModel.First().Partner.Naziv</h2>
 
-<h2>PoslovnicePoPartneru</h2>
+        <section id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block">
+                            <h1 class="heading">
+                                <span>Restorani</span><span></span>
+                            </h1>
+                            <ul>
+                                @foreach (Poslovnica poslovnica in pageModel)
+                                {
+                                    <li class="wow fadeInLeft" data-wow-duration="300ms" data-wow-delay="300ms">
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => pageModel.First().Partner.Naziv)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => pageModel.First().Adresa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => pageModel.First().Broj_telefona)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (Poslovnica item in pageModel) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Partner.Naziv)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Adresa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Broj_telefona)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.PoslovnicaID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.PoslovnicaID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.PoslovnicaID })
-            </td>
-        </tr>
+                                        <a href=@Url.Action("ListaArtikala", "Artikli", new {poslovnicaID = poslovnica.PoslovnicaID})>
+                                            <div class="blog-img">
+                                                <img src="/images/@poslovnica.Partner.Slika.Link" alt=":(">
+                                            </div>
+                                            <div class="content-right">
+                                                <h3>@poslovnica.Partner.Naziv</h3>
+                                                <p> Adresa: @poslovnica.Adresa</p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                }
+                            </ul>
+                            <a class="btn btn-default btn-more-info wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="#" role="button">More Info</a>
+                        </div>
+                    </div><!-- .col-md-12 close -->
+                </div><!-- .row close -->
+            </div><!-- .containe close -->
+        </section>
+    <!-- #blog close -->
     }
-
-</table>
-
-
+    else
+    {
+        <h2>Trazeni prodavac trenutno nema ni jednu registrovanu poslovnicu</h2>
+    }
+</body>

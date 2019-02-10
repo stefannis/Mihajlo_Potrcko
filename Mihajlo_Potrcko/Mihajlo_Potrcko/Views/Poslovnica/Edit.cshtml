@@ -2,9 +2,13 @@
 @model Mihajlo_Potrcko.Components.ViewDataContainer
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Poslovnica";
     Poslovnica pageModel = Model.PageModel;
+    if (pageModel == null)
+    {
+        pageModel = new Poslovnica();
+    }
 
-    <h2>Edit</h2>
-    Html.RenderPartial("_EditPostForm", pageModel);
+    <h2>Izmeni podatke o poslovnici</h2>
+    Html.RenderPartial("_PostForm", pageModel);
 }

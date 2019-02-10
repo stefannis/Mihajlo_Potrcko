@@ -16,7 +16,7 @@ namespace Mihajlo_Potrcko.Controllers
         // GET: Artikli
         public ActionResult Index(int artikalID)
         {
-            Artikal artikal =(Artikal) db.Artikal.Where(art => art.ArtikalID.Equals(artikalID));
+            Artikal artikal = db.Artikal.Find(artikalID);
 
             return View(new ViewDataContainer(artikal, new MainView()));
         }

@@ -17,6 +17,7 @@ namespace Mihajlo_Potrcko.Controllers
 
         public ActionResult Index()
         {
+
             var listaPartnera = db.Partner.ToList();
             listaPartnera.Sort();
             listaPartnera = listaPartnera.Take(8).ToList();
