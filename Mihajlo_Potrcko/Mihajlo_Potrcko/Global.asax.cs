@@ -92,7 +92,8 @@ namespace Mihajlo_Potrcko
 
         public static int? GetNalogId(string sessionNumber)
         {
-            if (!Sessions.TryGetValue(sessionNumber, out var tmpSessionData)) return null;
+            SessionDataContainer tmpSessionData;
+            if (!Sessions.TryGetValue(sessionNumber, out tmpSessionData)) return null;
             var db = new Potrcko();
             var tmpNalogs = db.Nalog.Where(nalog => nalog.JMBG.Equals(tmpSessionData.JMBG));
 
@@ -105,7 +106,8 @@ namespace Mihajlo_Potrcko
 
         public static Korpa GetCurrentKorpa(string sessionNumber)
         {
-            return !Sessions.TryGetValue(sessionNumber, out var tmpSessionData) ? null : tmpSessionData.korpa;
+            SessionDataContainer tmpSessionData;
+            return !Sessions.TryGetValue(sessionNumber, out tmpSessionData) ? null : tmpSessionData.korpa;
         }
 
         public static void SetCurrentKorpa(string sessionNumber, Korpa value)

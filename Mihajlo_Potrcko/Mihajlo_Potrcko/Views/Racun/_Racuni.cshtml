@@ -1,0 +1,58 @@
+﻿@using Mihajlo_Potrcko.Models
+@model IEnumerable<Mihajlo_Potrcko.Models.Racun>
+
+
+
+<section id="price">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <div class="pricing-list">
+                        <div class="title">
+                            <h3>Vasi <span>racuni</span></h3>
+                        </div>
+                        <ul>
+                            @if (Model.Count() == 1)
+                            {
+                                foreach (Artikal a in Model.First().Niz_Artikala_Racun.Select(nar => nar.Artikal))
+                                {
+                                    
+                                        <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                                            <div class="item">
+                                                <div class="item-title">
+                                                    <h2>@a.Naziv_artikla</h2>
+                                                    <div class="border-bottom"></div>
+                                                    @{ var iznos = decimal.Parse(a.Cena_artikla) * (int) a.Niz_Artikala_Racun.First().Kolicina;}
+                                                    <span>Iznos @iznos za kolicinu @a.Niz_Artikala_Racun.First().Kolicina</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                }
+                                <a class="btn btn-default pull-right wow bounceIn" data-wow-duration="500ms" data-wow-delay="1200ms" href="@Url.Action("novaReklamacija", "Reklamacija", new {racunID = Model.First().RacunID})" role="button">Zahtev za reklamaciju</a>
+                            }
+                            else
+                            {
+                                foreach (Racun r in Model)
+                                {
+                                    
+                                        <li class="wow fadeInUp" data-wow-duration="300ms" data-wow-delay="300ms">
+                                            <a href="@Url.Action("RacunKorisnika", "Racun", new {JMBG = "", racunID = r.RacunID})">
+                                            <div class="item">
+                                                <div class="item-title">
+                                                    <h2>Broj vaseg racuna @r.RacunID</h2>
+                                                    <div class="border-bottom"></div>
+                                                    <span>Iznos @r.Iznos</span>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </li>
+                                  }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div><!-- .col-md-12 close -->
+        </div><!-- .row close -->
+    </div><!-- .containe close -->
+</section>

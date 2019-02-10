@@ -7,14 +7,8 @@
 
 @if (pageModel.Any())
 {
-    if (pageModel.Count() == 1)
-    {
-
-    }
-    else
-    {
-        
-    }
+    <h3>Vasi racuni</h3>
+    Html.RenderPartial("_Racuni", pageModel);
 
 }
 else

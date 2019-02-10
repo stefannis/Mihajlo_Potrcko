@@ -127,9 +127,23 @@ namespace Mihajlo_Potrcko.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult RacunKorisnika(string JMBG)
+        public ActionResult RacunKorisnika(string JMBG, int? racunID)
         {
-            return View(new ViewDataContainer(db.Racun.Where(rac => rac.Kupac.JMBG.Equals(JMBG)).ToList(), new MainView()));
+            dynamic listaRacuna;
+            if (racunID != null)
+            {
+                int idRacuna = (int) racunID;
+                listaRacuna = db.Racun.Where(rac => rac.RacunID.Equals(idRacuna));
+                return View(new ViewDataContainer(listaRacuna, new MainView()));
+            }
+
+            if (JMBG != "")
+            {
+                listaRacuna = db.Racun.Where(rac => rac.Kupac.JMBG.Equals(JMBG)).ToList();
+                return View(new ViewDataContainer(listaRacuna, new MainView()));
+            }
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+
         }
 
         protected override void Dispose(bool disposing)
