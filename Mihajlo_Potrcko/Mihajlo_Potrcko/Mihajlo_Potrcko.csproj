@@ -396,6 +396,10 @@
     <Content Include="Views\Slika\_PostForm.cshtml" />
     <Content Include="Views\Vozac\_PostForm.cshtml" />
     <Content Include="Views\Zaposleni\_PostForm.cshtml" />
+    <Content Include="Views\Korpa\Edit.cshtml" />
+    <Content Include="Views\Partial\_Blog.cshtml" />
+    <Content Include="Views\Partial\_MenuItem.cshtml" />
+    <Content Include="Views\Partial\_Slider.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
