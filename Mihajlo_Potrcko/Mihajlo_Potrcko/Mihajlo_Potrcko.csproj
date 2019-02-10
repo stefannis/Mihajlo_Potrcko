@@ -380,6 +380,7 @@
     <Content Include="Views\Poslovnica\PoslovnicePoPartneru.cshtml" />
     <Content Include="Views\Korpa\Index.cshtml" />
     <Content Include="Views\Poslovnica\PoslovnicePoKategoriji.cshtml" />
+    <Content Include="Views\Poslovnica\_EditPostForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
