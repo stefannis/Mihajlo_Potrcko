@@ -22,9 +22,9 @@ namespace Mihajlo_Potrcko.LayoutViews
 
     public class MainView : View
     {
-        public MainView() : base("Main", false, true) { }
+        public MainView() : base("Potrcko", false, true) { }
 
-        public MainView(bool picture) : base("Main", false, picture) { }
+        public MainView(bool picture) : base("Potrcko", false, picture) { }
     }
 
     public class AdminView : View

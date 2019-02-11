@@ -21,7 +21,7 @@ namespace Mihajlo_Potrcko.Controllers
         public ActionResult Index()
         {
             var nalog = db.Nalog.Include(n => n.Korisnik).Include(n => n.Slika);
-            return View(new ViewDataContainer(nalog.ToList(), new MainView()));
+            return View(new ViewDataContainer(nalog.ToList(), new AdminView()));
         }
 
         // GET: Nalog/Details/5
@@ -36,7 +36,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(nalog, new MainView()));
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // GET: Nalog/Create
@@ -44,7 +44,7 @@ namespace Mihajlo_Potrcko.Controllers
         {
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime");
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link");
-            return View(new ViewDataContainer(null, new MainView()));
+            return View(new ViewDataContainer(null, new AdminView()));
         }
 
         // POST: Nalog/Create
@@ -63,7 +63,7 @@ namespace Mihajlo_Potrcko.Controllers
 
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
-            return View(new ViewDataContainer(nalog, new MainView()));
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // GET: Nalog/Edit/5
@@ -80,7 +80,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
-            return View(new ViewDataContainer(nalog, new MainView()));
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // POST: Nalog/Edit/5
@@ -98,7 +98,7 @@ namespace Mihajlo_Potrcko.Controllers
             }
             ViewBag.FK_JMBG = new SelectList(db.Korisnik, "JMBG", "Ime", nalog.JMBG);
             ViewBag.FK_SlikaID = new SelectList(db.Slika, "SlikaID", "Link", nalog.SlikaID);
-            return View(new ViewDataContainer(nalog, new MainView()));
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // GET: Nalog/Delete/5
@@ -113,7 +113,7 @@ namespace Mihajlo_Potrcko.Controllers
             {
                 return HttpNotFound();
             }
-            return View(new ViewDataContainer(nalog, new MainView()));
+            return View(new ViewDataContainer(nalog, new AdminView()));
         }
 
         // POST: Nalog/Delete/5
@@ -125,6 +125,34 @@ namespace Mihajlo_Potrcko.Controllers
             db.Nalog.Remove(nalog);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult korisnickiNalog(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Nalog nalog = db.Nalog.Find(id);
+            if (nalog == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new ViewDataContainer(nalog, new MainView()));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult parseEdit([Bind(Include = "NalogID,Username,Password,JMBG,SlikaID")] Nalog nalog)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(nalog).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index", "Home");
+            }
+
+            return RedirectToAction("korisnickiNalog", "Nalog");
         }
 
         protected override void Dispose(bool disposing)

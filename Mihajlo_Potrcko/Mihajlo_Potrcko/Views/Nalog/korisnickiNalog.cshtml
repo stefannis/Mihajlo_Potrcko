@@ -1,0 +1,34 @@
+﻿@using Mihajlo_Potrcko.Models
+@model Mihajlo_Potrcko.Components.ViewDataContainer
+
+@{
+    Nalog pageModel = Model.PageModel;
+}
+
+<body>
+<h2>Informacije o vasem nalogu</h2>
+
+@using (Html.BeginForm("parseEdit", "Nalog"))
+{ 
+
+@Html.AntiForgeryToken()
+
+<input hidden type="text" value="@pageModel.NalogID" name="NalogID"/><br/>
+<label>Korisnicko ime: </label>
+<input readonly type="text" value="@pageModel.Username" name="Username"/>
+<br/>
+<label>Lozinka: </label>
+<input type="password" value="@pageModel.Password" name="Password"/>
+<input hidden type="text" value="@pageModel.JMBG" name="JMBG"/>
+<input hidden type="text" value="@pageModel.SlikaID" name="SlikaID"/>
+
+<br/>
+<input type="submit" value="Promeni lozinku" name="Promeni lozinku"/>
+
+}
+
+@Html.ActionLink("Pocetna strana", "Index", "Home")
+
+</body>
+
+
