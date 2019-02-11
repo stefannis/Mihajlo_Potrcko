@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using System.Web.SessionState;
+using Microsoft.Ajax.Utilities;
 using Mihajlo_Potrcko.Models;
 
 namespace Mihajlo_Potrcko
@@ -19,32 +20,43 @@ namespace Mihajlo_Potrcko
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            lock (SessionAcessLock)
+            {
+                _sessions = new Dictionary<string, SessionDataContainer>();
+            }
         }
 
         // Session control
 
         private SessionIDManager m = new SessionIDManager();
 
-        public static Dictionary<string, SessionDataContainer> Sessions = new Dictionary<string, SessionDataContainer>();
+        private static object SessionAcessLock = new object();
+        private static Dictionary<string, SessionDataContainer> _sessions;
+        public static Dictionary<string, SessionDataContainer> Sessions
+        {
+            get
+            {
+                lock (SessionAcessLock)
+                {
+                    return _sessions;
+                }
+            }
+        }
 
-     
+
 
         public static SessionDataContainer GetDataBySessionNumber(string sessionNumber)
         {
-            var tmpSessionData = new SessionDataContainer();
-            if (Sessions.TryGetValue(sessionNumber, out tmpSessionData))
-            {
-                return tmpSessionData;
-            }
-            return null;
+            return Sessions.TryGetValue(sessionNumber, out var tmpSessionData) ? tmpSessionData : null;
         }
 
         internal static void UserLogIn(string jMBG, string sessionNumber)
         {
             var dicKeyValuePairs = Sessions.Where(dic => dic.Key.Equals(sessionNumber));
-            if (dicKeyValuePairs.Count() == 1)
+            var keyValuePairs = dicKeyValuePairs as KeyValuePair<string, SessionDataContainer>[] ?? dicKeyValuePairs.ToArray();
+            if (keyValuePairs.Count() == 1)
             {
-                dicKeyValuePairs.First().Value.JMBG = jMBG;
+                keyValuePairs.First().Value.JMBG = jMBG;
             }
         }
 
@@ -59,7 +71,7 @@ namespace Mihajlo_Potrcko
 
         public void Session_Start()
         {
-            string sessionNumber = m.CreateSessionID(System.Web.HttpContext.Current);
+            var sessionNumber = m.CreateSessionID(System.Web.HttpContext.Current);
             AddNewSessionData(sessionNumber, new SessionDataContainer()
             {
                 pocetakSesije = DateTime.Now
@@ -69,21 +81,22 @@ namespace Mihajlo_Potrcko
 
         public void Session_End()
         {
-            DateTime sessionStart;
-            var sessionID = m.GetSessionID(System.Web.HttpContext.Current);
-            var sessionIDIzSession = Session["brojSesije"];
+            var sessionId = m.GetSessionID(System.Web.HttpContext.Current);
 
-            if (Sessions.ContainsKey(sessionID))
+            if (Sessions.ContainsKey(sessionId))
             {
-                SessionDataContainer podatak;
-                Sessions.TryGetValue(sessionID, out podatak);
-                sessionStart = podatak.pocetakSesije;
+                Sessions.TryGetValue(sessionId, out var podatak);
+                if (podatak != null)
+                {
+                    var sessionStart = podatak.pocetakSesije;
 
-                DateTime sessionEnd = DateTime.Now;
-                TimeSpan duration = sessionEnd - sessionStart;
-                Sessions.Where(a => a.Key.Equals(sessionID)).First().Value.trajanjeSesije = duration.ToString();
+                    var sessionEnd = DateTime.Now;
+                    var duration = sessionEnd - sessionStart;
+                    Sessions.First(a => a.Key.Equals(sessionId)).Value.trajanjeSesije = duration.ToString();
+                }
+
                 // slanje bazi pre brisanja dictionary unosa
-                Sessions.Remove(sessionID);
+                Sessions.Remove(sessionId);
 
             }
             Session.Clear();
@@ -92,8 +105,7 @@ namespace Mihajlo_Potrcko
 
         public static int? GetNalogId(string sessionNumber)
         {
-            SessionDataContainer tmpSessionData;
-            if (!Sessions.TryGetValue(sessionNumber, out tmpSessionData)) return null;
+            if (!Sessions.TryGetValue(sessionNumber, out var tmpSessionData)) return null;
             var db = new Potrcko();
             var tmpNalogs = db.Nalog.Where(nalog => nalog.JMBG.Equals(tmpSessionData.JMBG));
 
@@ -106,8 +118,7 @@ namespace Mihajlo_Potrcko
 
         public static Korpa GetCurrentKorpa(string sessionNumber)
         {
-            SessionDataContainer tmpSessionData;
-            return !Sessions.TryGetValue(sessionNumber, out tmpSessionData) ? null : tmpSessionData.korpa;
+            return !Sessions.TryGetValue(sessionNumber, out var tmpSessionData) ? null : tmpSessionData.korpa;
         }
 
         public static void SetCurrentKorpa(string sessionNumber, Korpa value)
@@ -117,6 +128,48 @@ namespace Mihajlo_Potrcko
                 Sessions.First(session => session.Key.Equals(sessionNumber)).Value.korpa.Set(value);
             }
         }
+        public static void UpdateKorpa(string sessionNumber,int key, int quantity)
+        {
+            if (Sessions.Count(session => session.Key.Equals(sessionNumber)) <= 0) return;
+            {
+                Sessions.First(
+                    session => session.Key.Equals(sessionNumber)).Value.korpa.SadrzajKorpe.First(
+                    container => container.Key.Equals(key)).Value.IncInt.SetQuantity(quantity);
+            }
+        }
 
+        public static void AddItemToCurrentKorpa(string sessionNumber, KorpaContainer value)
+        {
+            if (Sessions.Count(session => session.Key.Equals(sessionNumber)) <= 0) return;
+            {
+                if (Sessions.First(
+                        session => session.Key.Equals(sessionNumber)).Value.korpa.SadrzajKorpe.First(
+                        item => item.Value.KArtikal.ArtikalID.Equals(value.KArtikal.ArtikalID) &&
+                                item.Value.KPartner.PartnerID.Equals(value.KPartner.PartnerID)) == null)
+                {
+                    Sessions.First(
+                        session => session.Key.Equals(sessionNumber)).Value.korpa.SadrzajKorpe.Add(
+                        new KorpaItem(Sessions.First(
+                            session => session.Key.Equals(sessionNumber)).Value.korpa.IndexCounter,value));
+                }
+                else
+                {
+                    Sessions.First(
+                        session => session.Key.Equals(sessionNumber)).Value.korpa.SadrzajKorpe.First(
+                        item => item.Value.KArtikal.ArtikalID.Equals(value.KArtikal.ArtikalID) &&
+                                item.Value.KPartner.PartnerID.Equals(value.KPartner.PartnerID)).Value.Update(value);
+                }
+                                      
+                }
+            }
+
+        public static void DeleteFromKorpa(string sessionNumber, int index)
+        {
+            if (Sessions.Count(session => session.Key.Equals(sessionNumber)) <= 0) return;
+            {
+                Sessions.First(
+                    session => session.Key.Equals(sessionNumber)).Value.korpa.Remove(index);
+            }
+    }
     }
 }
