@@ -15,7 +15,11 @@ namespace Mihajlo_Potrcko.Components
         }
         public override bool IsValidForRequest(ControllerContext controllerContext, MethodInfo methodInfo)
         {
-            return (controllerContext.HttpContext.Request[ValueName] != null);
+            if (controllerContext.HttpContext.Request.RequestType == "POST")
+            {
+                return false;
+            }
+            return controllerContext?.HttpContext?.Request?[ValueName] != null;
         }
         public string ValueName { get; private set; }
     }

@@ -6,27 +6,17 @@ namespace Mihajlo_Potrcko.Models
 {
     public class Korpa
     {
-        public Dictionary<int,KorpaContainer> SadrzajKorpe { get; private set; }
+        public List<KorpaItem> SadrzajKorpe { get; private set; }
 
-        private readonly object LockObject = new object();
-        private int _indexCounter = 0;
-        public int IndexCounter
-        {
-            get
-            {
-                lock (LockObject)
-                {
-                    return _indexCounter++;
-                }
-            }
-        }
+        private int _indexCounter;
+        public int IndexCounter => _indexCounter++;
 
         public Korpa()
         {
-            SadrzajKorpe = new Dictionary<int, KorpaContainer>();
+            SadrzajKorpe = new List<KorpaItem>();
             var db = new Potrcko();
             var rand = new Random();
-            foreach (Partner partner in db.Partner)
+            foreach (var partner in db.Partner)
             {
                 foreach (var poslovnica in partner.Poslovnica)
                 {
@@ -34,51 +24,69 @@ namespace Mihajlo_Potrcko.Models
                     {
                         var tmpArtikal =
                             db.Artikal.First(artikal => artikal.ArtikalID.Equals(artikalUPoslovnici.ArtikalID));
-                        SadrzajKorpe.Add(IndexCounter,new KorpaContainer()
+                        SadrzajKorpe.Add(new KorpaItem(IndexCounter,new KorpaContainer()
                         {
                             KPartner = partner,
                             KArtikal = tmpArtikal,
                             IncInt = new IncInt(rand.Next(0, 40), decimal.Parse(tmpArtikal.Cena_artikla))
 
-                        });
+                        }));
 
                     }
                 }
             }
         }
 
+        public void Remove(int index)
+        {
+          if(SadrzajKorpe.First(item => item.Key.Equals(index)) != null)
+          {
+              SadrzajKorpe.Remove(SadrzajKorpe.First(item => item.Key.Equals(index)));
+          }
+        }
+
         public void Set(Korpa value)
         {
-            SadrzajKorpe =new Dictionary<int, KorpaContainer>();
+            SadrzajKorpe =new List<KorpaItem>();
 
             foreach (var dic in value.SadrzajKorpe)
             {
-                SadrzajKorpe.Add(dic.Key,new KorpaContainer()
+                SadrzajKorpe.Add(new KorpaItem(dic.Key,new KorpaContainer()
                 {
                     KPartner = dic.Value.KPartner,
                     KArtikal = dic.Value.KArtikal,
                     IncInt = dic.Value.IncInt,
-                });
+                }));
             }
         }
 
         public void Update(int index,KorpaContainer value)
         {
-            if (SadrzajKorpe.ContainsKey(index))
+            if (SadrzajKorpe.Any(item => item.Key.Equals(index)))
             {
                 SadrzajKorpe.First(container => container.Key.Equals(index)).Value.Update(value);
                 return;
             }
-           SadrzajKorpe.Add(index,value);
+           SadrzajKorpe.Add(new KorpaItem(index,value));
+        }
+    }
+
+    public class KorpaItem
+    {
+        public KorpaItem()
+        {
+            Key = 0;
+            Value = new KorpaContainer();
         }
 
-        public void Remove(int key)
+        public KorpaItem(int indexCounter, KorpaContainer korpaContainer)
         {
-            if (SadrzajKorpe.ContainsKey(key))
-            {
-                SadrzajKorpe.Remove(key);
-            }
+            Key = indexCounter;
+            Value = korpaContainer;
         }
+
+        public int Key { get; set; }
+        public KorpaContainer Value { get; set; }
     }
 
     public class KorpaContainer
@@ -95,10 +103,16 @@ namespace Mihajlo_Potrcko.Models
         }
     }
 
-    public struct IncInt
+    public class IncInt
     {
         public int Quantity { get; set; }
         public decimal Price { get; private set; }
+
+        public IncInt()
+        {
+            Quantity = 0;
+            Price = 0;
+        }
 
         public IncInt(int quantity,decimal priceOfUnit)
         {

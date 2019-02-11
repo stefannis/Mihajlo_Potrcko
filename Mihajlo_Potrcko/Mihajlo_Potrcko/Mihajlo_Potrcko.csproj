@@ -402,6 +402,7 @@
     <Content Include="Views\Racun\_Racuni.cshtml" />
     <Content Include="Views\Partial\_Slider.cshtml" />
     <Content Include="Views\Korpa\_Form.cshtml" />
+    <Content Include="Views\Korpa\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
